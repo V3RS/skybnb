@@ -8,6 +8,8 @@ def seed_users():
                 password='password')
     demo2 = User(username='Demo2', email='demo2@aa.io',
                 password='password')
+    lando = User(username='Lando Calrissian', email='landocalrissian@protonmail.com',
+                password="password")
 
     db.session.add(demo)
     db.session.add(demo2)

@@ -9,6 +9,10 @@ def seed_spotsamenitiesjoins():
         spot2_amenity_item = SpotsAmenitiesJoins(spot_id=2, amenity_id=num)
         db.session.add(spot2_amenity_item)
 
+    for num in range(0, 15):
+        spot3_amenity_item = SpotsAmenitiesJoins(spot_id=3, amenity_id=num)
+        db.session.add(spot3_amenity_item)
+
     db.session.commit()
 
 def undo_spotsamenitiesjoins():
