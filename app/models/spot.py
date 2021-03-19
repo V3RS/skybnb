@@ -13,3 +13,4 @@ class Spot(db.Model):
   price = db.Column(db.Numeric, nullable=False)
   host_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   user = relationship("User", back_populates='spots')
+  pictures = relationship("Picture", back_populates='spot')
