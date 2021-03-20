@@ -9,8 +9,8 @@ def seed_reviews():
     db.session.add(review2)
     db.session.add(review3)
 
-    review4 = Review(comment="This place stinks! Not a place fit for a royal star princess", user_id=2, review=1)
-    review5 = Review(comment="Love the neighborhood but very blend accomodations in the jedi temple, apparently they dont believe in hot water for showers", user_id=2, review=2)
+    review4 = Review(comment="This place stinks! Not a place fit for a royal star princess", user_id=2, rating=1)
+    review5 = Review(comment="Love the neighborhood but very blend accomodations in the jedi temple, apparently they dont believe in hot water for showers", user_id=2, rating=2)
     review3 = Review(comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=2, rating=5)
     db.session.add(review4)
     db.session.add(review5)

@@ -39,6 +39,6 @@ def seed_amenities():
 
     db.session.commit()
 
-    def undo_amenities():
-        db.session.execute('TRUNCATE amenities;')
-        db.session.commit()
+def undo_amenities():
+    db.session.execute('TRUNCATE amenities;')
+    db.session.commit()

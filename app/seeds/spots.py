@@ -10,3 +10,7 @@ def seed_spots():
     spot3 = Spot(title="The Royal Palace of Theed, Planet Naboo", lng=38.8977, lat=-77.0365,
                 address="1600 Pennsylvania Avenue NW, Washington, DC 20500", description="A magnificent edifice located on the edge of a cliff in the planet's capital city, Theed. Serving as the residence of the planetary monarch and the nerve center of the government, the ancient palace stood through the Galactic Republic's collapse and the birth of the New Republic several decades later.",
                 price=888, host_id=3)
+
+def undo_spots():
+    db.session.execute('TRUNCATE spots;')
+    db.session.commit()
