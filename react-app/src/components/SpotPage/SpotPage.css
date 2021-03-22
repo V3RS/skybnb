@@ -1,0 +1,26 @@
+#spc {
+  display: flex;
+  justify-content: center;
+}
+
+.spot-page-container {
+  display: flex;
+  width: 1128px;
+  height: 1000px;
+  border: 2px solid black;
+}
+
+.spot-page-title {
+  font-size: 14px;
+  width: 100%;
+}
+
+.spot-secondHeading {
+  display: flex;
+  position: relative;
+  font-size: 12px;
+}
+
+.spot-shbtns {
+  float: right;
+}
