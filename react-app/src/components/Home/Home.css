@@ -1,0 +1,20 @@
+.landing-page{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.landing-page > img {
+    width: 1540px;
+}
+
+.landing-text > h2 {
+    color: white;
+}
+
+.landing-text{
+    display: flex;
+    font-family: Raleway;
+    background-color: black;
+    justify-content: center;
+}

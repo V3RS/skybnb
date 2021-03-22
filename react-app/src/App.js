@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navbar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotPage from "./components/SpotPage";
 import { authenticate } from "./services/auth";
+import Home from "./components/Home/Home"
 
 import SignupModal from "./components/SignupModal";
 import LoginModal from "./components/LoginModal";
@@ -35,6 +36,9 @@ function App() {
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
       <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
         <Route path="/spotslistpage" exact={true}>
           <SpotsListPage></SpotsListPage>
         </Route>
