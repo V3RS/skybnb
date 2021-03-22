@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import SpotPage from "./components/SpotPage";
 import { authenticate } from "./services/auth";
 
 import SignupModal from "./components/SignupModal";
@@ -74,6 +75,9 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <Route path="/spot" exact={true}>
+          <SpotPage auth={authenticated} />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

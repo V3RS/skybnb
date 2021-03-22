@@ -1,2 +1,7 @@
 /* TODO Add site wide styles */
+
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,400;0,500;1,100&display=swap');
+
+button {
+  cursor: pointer;
+}
