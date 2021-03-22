@@ -1,3 +1,5 @@
+/* modal css */
+
 .ReactModal__Overlay {
   opacity: 0;
   transform: translateY(100px);
@@ -26,6 +28,8 @@
   background-color: rgba(0, 0, 0, 0.2);
   height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
   position: fixed;
   border: none;
 }
@@ -35,6 +39,7 @@
   height: 100%;
   background: white;
   height: fit-content;
+  border-radius: 20px;
   /* position: fixed; */
 }
 
