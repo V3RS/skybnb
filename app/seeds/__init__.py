@@ -11,25 +11,33 @@ from .spots import seed_spots, undo_spots
 seed_commands = AppGroup('seed')
 
 # Creates the `flask seed all` command
+
+
 @seed_commands.command('all')
 def seed():
     seed_users()
     seed_amenities()
     seed_reviews()
     seed_spots()
-    # seed_spotsamenitiesjoins()
-    # seed_spotsreviewsjoins()
-    seed_amenities()
+    seed_spotsamenitiesjoins()
+    seed_spotsreviewsjoins()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
+
+
 @seed_commands.command('undo')
 def undo():
-    undo_users()
+    undo_spotsamenitiesjoins()
+    undo_spotsreviewsjoins()
     undo_amenities()
     undo_reviews()
     undo_spots()
+<<<<<<< HEAD
     # undo_spotsamenitiesjoins()
     # undo_spotsreviewsjoins()
     undo_amenities()
+=======
+    undo_users()
+>>>>>>> main
     # Add other undo functions here
