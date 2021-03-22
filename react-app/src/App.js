@@ -8,6 +8,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 
+import SignupModal from "./components/SignupModal";
+import LoginModal from "./components/LoginModal";
 import SpotsListPage from "./components/SpotsListPage";
 
 function App() {
@@ -40,6 +42,14 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+          <SignupModal
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          ></SignupModal>
+          <LoginModal
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          ></LoginModal>
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
