@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./SpotsListPage.css";
 
+import MapContainer from "./MapContainer";
+
 export default function SpotsListPage() {
   return (
     <div className="spotslistpage-container">
@@ -10,6 +12,7 @@ export default function SpotsListPage() {
       </div>
       <div className="spotslistpage-map-container">
         <h3>Googlemaps here</h3>
+        <MapContainer />
       </div>
     </div>
   );
