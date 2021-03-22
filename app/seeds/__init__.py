@@ -7,6 +7,7 @@ from .spotsreviewsjoins import seed_spotsreviewsjoins, undo_spotsreviewsjoins
 from .spotsamenitiesjoins import seed_spotsamenitiesjoins, undo_spotsamenitiesjoins
 from .pictures import seed_pictures, undo_pictures
 
+
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')

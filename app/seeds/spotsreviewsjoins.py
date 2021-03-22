@@ -23,6 +23,6 @@ def seed_spotsreviewsjoins():
     db.session.commit()
 
 
-def undo_spotsreviewsjoins():
-    db.session.execute('TRUNCATE spotsreviewsjoins;')
-    db.session.commit()
+# def undo_spotsreviewsjoins():
+#     db.session.execute('TRUNCATE spotsreviewsjoins;')
+#     db.session.commit()

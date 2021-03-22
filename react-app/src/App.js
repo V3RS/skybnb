@@ -9,6 +9,10 @@ import User from "./components/User";
 import SpotPage from "./components/SpotPage";
 import { authenticate } from "./services/auth";
 
+import SignupModal from "./components/SignupModal";
+import LoginModal from "./components/LoginModal";
+import SpotsListPage from "./components/SpotsListPage";
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -31,11 +35,22 @@ function App() {
     <BrowserRouter>
       <NavBar setAuthenticated={setAuthenticated} />
       <Switch>
+        <Route path="/spotslistpage" exact={true}>
+          <SpotsListPage></SpotsListPage>
+        </Route>
         <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+          <SignupModal
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          ></SignupModal>
+          <LoginModal
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          ></LoginModal>
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
