@@ -3,8 +3,8 @@ from .users import seed_users, undo_users
 from .amenities import seed_amenities, undo_amenities
 from .reviews import seed_reviews, undo_reviews
 from .spots import seed_spots, undo_spots
-from .spotsreviewsjoins import seed_spotsreviewsjoins, undo_spotsreviewsjoins
-from .spotsamenitiesjoins import seed_spotsamenitiesjoins, undo_spotsamenitiesjoins
+# from .spotsreviewsjoins import seed_spotsreviewsjoins, undo_spotsreviewsjoins
+# from .spotsamenitiesjoins import seed_spotsamenitiesjoins, undo_spotsamenitiesjoins
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -17,9 +17,9 @@ def seed():
     seed_amenities()
     seed_reviews()
     seed_spots()
-    seed_spotsamenitiesjoins()
-    seed_spotsreviewsjoins()
-    # seed_amenities()
+    # seed_spotsamenitiesjoins()
+    # seed_spotsreviewsjoins()
+    seed_amenities()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -29,7 +29,7 @@ def undo():
     undo_amenities()
     undo_reviews()
     undo_spots()
-    undo_spotsamenitiesjoins()
-    undo_spotsreviewsjoins()
-    # undo_amenities()
+    # undo_spotsamenitiesjoins()
+    # undo_spotsreviewsjoins()
+    undo_amenities()
     # Add other undo functions here
