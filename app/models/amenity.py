@@ -1,5 +1,5 @@
 from .db import db
-from .spotsamenitiesjoins import SpotsAmenitiesJoins
+from .spotsamenitiesjoins import spotsamenitiesjoins
 from sqlalchemy.orm import relationship
 
 
@@ -8,4 +8,4 @@ class Amenity(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     amenity = db.Column(db.String, nullable=False, unique=True)
-    spot = relationship("Spot", secondary=SpotsAmenitiesJoins, back_populates="amenities")
+    spot = relationship("Spot", secondary=spotsamenitiesjoins, backref=db.backref('spotamenity', lazy = 'dynamic'))

@@ -9,5 +9,5 @@ def seed_spotsreviewsjoins():
     item6 = SpotsReviewsJoins(spot_id=3, review_id=6)
 
 def undo_spotsreviewsjoins():
-    db.session.execute('TRUNCATE spotsamenitiesjoins;')
+    db.session.execute('TRUNCATE spotsreviewsjoins;')
     db.session.commit()

@@ -1,5 +1,5 @@
 from .db import db
-from .spotsreviewsjoins import SpotsReviewsJoins
+from .spotsreviewsjoins import spotsreviewsjoins
 from sqlalchemy.orm import relationship
 
 
@@ -12,4 +12,4 @@ class Review(db.Model):
     rating = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = relationship("User", back_populates='reviews')
-    spot = relationship("Spot", secondary=SpotsReviewsJoins, back_populates="reviews")
+    spot = relationship("Spot", secondary=spotsreviewsjoins, backref=db.backref('spotreview', lazy = 'dynamic'))
