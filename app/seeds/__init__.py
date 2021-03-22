@@ -33,11 +33,5 @@ def undo():
     undo_amenities()
     undo_reviews()
     undo_spots()
-<<<<<<< HEAD
-    # undo_spotsamenitiesjoins()
-    # undo_spotsreviewsjoins()
-    undo_amenities()
-=======
     undo_users()
->>>>>>> main
     # Add other undo functions here
