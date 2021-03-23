@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./SpotsListPage.css";
 
 import MapContainer from "./MapContainer";
-import SpotsList from "./SpotsList";
+import SpotsListEle from "./SpotsListEle";
 
 export default function SpotsListPage() {
   return (
@@ -13,12 +13,15 @@ export default function SpotsListPage() {
           <p>Search meta-data here</p>
         </div>
         <h3>Search Criteria Display - e.g. Unique Stay</h3>
-        <button>Cancellation flexibility</button>
-        <button>Entire place</button>
-        <button>Price</button>
-        <button>Instant Book</button>
-        <button>More filters</button>
-        <SpotsList
+        <div className="spotslistpage-filter-btn-container">
+          <button className="spotslistpage-filter-btn">
+            Cancellation flexibility
+          </button>
+          <button className="spotslistpage-filter-btn">Entire place</button>
+          <button className="spotslistpage-filter-btn">Price</button>
+          <button className="spotslistpage-filter-btn">More filters</button>
+        </div>
+        <SpotsListEle
           img="https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           location_desc="Somewhere in a galaxy far far away"
           title="modernly decorated room"

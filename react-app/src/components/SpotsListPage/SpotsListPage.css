@@ -1,3 +1,20 @@
+.spotslistpage-filter-btn {
+  padding: 0.5rem;
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+  margin: 0.5rem;
+  background-color: inherit;
+  border-radius: 30px;
+  color: black;
+  border: 1px solid #b0b0b0;
+  font-weight: 500;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.spotslistpage-filter-btn:hover {
+  border: 1px solid black;
+}
 .spotslistpage-container {
   display: flex;
   flex-direction: row;
