@@ -24,7 +24,7 @@ const LoginModal = ({ authenticated, setAuthenticated }) => {
         onRequestClose={closeModal}
         contentLabel="Login Modal"
         overlayClassName="OuterModal"
-        style={customStyles}
+        // style={customStyles}
         className="InnerModal"
       >
         <LoginForm
