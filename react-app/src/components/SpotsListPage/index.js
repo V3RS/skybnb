@@ -4,10 +4,14 @@ import "./SpotsListPage.css";
 
 import MapContainer from "./MapContainer";
 import SpotsListEle from "./SpotsListEle";
+import { spotslistQueryTest } from "../../store/spotslist.js";
 
 export default function SpotsListPage() {
   const dispatch = useDispatch();
-  const handleTestQuery = () => {};
+  const handleTestQuery = () => {
+    dispatch(spotslistQueryTest());
+  };
+  const spotslist = useSelector((state) => state.spotslist);
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
@@ -25,15 +29,31 @@ export default function SpotsListPage() {
             <button className="spotslistpage-filter-btn">More filters</button>
           </div>
         </div>
-        <SpotsListEle
-          img="https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          location_desc="Somewhere in a galaxy far far away"
-          title="Modernly decorated room"
-          description="4 guests · 1 bedroom · 2 beds · 1 bath"
-          star={4.5}
-          price={42}
-          total={126}
-        />
+        {
+          spotslist[0] &&
+            spotslist.map((spot) => {
+              return (
+                <SpotsListEle
+                  img={spot.pictures[1]}
+                  location_desc={spot.description.slice(30)}
+                  title={spot.title}
+                  description="Testing · testing · testing · testing"
+                  star={4.4}
+                  price={spot.price}
+                  total={spot.price * 3}
+                />
+              );
+            })
+          // <SpotsListEle
+          //   img="https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          //   location_desc="Somewhere in a galaxy far far away"
+          //   title="Modernly decorated room"
+          //   description="4 guests · 1 bedroom · 2 beds · 1 bath"
+          //   star={4.5}
+          //   price={42}
+          //   total={126}
+          // />
+        }
       </div>
 
       <div className="spotslistpage-map-container">
