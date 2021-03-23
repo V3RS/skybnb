@@ -14,11 +14,11 @@ def seed_pictures():
   db.session.add(theed4)
   db.session.add(theed5)
 
-  yavin1 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple1', spot_id=1)
-  yavin2 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple2', spot_id=1)
-  yavin3 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple3', spot_id=1)
-  yavin4 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple4', spot_id=1)
-  yavin5 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple5', spot_id=1)
+  yavin1 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple1.jpg', spot_id=1)
+  yavin2 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple2.jpg', spot_id=1)
+  yavin3 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple3.jpg', spot_id=1)
+  yavin4 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple4.jpg', spot_id=1)
+  yavin5 = Picture(img_url='https://skybnb.s3.amazonaws.com/temple5.jpg', spot_id=1)
 
   db.session.add(yavin1)
   db.session.add(yavin2)
