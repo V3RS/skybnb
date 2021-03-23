@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
+import { closeLogin, openSignup } from "../../store/modal.js";
+import { useDispatch } from "react-redux";
 
 import "./LoginModal.css";
 
@@ -8,6 +10,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -31,15 +34,20 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     return <Redirect to="/" />;
   }
 
+  const closeModal = () => dispatch(closeLogin());
+
+  const onSwitch = () => {
+    dispatch(closeLogin());
+    dispatch(openSignup());
+  };
+
   return (
     <div className="login-container">
+      <button className="close__modal" onClick={closeModal}>
+        <i class="fas fa-times"></i>
+      </button>
       <div id="login-title">Log in</div>
       <form onSubmit={onLogin}>
-        <div>
-          {errors.map((error) => (
-            <div>{error}</div>
-          ))}
-        </div>
         <div>
           <input
             name="email"
@@ -71,8 +79,23 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <div>or</div>
           <div className="after-or"></div>
         </div>
-        <button className="loginFormBtns">Demo Log in</button>
       </form>
+      <button className="loginFormBtns" id="demoBtn">
+        Demo Log in
+      </button>
+      <div className="login__switch">
+        Don’t have an account?
+        <button onClick={onSwitch} className="login_switch_btn">
+          Sign up
+        </button>
+      </div>
+      <div>
+        {errors.map((error) => (
+          <div key={error} className="login__errors">
+            {error}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
