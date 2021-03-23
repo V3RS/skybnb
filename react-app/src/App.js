@@ -8,11 +8,12 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotPage from "./components/SpotPage";
 import { authenticate } from "./services/auth";
-import Home from "./components/Home/Home"
+import Home from "./components/Home/Home";
 
 import SignupModal from "./components/SignupModal";
 import LoginModal from "./components/LoginModal";
 import SpotsListPage from "./components/SpotsListPage";
+import ProfileImgForm from "./components/ProfileImgForm";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -61,6 +62,9 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+        </Route>
+        <Route path="/upload-test" exact={true}>
+          <ProfileImgForm />
         </Route>
         <ProtectedRoute
           path="/users"
