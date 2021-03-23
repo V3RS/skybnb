@@ -16,14 +16,17 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const onLogin = async (e) => {
     e.preventDefault();
     setErrors(['']);
-    return await dispatch(sessionActions.loginUser({email, password}))
-      .catch(async (res) => {
-        const data = await res.json()
-        if (data && data.errors) setErrors(data.errors);
-      });
+    const user = await dispatch(sessionActions.loginUser({email, password}))
+    // const data = await user.json()
+
+    if (user.errors) {
+      setErrors(user.errors)
+    } else {
+      setAuthenticated(true);
+    }
+
     // const user = await login(email, password);
     // if (!user.errors) {
-    //   setAuthenticated(true);
     // } else {
     //   setErrors(user.errors);
     // }
