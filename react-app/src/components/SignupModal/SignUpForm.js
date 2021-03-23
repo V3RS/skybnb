@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { signUp } from "../../services/auth";
+import { signUp, login } from "../../services/auth";
+import { openLogin, closeSignup } from "../../store/modal.js";
+import { useDispatch } from "react-redux";
+
 import "./SignupModal.css";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
@@ -19,6 +22,17 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     }
   };
 
+  const onDemoLogin = async () => {
+    const demoUser = await login("demo@aa.io", "password");
+    if (!demoUser.errors) {
+      setAuthenticated(true);
+    } else {
+      return;
+    }
+  };
+
+  const dispatch = useDispatch();
+
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -35,51 +49,89 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     setRepeatPassword(e.target.value);
   };
 
+  const closeModal = () => dispatch(closeSignup());
+
+  const onSwitch = () => {
+    closeModal();
+    dispatch(openLogin());
+  };
+
   if (authenticated) {
     return <Redirect to="/" />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
+    <div className="signup-container">
+      <button className="close__modal__signup" onClick={closeModal}>
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="signup-title">Sign Up</div>
+      <form onSubmit={onSignUp}>
+        <div className="signup-inputs-container">
+          <div>
+            <input
+              type="text"
+              name="username"
+              onChange={updateUsername}
+              value={username}
+              placeholder="User Name"
+              className="signup-inputs"
+              required
+            ></input>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="email"
+              onChange={updateEmail}
+              value={email}
+              placeholder="Email"
+              className="signup-inputs"
+              required
+            ></input>
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              onChange={updatePassword}
+              value={password}
+              placeholder="Password"
+              className="signup-inputs"
+              required
+            ></input>
+          </div>
+          <div>
+            <input
+              type="password"
+              name="repeat_password"
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+              placeholder="Confirm Password"
+              className="signup-inputs"
+            ></input>
+          </div>
+        </div>
+        <button className="signupFormBtns" type="submit">
+          Sign Up
+        </button>
+        <div className="signup-or">
+          <div className="before-or"></div>
+          <div>or</div>
+          <div className="after-or"></div>
+        </div>
+      </form>
+      <button className="signupFormBtns" id="demoBtn" onClick={onDemoLogin}>
+        Demo Log in
+      </button>
+      <div className="signup__switch">
+        Already have an account?
+        <button onClick={onSwitch} className="signup_switch_btn">
+          Log in
+        </button>
       </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    </div>
   );
 };
 
