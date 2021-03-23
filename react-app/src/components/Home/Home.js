@@ -40,7 +40,7 @@ function Home() {
             <img src='https://wallpaperaccess.com/full/2184823.jpg'/>
             <div className='hostsharing__text__container'>
                 <h1>Your planet is worth sharing</h1>
-                <h4>Turn your extra space into your next opportunity.</h4>
+                <h4>Turn your extra <span className='space'>space</span> into your next <span className='opportunity'>opportunity.</span></h4>
                 <button onClick={() => history.push('/createspot')}>Become a Host</button>
             </div>
         </div>
