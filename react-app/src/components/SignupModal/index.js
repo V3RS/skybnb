@@ -17,7 +17,7 @@ const SignupModal = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
-      <button onClick={() => dispatch(openSignup())}>Create account</button>
+      <p onClick={() => dispatch(openSignup())}>Create account</p>
       <Modal
         isOpen={signupState}
         closeTimeoutMS={200}
