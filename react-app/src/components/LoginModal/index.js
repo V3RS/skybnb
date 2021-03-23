@@ -17,7 +17,7 @@ const LoginModal = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
-      <button onClick={() => dispatch(openLogin())}>LoginModal</button>
+      <p onClick={() => dispatch(openLogin())}>Log in</p>
       <Modal
         isOpen={loginState}
         closeTimeoutMS={200}
