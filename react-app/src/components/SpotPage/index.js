@@ -1,9 +1,14 @@
 import React from "react";
 import "./SpotPage.css";
 import { useParams } from "react-router";
+import { getOneSpot } from "../../services/spot";
 
 export default function SpotPage() {
   const { spotId } = useParams();
+
+  const spot = getOneSpot(spotId);
+
+  console.log(spot);
 
   return (
     <div id="spc">
