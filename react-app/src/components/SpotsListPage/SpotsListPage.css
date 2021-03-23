@@ -1,0 +1,9 @@
+.spotslistpage-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.spotslistpage-spotslist-container {
+  display: flex;
+  flex-direction: column;
+}
