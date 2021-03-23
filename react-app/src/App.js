@@ -16,6 +16,7 @@ import SignupModal from "./components/SignupModal";
 import LoginModal from "./components/LoginModal";
 import SpotsListPage from "./components/SpotsListPage";
 import ProfileImgForm from "./components/ProfileImgForm";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -70,6 +71,9 @@ function App() {
         </Route>
         <Route path="/upload-test" exact={true}>
           <ProfileImgForm />
+        </Route>
+        <Route path="/users/:id" exact={true}>
+          <ProfilePage />
         </Route>
         <ProtectedRoute
           path="/users"
