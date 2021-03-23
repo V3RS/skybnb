@@ -24,7 +24,7 @@ const SignupModal = ({ authenticated, setAuthenticated }) => {
         onRequestClose={closeModal}
         contentLabel="Signup Modal"
         overlayClassName="OuterModal"
-        style={customStyles}
+        // style={customStyles}
         className="InnerModal"
       >
         <SignUpForm

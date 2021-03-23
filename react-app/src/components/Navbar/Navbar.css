@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -21,64 +21,63 @@
     cursor: pointer;
 }
 
-.navbar__icon{
-    object-fit: contain;
-    height: 40px;
-    margin-left: 20px;
+.navbar__icon {
+  object-fit: contain;
+  height: 40px;
+  margin-left: 20px;
 }
 
-.navbar__search{
-    display: flex;
-    align-items: center;
-    /* max-width: fit-content; */
-    width: 250px;
-    justify-content: space-between;
-    padding: 10px;
-    padding-right: 15px;
-    height: 30px;
-    border: 1px solid lightgray;
-    border-radius: 999px;
+.navbar__search {
+  display: flex;
+  align-items: center;
+  /* max-width: fit-content; */
+  width: 250px;
+  justify-content: space-between;
+  padding: 10px;
+  padding-right: 15px;
+  height: 30px;
+  border: 1px solid lightgray;
+  border-radius: 999px;
 }
 
 .navbar__search > i {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #63D471;
-    color: white;
-    border: 1px solid #63D471;
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #63d471;
+  color: white;
+  border: 1px solid #63d471;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
 }
 
-.navbar__search > input{
-    border: none;
-    padding: 10px;
-    outline-width: 0;
-    font-family: Raleway;
+.navbar__search > input {
+  border: none;
+  padding: 10px;
+  outline-width: 0;
+  font-family: Raleway;
 }
 
-.navbar__account{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 250px;
-    font-family: Raleway;
-    font-weight: 200px;
-    cursor: pointer;
+.navbar__account {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  font-family: Raleway;
+  font-weight: 200px;
+  cursor: pointer;
 }
 
-.account__dropdown{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 55px;
-    border: 1px solid lightgray;
-    border-radius: 999px;
-    padding: 5px 5px 5px 10px;
+.account__dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 55px;
+  border: 1px solid lightgray;
+  border-radius: 999px;
+  padding: 5px 5px 5px 10px;
 }
-
 
 .dropdown__menu{
     position: absolute;
@@ -107,3 +106,4 @@
     background-color: #B1EAB8;
     margin: 0px;
 }
+
