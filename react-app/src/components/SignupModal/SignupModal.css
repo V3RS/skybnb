@@ -19,17 +19,27 @@
 .signup-inputs {
   display: flex;
   justify-content: center;
-  position: relative;
-  bottom: 20px;
-  margin: 1%;
+  /* position: relative;
+  bottom: 20px; */
   font-size: 18px;
   width: 520px;
   height: 56px;
   box-sizing: border-box;
+  /* border-radius: 5px; */
+  /* border: 1px solid #ccc; */
+  padding-left: 10px;
+  margin: 0;
+}
+
+.signup-inputs-container {
+  box-sizing: border-box;
   border-radius: 5px;
   border: 1px solid #ccc;
-  padding-left: 10px;
+  height: 226px;
+  padding: 0px;
+  margin-bottom: 35px;
 }
+
 /*
 #signup-pw-input {
   position: relative;

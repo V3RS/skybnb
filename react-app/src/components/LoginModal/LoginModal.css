@@ -19,22 +19,23 @@
 .login-inputs {
   display: flex;
   justify-content: center;
-  position: relative;
-  bottom: 20px;
-  margin: 1%;
+  /* position: relative;
+  bottom: 20px; */
   font-size: 18px;
   width: 520px;
   height: 56px;
   box-sizing: border-box;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  /* border: none; */
+  /* border-radius: 5px; */
+  /* border: 1px solid #ccc; */
   padding-left: 10px;
+  margin: 0;
 }
 
 #login-pw-input {
-  position: relative;
-  border-top: none;
-  bottom: 25px;
+  /* position: relative; */
+  /* border-top: none; */
+  /* bottom: 25px; */
 }
 
 .close__modal {
@@ -135,4 +136,13 @@
   color: red;
   position: relative;
   left: 170px;
+}
+
+.login-input-container {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  height: 114px;
+  padding: 0px;
+  margin-bottom: 30px;
 }

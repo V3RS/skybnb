@@ -22,6 +22,15 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     }
   };
 
+  const onDemoLogin = async () => {
+    const demoUser = await login("demo@aa.io", "password");
+    if (!demoUser.errors) {
+      setAuthenticated(true);
+    } else {
+      setErrors(demoUser.errors);
+    }
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -49,27 +58,29 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       <div id="login-title">Log in</div>
       <form onSubmit={onLogin}>
         <div>
-          <input
-            name="email"
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={updateEmail}
-            className="login-inputs"
-            required
-          />
-        </div>
-        <div>
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={updatePassword}
-            id="login-pw-input"
-            className="login-inputs"
-            required
-          />
+          <div className="login-input-container">
+            <input
+              name="email"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={updateEmail}
+              className="login-inputs"
+              required
+            />
+            <div>
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={updatePassword}
+                id="login-pw-input"
+                className="login-inputs"
+                required
+              />
+            </div>
+          </div>
           <button type="submit" className="loginFormBtns">
             Log in
           </button>
@@ -80,7 +91,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <div className="after-or"></div>
         </div>
       </form>
-      <button className="loginFormBtns" id="demoBtn">
+      <button className="loginFormBtns" id="demoBtn" onClick={onDemoLogin}>
         Demo Log in
       </button>
       <div className="login__switch">
