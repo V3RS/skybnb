@@ -9,13 +9,14 @@ import User from "./components/User";
 import SpotPage from "./components/SpotPage";
 import { authenticate } from "./services/auth";
 
-import Home from "./components/Home/Home"
-import Footer from "./components/Footer/Footer"
+import Home from "./components/Home/Home";
+import Footer from "./components/Footer/Footer";
 
 import SignupModal from "./components/SignupModal";
 import LoginModal from "./components/LoginModal";
 import SpotsListPage from "./components/SpotsListPage";
 import ProfileImgForm from "./components/ProfileImgForm";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -37,9 +38,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar 
+      <NavBar
         authenticated={authenticated}
-        setAuthenticated={setAuthenticated} />
+        setAuthenticated={setAuthenticated}
+      />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -70,6 +72,9 @@ function App() {
         <Route path="/upload-test" exact={true}>
           <ProfileImgForm />
         </Route>
+        <Route path="/users/:id" exact={true}>
+          <ProfilePage />
+        </Route>
         <ProtectedRoute
           path="/users"
           exact={true}
@@ -87,7 +92,7 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path="/spot" exact={true}>
+        <Route path="/spots/:spotId" exact={true}>
           <SpotPage auth={authenticated} />
         </Route>
       </Switch>
