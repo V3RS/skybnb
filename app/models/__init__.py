@@ -6,3 +6,4 @@ from .picture import Picture
 from .amenity import Amenity
 from .spotsamenitiesjoins import spotsamenitiesjoins
 from .spotsreviewsjoins import spotsreviewsjoins
+from .user_image import UserImage
