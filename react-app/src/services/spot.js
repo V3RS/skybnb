@@ -19,3 +19,5 @@ export const getSpotPictures = async (id) => {
   const data = await res.json();
   return data;
 };
+
+// might put these functions in SpotPage component
