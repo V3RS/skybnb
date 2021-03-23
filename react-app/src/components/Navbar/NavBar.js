@@ -1,16 +1,23 @@
 import React, {useState} from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import { useDispatch } from "react-redux";
 import './Navbar.css'
+import LoginModal from '../LoginModal'
+import SignUpModal from '../SignupModal'
+import LogoutButton from '../auth/LogoutButton'
+import { authenticate } from '../../services/auth';
 
-const NavBar = ({ setAuthenticated }) => {
+const NavBar = ({ authenticated, setAuthenticated }) => {
   const history = useHistory()
   const [open, setOpen] = useState(false)
   const toggle = () => setOpen(!open)
+  if (authenticated){
+
+  }
 
   return (
-    
-    <div className='nav-bar'>
+    <div className='navbar__container'>
+    <div className='navbar'>
       <div className='navbar__header' onClick={()=> history.push('/')}>
         <img
           className='navbar__icon'
@@ -26,46 +33,41 @@ const NavBar = ({ setAuthenticated }) => {
       </div>
 
       <div className='navbar__account'>
-        <p>Become a host</p>
+        <p onClick={() => history.push('/createspot')}>Become a host</p>
         <i class="fas fa-globe"></i>
         <div className='account__dropdown' onClick={() => toggle(!open)}>
           <i class="fas fa-bars"></i>
           <i class="fas fa-user-circle fa-2x"></i>
         </div>
       </div>
-        {open && (
+        {open && !authenticated && (
           <div className="dropdown__menu">
             <ul className='dropdown__list'>
-              <p>Log in</p>
-              <p>Sign up</p>
-              <p>Host your home</p>
+            <LoginModal
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          ></LoginModal>
+              <SignUpModal 
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}/>
+              <p onClick={() => history.push('/createspot')}>Host your home</p>
+            </ul>
+          </div>
+        )}
+        {open && authenticated && (
+          <div className="dropdown__menu">
+            <ul className='dropdown__list'>
+              <p onClick={() => history.push('/account')}>Account</p>
+              <p onClick={() => history.push('/createspot')}>Host your home</p>
+              <LogoutButton 
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}/>
             </ul>
           </div>
         )}
     </div>
+    </div>
   );
 }
 
-
-// function DropDown() {
-
-//   return (
-//     <div className="dd-wrapper">
-//       <div tabIndex={0} className="dd-header" role="button" onKeyPress={() => toggle(!open)} onClick={() => toggle(!open)}>
-//         <div className="dd-header_title">
-//           <p className="dd-header_title--bold">dropdown</p>
-//         </div>
-//         <div className="dd-header__action">
-//           <p>{open ? 'Close' : 'Open'}</p>
-//         </div>
-//       </div>
-//       {open && (
-//         <ul className="dd-list">
-//           <li>hey</li>
-//           <li>wtf</li>
-//         </ul>
-//       )}
-//     </div>
-//   )
-// }
 export default NavBar;

@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
-.nav-bar {
+.navbar__container{
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +35,6 @@
 .navbar__search {
   display: flex;
   align-items: center;
-  /* max-width: fit-content; */
   width: 250px;
   justify-content: space-between;
   padding: 10px;
@@ -59,6 +63,11 @@
   font-family: Raleway;
 }
 
+.navbar__search:hover {
+    box-shadow: 0px 5px 15px .1px #484848;
+    transition: .5s;
+}
+
 .navbar__account {
   display: flex;
   align-items: center;
@@ -67,6 +76,31 @@
   font-family: Raleway;
   font-weight: 200px;
   cursor: pointer;
+}
+
+.navbar__account > p{
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.navbar__account > i{
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.navbar__account > p:hover{
+    background-color: #B1EAB8;
+    transition: .5s;
+}
+
+.navbar__account > i:hover{
+    background-color: #B1EAB8;
+    transition: .5s;
+}
+
+.account__dropdown:hover{
+    box-shadow: 0px 5px 15px .1px #484848;
+    transition: .5s;
 }
 
 .account__dropdown {
