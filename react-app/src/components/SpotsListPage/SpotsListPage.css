@@ -1,6 +1,7 @@
 .spotslistpage-container {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .spotslistpage-spotslist-container {
