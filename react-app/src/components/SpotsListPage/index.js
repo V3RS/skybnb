@@ -6,6 +6,8 @@ import MapContainer from "./MapContainer";
 import SpotsListEle from "./SpotsListEle";
 
 export default function SpotsListPage() {
+  const dispatch = useDispatch();
+  const handleTestQuery = () => {};
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
@@ -36,6 +38,7 @@ export default function SpotsListPage() {
 
       <div className="spotslistpage-map-container">
         <h3>Googlemaps here</h3>
+        <button onClick={handleTestQuery}>Test Query</button>
         <MapContainer />
       </div>
     </div>

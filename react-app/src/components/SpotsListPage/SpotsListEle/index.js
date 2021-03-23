@@ -13,7 +13,7 @@ export default function SpotsListEle({
   return (
     <div className="spotslistele">
       <img src={img} alt="" />
-      <i class="far fa-heart"></i>
+      <i className="far fa-heart"></i>
 
       <div className="spotslistele-info-container">
         <div className="spotslistele-info-top">
@@ -24,7 +24,7 @@ export default function SpotsListEle({
         </div>
 
         <div className="spotslistele-info-bot">
-          <i class="fas fa-star">{star}</i>
+          <i className="fas fa-star">{star}</i>
           <div className="spotslistele-price-div">
             <div>${price}/ night</div>
             <div>${total} total</div>
