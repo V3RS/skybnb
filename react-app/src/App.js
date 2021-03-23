@@ -8,7 +8,9 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotPage from "./components/SpotPage";
 import { authenticate } from "./services/auth";
+
 import Home from "./components/Home/Home";
+import Footer from "./components/Footer/Footer";
 
 import SignupModal from "./components/SignupModal";
 import LoginModal from "./components/LoginModal";
@@ -36,7 +38,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
+      <NavBar
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
+      />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -87,10 +92,11 @@ function App() {
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path="/spot" exact={true}>
+        <Route path="/spots/:spotId" exact={true}>
           <SpotPage auth={authenticated} />
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
