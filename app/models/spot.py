@@ -29,5 +29,5 @@ class Spot(db.Model):
             "address": self.address,
             "description": self.description,
             "price": float(self.price),
-            "host_id": self.host_id
+            "host_id": self.host_id,
         }
