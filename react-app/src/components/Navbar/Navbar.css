@@ -3,6 +3,7 @@
     position: sticky;
     top: 0;
     background-color: white;
+    z-index: 5;
 }
 .navbar {
     display: flex;
@@ -116,8 +117,8 @@
 .dropdown__menu{
     position: absolute;
     display: flex;
-    right: 20px;
-    margin-top: 200px;
+    right: 40px;
+    top: 70px;
     border: 1px solid white;
     border-radius: 20px;
     background-color: white;
@@ -141,3 +142,10 @@
     margin: 0px;
 }
 
+.space{
+    color: #B1EAB8
+}
+
+.opportunity{
+    color: #63d471
+}
