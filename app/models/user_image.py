@@ -9,3 +9,11 @@ class UserImage(db.Model):
     img_url = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = relationship("User", back_populates='image')
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "img_url": self.img_url,
+            "user_id": self.user_id,
+        }
