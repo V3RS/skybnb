@@ -18,7 +18,13 @@ export default function SpotsListPage() {
     return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
   });
   const searchQuery = useSelector((state) => state.spotslist.search_extras);
-  const handleSpotsPageRedirect = (id) => history.push(`/spots/${id}`);
+  const handleSpotsPageRedirect = (id) => {
+    alert("boo");
+    history.push(`/spots/${id}`);
+  };
+  const handleTest = () => {
+    alert("testing");
+  };
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
@@ -42,7 +48,7 @@ export default function SpotsListPage() {
               return (
                 <SpotsListEle
                   className="spotslistele"
-                  onClick={() => handleSpotsPageRedirect(spot.id)}
+                  id={spot.id}
                   img={spot.pictures[1]}
                   location_desc={spot.description.slice(0, 35)}
                   title={spot.title}

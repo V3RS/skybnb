@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import Spot, User, Picture, Review
-
+from sqlalchemy import func
 
 
 spot_routes = Blueprint('spots', __name__)
@@ -32,7 +32,8 @@ def get_spot_pictures(id):
 @spot_routes.route('/search', methods=["POST"])
 def get_spots_query():
     searchString = request.data.decode("UTF-8")
-    Spots = Spot.query.filter(Spot.address.contains(searchString)).all()
+    # Spots = Spot.query.filter(func.lower(Spot.address).contains(func.lower(searchString))).all()
+    Spots = Spot.query.filter(Spot.address.ilike(f"%{searchString}%"))
     return_obj = {"spots": [spot.to_dict_with_picture() for spot in Spots]}
     print(Spots[0].pictures)
     return return_obj
@@ -48,4 +49,3 @@ def get_spots_query():
 #     spot = Spot.query.get(id)
 #     host = User.query.get(spot.host_id)
 #     return host.to_dict()
-

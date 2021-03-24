@@ -1,7 +1,9 @@
 import React from "react";
 import "./SpotsListEle.css";
+import { useHistory } from "react-router-dom";
 
 export default function SpotsListEle({
+  id,
   img,
   location_desc,
   title,
@@ -10,8 +12,12 @@ export default function SpotsListEle({
   price,
   total,
 }) {
+  const history = useHistory();
+  const handleSpotsPageRedirect = (spot_id) => {
+    history.push(`/spots/${spot_id}`);
+  };
   return (
-    <div className="spotslistele">
+    <div className="spotslistele" onClick={() => handleSpotsPageRedirect(id)}>
       <img src={img} alt="" />
       <i className="far fa-heart"></i>
 
