@@ -57,11 +57,12 @@
   width: 30px;
 }
 
-.navbar__search > input {
+.navbar__search > button {
   border: none;
   padding: 10px;
   outline-width: 0;
   font-family: Raleway;
+  background-color: white
 }
 
 .navbar__search:hover {
@@ -148,4 +149,38 @@
 
 .opportunity{
     color: #63d471
+}
+
+
+.searchform__container{
+    margin: 0 20% 0 20%;
+    display: grid;
+    border: 1px solid #484848;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-family: Raleway;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.location__container{
+    height: 50px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.location__container:hover{
+    background-color: #B1EAB8;
+    transition: .5s;
+}
+
+.location__container > label{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.location__container > input{
+    position: absolute;
+    top: 25px;
+    left: 10px;
 }
