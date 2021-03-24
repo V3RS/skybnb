@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { getOneSpot, getSpotPictures } from "../../services/spot";
-
+import { Link } from "react-router-dom";
+import { getOneSpot } from "../../services/spot";
 import "./SpotPage.css";
 
 export default function SpotPage() {
   const { spotId } = useParams();
   const [spot, setSpot] = useState({});
-  const [pictures, setPictures] = useState([]);
-  // this needs to be fixed
+
   useEffect(async () => {
     const fetchData = async () => {
       const data = await getOneSpot(spotId);
-      const pictureData = await getSpotPictures(spotId);
       setSpot(data);
-      setPictures(pictureData.pictures);
     };
     fetchData();
   }, []);
 
-  console.log("SPOTT", spot);
-  console.log("PICTURESSS", pictures);
+  // console.log("SPOTT", spot);
 
   return (
     <div id="spc">
@@ -45,11 +41,19 @@ export default function SpotPage() {
           </div>
         </div>
         <div className="spot__pictures__container">
-          {pictures?.map((picture) => (
+          {spot?.pictures?.map((picture) => (
             <div key={picture.id}>
               <img src={picture.img_url} alt="spot-picture" />
             </div>
           ))}
+        </div>
+        <div className="host__detail__container">
+          <div className="host__title">
+            {spot?.title} by{" "}
+            <Link id="host" to={`/users/${spot.host_id}`}>
+              {spot?.host?.username}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -28,16 +28,13 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <div className='navbar__container'>
-    <div className='navbar'>
-      <div className='navbar__header' onClick={()=> history.push('/')}>
-        <img
-          className='navbar__icon'
-          src={logo}
-          alt=''
-          />
-        <h2>skybnb</h2>
-      </div>
+    <div className="navbar__container">
+      <div className="navbar">
+        <div className="navbar__header" onClick={() => history.push("/")}>
+          <img className="navbar__icon" src={logo} alt="" />
+          <h2>skybnb</h2>
+        </div>
+
 
       {!openSearch && (
       <div className='navbar__search'>
@@ -70,36 +67,39 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         <div className='account__dropdown' onClick={() => toggle(!open)}>
           <i class="fas fa-bars"></i>
           <i class="fas fa-user-circle fa-2x"></i>
+
         </div>
-      </div>
         {open && !authenticated && (
           <div className="dropdown__menu">
-            <ul className='dropdown__list'>
-            <LoginModal
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-            ></LoginModal>
-              <SignUpModal 
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}/>
-              <p onClick={() => history.push('/createspot')}>Host your home</p>
+            <ul className="dropdown__list">
+              <LoginModal
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+              ></LoginModal>
+              <SignUpModal
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+              />
+              <p onClick={() => history.push("/createspot")}>Host your home</p>
             </ul>
           </div>
         )}
         {open && authenticated && (
           <div className="dropdown__menu">
-            <ul className='dropdown__list'>
-              <p onClick={() => history.push('/account')}>Account</p>
-              <p onClick={() => history.push('/createspot')}>Host your home</p>
-              <LogoutButton 
+            <ul className="dropdown__list">
+              <p onClick={() => history.push("/account")}>Account</p>
+              <p onClick={() => history.push("/createspot")}>Host your home</p>
+              <LogoutButton
                 authenticated={authenticated}
-                setAuthenticated={setAuthenticated}/>
+                setAuthenticated={setAuthenticated}
+              />
             </ul>
           </div>
         )}
     </div>
+
     </div>
   );
-}
+};
 
 export default NavBar;

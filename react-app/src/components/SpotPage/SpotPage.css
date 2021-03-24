@@ -26,9 +26,8 @@
 
 .spot-shbtns-container {
   display: flex;
-  position: relative;
-  top: 3px;
-  left: 665px;
+  position: absolute;
+  left: 980px;
 }
 
 .spot-shbtns {
@@ -79,4 +78,24 @@
   border: 2px solid black;
   /* border-radius: 10px; */
   height: 522px;
+}
+
+.host__detail__container {
+  position: relative;
+  display: flex;
+  top: 60px;
+}
+
+#host {
+  text-decoration: none;
+  color: black;
+}
+
+#host:hover {
+  /* background-color: rgb(244, 244, 244); */
+  color: #63d471;
+}
+
+.host__title {
+  font-size: 20px;
 }
