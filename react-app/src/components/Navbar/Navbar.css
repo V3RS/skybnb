@@ -171,8 +171,9 @@
     margin-bottom: 10px;
     width: 450px;
     margin-top: 20px;
+    margin-right: 200px;
     position: relative;
-
+}
 .location__container {
   height: 50px;
   border-radius: 50px;
