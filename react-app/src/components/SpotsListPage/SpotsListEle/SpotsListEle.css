@@ -1,0 +1,58 @@
+.spotslistele {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
+.spotslistele > img {
+  height: 200px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.spotslistele > .fa-heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.spotslistele-info-container {
+  margin-left: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.spotslistele-info-top {
+  height: 50%;
+  width: 100%;
+}
+
+.spotslistele-info-top > h3 {
+  margin-top: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.info-top-line {
+  border-bottom: 1px solid #dddddd;
+  width: 42px;
+}
+
+.spotslistele-info-bot {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: 50%;
+  width: 100%;
+}
+
+.spotslistele-info-bot > .fa-star {
+  position: absolute;
+  bottom: 5px;
+  left: 1px;
+}
+
+.spotslistele-info-bot > .spotslistele-price-div {
+  position: absolute;
+  bottom: 1px;
+  right: 10px;
+}
