@@ -1,5 +1,4 @@
 from .db import db
-from .spotsreviewsjoins import spotsreviewsjoins
 from .spotsamenitiesjoins import spotsamenitiesjoins
 from sqlalchemy.orm import relationship
 
@@ -17,6 +16,7 @@ class Spot(db.Model):
     host_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = relationship("User", back_populates='spots')
     pictures = relationship("Picture", back_populates='spot')
+    reviews = relationship("Review", back_populates='spot')
     # reviews = relationship("Review", secondary=spotsreviewsjoins, back_populates="spot")
     # amenities = relationship("Amenity", secondary=spotsamenitiesjoins, back_populates="spot")
 
