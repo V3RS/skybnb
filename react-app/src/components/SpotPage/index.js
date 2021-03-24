@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { getOneSpot, getSpotPictures } from "../../services/spot";
-
+import { Link } from "react-router-dom";
+import { getOneSpot } from "../../services/spot";
 import "./SpotPage.css";
 
 export default function SpotPage() {
   const { spotId } = useParams();
   const [spot, setSpot] = useState({});
-  const [pictures, setPictures] = useState([]);
-  // this needs to be fixed
+
   useEffect(async () => {
     const fetchData = async () => {
       const data = await getOneSpot(spotId);
-      const pictureData = await getSpotPictures(spotId);
       setSpot(data);
-      setPictures(pictureData.pictures);
     };
     fetchData();
   }, []);
 
-  console.log("SPOTT", spot);
-  console.log("PICTURESSS", pictures);
+  // console.log("SPOTT", spot);
+
+  const radIdFunc = (i) => {
+    if (i === 2) return "fourth__pic";
+    else if (i === 3) return "fifth__pic";
+    else return "other__pics";
+  };
 
   return (
     <div id="spc">
@@ -30,8 +32,13 @@ export default function SpotPage() {
         </div>
         <div className="spot-secondHeading">
           <div className="rating__address">
-            <div>
-              <i className="fas fa-star"></i> 4.82
+            <div id="rating">
+              <i id="star__spot_page" className="fas fa-star"></i>
+              {spot?.rating}
+              <p id="reviews_count">
+                ({spot?.reviews_count}{" "}
+                {spot?.reviews_count != 1 ? "reviews" : "review"}){" "}
+              </p>
             </div>
             <div className="spot__address">{spot?.address}</div>
           </div>
@@ -45,11 +52,37 @@ export default function SpotPage() {
           </div>
         </div>
         <div className="spot__pictures__container">
-          {pictures?.map((picture) => (
-            <div key={picture.id}>
-              <img src={picture.img_url} alt="spot-picture" />
-            </div>
-          ))}
+          <div className="first_pic_container">
+            {spot?.pictures?.slice(0, 1).map((picture) => (
+              <div key={picture.id}>
+                <img
+                  className="spot__first__picture"
+                  src={picture?.img_url}
+                  alt="spot-picture"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="four_pics_container">
+            {spot?.pictures?.slice(1).map((picture, i) => (
+              <div key={picture.id}>
+                <img
+                  className="spot__pictures"
+                  id={radIdFunc(i)}
+                  src={picture.img_url}
+                  alt="spot-picture"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="host__detail__container">
+          <div className="host__title">
+            {spot?.title} by{" "}
+            <Link id="host" to={`/users/${spot.host_id}`}>
+              {spot?.host?.username}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

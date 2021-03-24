@@ -1,30 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
-.navbar__container{
-    position: sticky;
-    top: 0;
-    background-color: white;
-    z-index: 5;
+.navbar__container {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 5;
+
+  /* background: url("./nav-bg.jpg");
+  background-repeat: no-repeat; */
 }
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    background-color: white;
- 
-    height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
 
-    margin: 0 10% 0 10%;
-    padding: 0 80px 0 80px;
+  height: 80px;
+
+  margin: 0 10% 0 10%;
+  padding: 0 80px 0 80px;
 }
 
-.navbar__header{
-    display: flex;
-    align-items: center;
-    font-family: Raleway;
-    color: #63D471;
-    cursor: pointer;
+.navbar__header {
+  display: flex;
+  align-items: center;
+  font-family: Raleway;
+  color: #63d471;
+  cursor: pointer;
 }
 
 .navbar__icon {
@@ -62,12 +65,12 @@
   padding: 10px;
   outline-width: 0;
   font-family: Raleway;
-  background-color: white
+  background-color: white;
 }
 
 .navbar__search:hover {
-    box-shadow: 0px 5px 15px .1px #484848;
-    transition: .5s;
+  box-shadow: 0px 5px 15px 0.1px #484848;
+  transition: 0.5s;
 }
 
 .navbar__account {
@@ -80,29 +83,29 @@
   cursor: pointer;
 }
 
-.navbar__account > p{
-    padding: 10px;
-    border-radius: 20px;
+.navbar__account > p {
+  padding: 10px;
+  border-radius: 20px;
 }
 
-.navbar__account > i{
-    padding: 10px;
-    border-radius: 20px;
+.navbar__account > i {
+  padding: 10px;
+  border-radius: 20px;
 }
 
-.navbar__account > p:hover{
-    background-color: #B1EAB8;
-    transition: .5s;
+.navbar__account > p:hover {
+  background-color: #b1eab8;
+  transition: 0.5s;
 }
 
-.navbar__account > i:hover{
-    background-color: #B1EAB8;
-    transition: .5s;
+.navbar__account > i:hover {
+  background-color: #b1eab8;
+  transition: 0.5s;
 }
 
-.account__dropdown:hover{
-    box-shadow: 0px 5px 15px .1px #484848;
-    transition: .5s;
+.account__dropdown:hover {
+  box-shadow: 0px 5px 15px 0.1px #484848;
+  transition: 0.5s;
 }
 
 .account__dropdown {
@@ -115,72 +118,218 @@
   padding: 5px 5px 5px 10px;
 }
 
-.dropdown__menu{
-    position: absolute;
-    display: flex;
-    right: 40px;
-    top: 70px;
-    border: 1px solid white;
-    border-radius: 20px;
-    background-color: white;
-    box-shadow: 0px 0px 10px .1px #484848;
+.dropdown__menu {
+  position: absolute;
+  display: flex;
+  right: 40px;
+  top: 70px;
+  border: 1px solid white;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 10px 0.1px #484848;
 }
 
-.dropdown__list{
-    font-family: Raleway;
-    /* padding: 0 20px 0 20px; */
-    padding: 0
+.dropdown__list {
+  font-family: Raleway;
+  /* padding: 0 20px 0 20px; */
+  padding: 0;
 }
 
-.dropdown__list > p{
-    margin: 0px;
-    padding: 10px;
-    padding-right: 20px;
-    cursor: pointer;
+.dropdown__list > p {
+  margin: 0px;
+  padding: 10px;
+  padding-right: 20px;
+  cursor: pointer;
 }
-.dropdown__list > p:hover{
-    background-color: #B1EAB8;
-    margin: 0px;
-}
-
-.space{
-    color: #B1EAB8
+.dropdown__list > p:hover {
+  background-color: #b1eab8;
+  margin: 0px;
 }
 
-.opportunity{
-    color: #63d471
+.space {
+  color: #b1eab8;
 }
 
+.opportunity {
+  color: #63d471;
+}
+
+.searchform__container {
+  margin: 0 20% 0 20%;
+  display: grid;
+  border: 1px solid #484848;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  font-family: Raleway;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
 
 .searchform__container{
-    margin: 0 20% 0 20%;
+    /* margin: 0 20% 0 20%; */
     display: grid;
     border: 1px solid #484848;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 3fr 3fr 1fr;
     font-family: Raleway;
     border-radius: 50px;
     margin-bottom: 10px;
-}
-
-.location__container{
-    height: 50px;
-    border-radius: 50px;
+    width: 450px;
+    margin-top: 20px;
+    margin-right: 200px;
     position: relative;
 }
+.location__container {
+  height: 50px;
+  border-radius: 50px;
+  position: relative;
 
-.location__container:hover{
-    background-color: #B1EAB8;
-    transition: .5s;
 }
 
-.location__container > label{
-    position: absolute;
-    top: 5px;
-    left: 10px;
+.location__container:hover {
+  background-color: #b1eab8;
+  transition: 0.5s;
 }
+
+.location__container > label {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+.location__container > input {
+  position: absolute;
+  top: 25px;
+  left: 10px;
+}
+
 
 .location__container > input{
     position: absolute;
     top: 25px;
     left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    width: 130px;
+}
+
+
+.startdate__container{
+    height: 50px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.startdate__container:hover{
+    background-color: #B1EAB8;
+    transition: .5s;
+}
+
+.startdate__container > label{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.startdate__container > input{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    width: 130px;
+}
+
+.enddate__container{
+    height: 50px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.enddate__container:hover{
+    background-color: #B1EAB8;
+    transition: .5s;
+}
+
+.enddate__container > label{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.enddate__container > input{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    width: 130px;
+}
+
+.guests__container{
+    height: 50px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.guests__container:hover{
+    background-color: #B1EAB8;
+    transition: .5s;
+}
+
+.guests__container > label{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.guests__container > input{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    width: 130px;
+}
+
+.searchform__button{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #63d471;
+    color: white;
+    border: 1px solid #63d471;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    right: 20px;
+    top: 10px;
+}
+
+.searchform__cancel{
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #63d471;
+    color: white;
+    border: 1px solid #63d471;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#github__link {
+  text-decoration: none;
+  color: black;
+  padding-right: 10px;
+  font-size: 18px;
+}
+#github__link:hover {
+  color: #63d471;
 }

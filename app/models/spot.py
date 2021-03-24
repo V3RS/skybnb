@@ -1,5 +1,4 @@
 from .db import db
-from .spotsreviewsjoins import spotsreviewsjoins
 from .spotsamenitiesjoins import spotsamenitiesjoins
 from sqlalchemy.orm import relationship
 
@@ -17,6 +16,7 @@ class Spot(db.Model):
     host_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     user = relationship("User", back_populates='spots')
     pictures = relationship("Picture", back_populates='spot')
+    reviews = relationship("Review", back_populates='spot')
     # reviews = relationship("Review", secondary=spotsreviewsjoins, back_populates="spot")
     # amenities = relationship("Amenity", secondary=spotsamenitiesjoins, back_populates="spot")
 
@@ -30,4 +30,18 @@ class Spot(db.Model):
             "description": self.description,
             "price": float(self.price),
             "host_id": self.host_id,
+        }
+
+
+    def to_dict_with_picture(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "lng": float(self.lng),
+            "lat": float(self.lat),
+            "address": self.address,
+            "description": self.description,
+            "price": float(self.price),
+            "host_id": self.host_id,
+            "pictures": [picture.img_url for picture in self.pictures],
         }

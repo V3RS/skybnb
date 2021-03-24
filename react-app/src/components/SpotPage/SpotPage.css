@@ -17,6 +17,21 @@
   font-size: 30px;
   /* width: 100%; */
 }
+#star__spot_page {
+  padding-right: 2px;
+  position: relative;
+  top: 0.5px;
+}
+#rating {
+  cursor: pointer;
+}
+#reviews_count {
+  position: relative;
+  color: gray;
+  display: inline-block;
+  top: 2px;
+  padding-left: 3px;
+}
 
 .spot-secondHeading {
   display: flex;
@@ -26,9 +41,8 @@
 
 .spot-shbtns-container {
   display: flex;
-  position: relative;
-  top: 3px;
-  left: 665px;
+  position: absolute;
+  left: 980px;
 }
 
 .spot-shbtns {
@@ -37,6 +51,7 @@
   font-size: 15px;
   border-radius: 5px;
   height: 40px;
+  background-color: transparent;
 }
 
 .spot-shbtns:hover {
@@ -56,14 +71,16 @@
   font-size: 16px;
   display: flex;
   position: relative;
-  top: 10px;
+  /* top: 10px; */
 }
 
 .spot__address {
   position: relative;
+  top: 18px;
   left: 20px;
   color: gray;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .fa-star {
@@ -76,7 +93,58 @@
   display: flex;
   /* flex-direction: column; */
   flex-wrap: wrap;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   /* border-radius: 10px; */
-  height: 522px;
+  height: 510px;
+}
+
+.spot__first__picture {
+  height: 493px;
+  width: 550px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  object-fit: fill;
+}
+
+#fourth__pic {
+  border-top-right-radius: 10px;
+}
+
+#fifth__pic {
+  border-bottom-right-radius: 10px;
+}
+
+.spot__pictures {
+  width: 275px;
+  height: 242px;
+  padding-left: 10px;
+  padding-bottom: 4px;
+  object-fit: cover;
+}
+.four_pics_container {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.host__detail__container {
+  position: relative;
+  display: flex;
+  top: 50px;
+}
+
+#host {
+  text-decoration: none;
+  /* color: white; */
+  color: black;
+}
+
+#host:hover {
+  /* background-color: rgb(244, 244, 244); */
+  color: #63d471;
+}
+
+.host__title {
+  font-size: 20px;
 }
