@@ -17,6 +17,7 @@ import LoginModal from "./components/LoginModal";
 import SpotsListPage from "./components/SpotsListPage";
 import ProfileImgForm from "./components/ProfileImgForm";
 import ProfilePage from "./components/ProfilePage";
+import DropZone from "./components/Dropzone";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -74,6 +75,9 @@ function App() {
         </Route>
         <Route path="/users/:id" exact={true}>
           <ProfilePage />
+        </Route>
+        <Route  path="/photoupload" exact={true}>
+          <DropZone />
         </Route>
         <ProtectedRoute
           path="/users"
