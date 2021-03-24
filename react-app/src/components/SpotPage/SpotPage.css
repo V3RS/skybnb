@@ -5,14 +5,17 @@
 
 .spot-page-container {
   display: flex;
+  flex-direction: column;
   width: 1128px;
-  height: 1000px;
-  border: 2px solid black;
+  height: 1500px;
+  /* border: 2px solid black; */
+  position: relative;
+  top: 30px;
 }
 
 .spot-page-title {
-  font-size: 14px;
-  width: 100%;
+  font-size: 30px;
+  /* width: 100%; */
 }
 
 .spot-secondHeading {
@@ -21,6 +24,59 @@
   font-size: 12px;
 }
 
+.spot-shbtns-container {
+  display: flex;
+  position: relative;
+  top: 3px;
+  left: 665px;
+}
+
 .spot-shbtns {
-  float: right;
+  border: none;
+  text-decoration: underline;
+  font-size: 15px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+.spot-shbtns:hover {
+  background-color: rgb(244, 244, 244);
+}
+
+.fa-heart {
+  padding-right: 7px;
+}
+
+.fa-share-square {
+  padding-right: 7px;
+}
+
+.rating__address {
+  /* position: absolute; */
+  font-size: 16px;
+  display: flex;
+  position: relative;
+  top: 10px;
+}
+
+.spot__address {
+  position: relative;
+  left: 20px;
+  color: gray;
+  text-decoration: underline;
+}
+
+.fa-star {
+  color: #63d471;
+}
+
+.spot__pictures__container {
+  position: relative;
+  top: 20px;
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  border: 2px solid black;
+  /* border-radius: 10px; */
+  height: 522px;
 }

@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 
 class Spot(db.Model):
     __tablename__ = 'spots'
-
+    # need to add rating to this model
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     title = db.Column(db.String(255), nullable=False, unique=True)
     lng = db.Column(db.Numeric, nullable=False)
