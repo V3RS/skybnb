@@ -50,7 +50,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
               <label>Location</label>
               <input
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)} 
+              onChange={(e) => setSearchQuery(e.target.value)}
               type='text'></input>
             </div>
             <div className='guests__container'>

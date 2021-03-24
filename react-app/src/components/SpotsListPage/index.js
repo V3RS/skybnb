@@ -10,9 +10,12 @@ export default function SpotsListPage() {
   const dispatch = useDispatch();
   const handleTestQuery = () => {
     dispatch(spotslistSearch());
-    console.log('test')
   };
-  const spotslist = useSelector((state) => state.spotslist);
+  const spotslist = useSelector((state) => state.spotslist.spots);
+  const locations = spotslist?.map((spot) => {
+    return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
+  });
+  const searchQuery = useSelector((state) => state.spotslist.search_extras);
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
@@ -31,10 +34,11 @@ export default function SpotsListPage() {
           </div>
         </div>
         {
-          spotslist[0] &&
+          spotslist &&
             spotslist.map((spot) => {
               return (
                 <SpotsListEle
+                  className="spotslistele"
                   img={spot.pictures[1]}
                   location_desc={spot.description.slice(0, 35)}
                   title={spot.title}
@@ -59,8 +63,21 @@ export default function SpotsListPage() {
 
       <div className="spotslistpage-map-container">
         <h3>Googlemaps here</h3>
-        <button onClick={handleTestQuery}>Test Query</button>
-        <MapContainer />
+        {locations && <MapContainer locations={locations} />}
+        {!locations && (
+          <MapContainer
+            locations={[
+              {
+                name: "App Academy",
+                location: { lat: 37.799278, lng: -122.401138 },
+              },
+              {
+                name: "Jedi Temple",
+                location: { lat: 37.550409, lng: -122.059313 },
+              },
+            ]}
+          />
+        )}
       </div>
     </div>
   );

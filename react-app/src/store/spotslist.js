@@ -13,10 +13,17 @@ export const spotslistSearch = (searchQuery) => async (dispatch) => {
     headers: {
       "Content-type": "application/json",
     },
-    body: searchQuery
+    body: searchQuery,
   });
   const data = await res.json();
-  dispatch(spotslistQuery(data.spots));
+  data["search_extras"] = {
+    searchQuery: searchQuery,
+  };
+  const ret_obj = {
+    spots: data.spots,
+    search_extras: { searchQuery: searchQuery },
+  };
+  dispatch(spotslistQuery(ret_obj));
 };
 
 const initialState = {};
