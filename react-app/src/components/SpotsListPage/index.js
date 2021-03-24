@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./SpotsListPage.css";
 
 import MapContainer from "./MapContainer";
@@ -8,6 +9,7 @@ import { spotslistSearch } from "../../store/spotslist.js";
 
 export default function SpotsListPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const handleTestQuery = () => {
     dispatch(spotslistSearch());
   };
@@ -16,6 +18,7 @@ export default function SpotsListPage() {
     return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
   });
   const searchQuery = useSelector((state) => state.spotslist.search_extras);
+  const handleSpotsPageRedirect = (id) => history.push(`/spots/${id}`);
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
@@ -39,6 +42,7 @@ export default function SpotsListPage() {
               return (
                 <SpotsListEle
                   className="spotslistele"
+                  onClick={() => handleSpotsPageRedirect(spot.id)}
                   img={spot.pictures[1]}
                   location_desc={spot.description.slice(0, 35)}
                   title={spot.title}
