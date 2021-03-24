@@ -97,7 +97,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           </div>
         )}
     </div>
-
+    </div>
     </div>
   );
 };
