@@ -71,6 +71,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         </div>
         {open && !authenticated && (
           <div className="dropdown__menu">
+
             <ul className="dropdown__list">
               <LoginModal
                 authenticated={authenticated}
@@ -81,6 +82,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
                 setAuthenticated={setAuthenticated}
               />
               <p onClick={() => history.push("/createspot")}>Host your home</p>
+
             </ul>
           </div>
         )}

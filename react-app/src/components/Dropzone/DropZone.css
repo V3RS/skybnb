@@ -1,0 +1,141 @@
+.container {
+  transform: translateY(-100%);
+  margin:250px;
+}
+
+.container p {
+  color: red;
+  text-align: center;
+}
+
+.drop-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 800px;
+  height: 200px;
+  border: 4px dashed #63D471;
+}
+
+.upload-icon {
+  width: 50px;
+  height: 50px;
+  background: url(../../images/upload.png) no-repeat center center;
+  color: #63D471;
+  background-size: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.drop-message {
+  text-align: center;
+  color: #63D471;
+  font-family: Arial;
+  font-size: 20px;
+}
+
+
+.file-display-container {
+  position: fixed;
+  width: 805px;
+}
+
+.file-status-bar{
+  width: 100%;
+  vertical-align:top;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  line-height: 50px;
+  height: 50px;
+}
+
+.file-status-bar > div {
+  overflow: hidden;
+}
+
+.file-type {
+  display: inline-block!important;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 13px;
+  margin-top: 25px;
+  padding: 0 4px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px #abc;
+  color: #fff;
+  background: #63D471;
+  text-transform: uppercase;
+}
+
+.file-name {
+  display: inline-block;
+  vertical-align:top;
+  margin-left: 50px;
+  color: #63D471;
+}
+
+.file-error {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 50px;
+  color: #9aa9bb;
+}
+
+.file-error-message {
+  color: red;
+}
+
+.file-type-logo {
+  width: 50px;
+  height: 50px;
+  background: url(../../images/generic.png) no-repeat center center;
+  background-size: 100%;
+  position: absolute;
+}
+
+.file-size {
+  display:inline-block;
+  vertical-align:top;
+  color:#30693D;
+  margin-left:10px;
+  margin-right:5px;
+  margin-left: 10px;
+  color: #484848;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.file-remove  {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  line-height: 15px;
+  cursor: pointer;
+  color: red;
+  margin-right: -10px;
+}
+
+.file-upload-btn {
+  color: 484848;
+  text-transform: uppercase;
+  outline: none;
+  background-color: White;
+  font-weight: bold;
+  padding: 8px 15px;
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 7px;
+  background-color: #63D471;
+}
+
+.file-upload-btn:hover {
+  background-color: #b1eab8;
+}
+
+.file-input {
+  display: none;
+} 
