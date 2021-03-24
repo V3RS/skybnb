@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   GoogleMap,
   LoadScript,
@@ -6,24 +7,40 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 
-const MapContainer = () => {
+const MapContainer = ({ locations }) => {
+  const spotslist = useSelector((state) => state.spotslist.spots);
+
+  // const [currentPosition, setCurrentPosition] = useState({});
+
+  // const success = (position) => {
+  //   const currentPosition = {
+  //     lat: position.coords.latitude,
+  //     lng: position.coords.longitude,
+  //   };
+  //   setCurrentPosition(currentPosition);
+  // };
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(success);
+  // });
   const mapStyles = {
     height: "100vh",
     width: "100%",
   };
 
   const defaultCenter = {
-    lat: 41.3851,
-    lng: 2.1734,
+    lat: 37.550409,
+    lng: -122.059313,
   };
-  //{process.env.REACT_APP_GOOGLEMAPS_API_KEY} PUT IN ENVIRONMENT VARIABLE
+  console.log(locations);
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}>
-      <GoogleMap
-        mapContainerStyle={mapStyles}
-        zoom={13}
-        center={defaultCenter}
-      />
+      <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={defaultCenter}>
+        {locations &&
+          locations.map((item) => {
+            return <Marker key={item.name} position={item.location} />;
+          })}
+      </GoogleMap>
     </LoadScript>
   );
 };
