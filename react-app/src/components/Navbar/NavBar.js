@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
-import { NavLink, Redirect, useHistory } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import './Navbar.css'
 import LoginModal from '../LoginModal'
 import SignUpModal from '../SignupModal'
 import LogoutButton from '../auth/LogoutButton'
-import SearchModal from '../SearchModal'
-import { authenticate } from '../../services/auth';
+import logo from "./logo.png"
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
   const history = useHistory()
@@ -24,7 +22,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
       <div className='navbar__header' onClick={()=> history.push('/')}>
         <img
           className='navbar__icon'
-          src="./favicon.png"
+          src={logo}
           alt=''
           />
         <h2>skybnb</h2>
