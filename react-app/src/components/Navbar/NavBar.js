@@ -5,7 +5,7 @@ import './Navbar.css'
 import LoginModal from '../LoginModal'
 import SignUpModal from '../SignupModal'
 import LogoutButton from '../auth/LogoutButton'
-import SearchModal from '../SearchModal'
+// import SearchModal from '../SearchModal'
 import { authenticate } from '../../services/auth';
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
@@ -49,7 +49,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
             ></LoginModal>
-              <SignUpModal 
+              <SignUpModal
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}/>
               <p onClick={() => history.push('/createspot')}>Host your home</p>
@@ -61,7 +61,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             <ul className='dropdown__list'>
               <p onClick={() => history.push('/account')}>Account</p>
               <p onClick={() => history.push('/createspot')}>Host your home</p>
-              <LogoutButton 
+              <LogoutButton
                 authenticated={authenticated}
                 setAuthenticated={setAuthenticated}/>
             </ul>
