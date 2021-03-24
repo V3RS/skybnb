@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, UserImage
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +17,9 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/picture/<int:id>')
+def picture(id):
+    user_image = UserImage.query.get(id)
+    return user_image.to_dict()

@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
   spots = relationship("Spot", back_populates='user')
   reviews = relationship("Review", back_populates='user')
   image = relationship("UserImage", back_populates='user')
-  
+
   @property
   def password(self):
     return self.hashed_password
@@ -32,5 +32,5 @@ class User(db.Model, UserMixin):
     return {
       "id": self.id,
       "username": self.username,
-      "email": self.email
+      "email": self.email,
     }
