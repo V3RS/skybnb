@@ -31,3 +31,17 @@ class Spot(db.Model):
             "price": float(self.price),
             "host_id": self.host_id,
         }
+
+
+    def to_dict_with_picture(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "lng": float(self.lng),
+            "lat": float(self.lat),
+            "address": self.address,
+            "description": self.description,
+            "price": float(self.price),
+            "host_id": self.host_id,
+            "pictures": [picture.img_url for picture in self.pictures],
+        }

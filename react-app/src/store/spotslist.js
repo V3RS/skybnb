@@ -7,11 +7,13 @@ const spotslistQuery = (listArr) => {
   };
 };
 
-export const spotslistQueryTest = () => async (dispatch) => {
-  const res = await fetch("/api/spotslist/", {
+export const spotslistSearch = (searchQuery) => async (dispatch) => {
+  const res = await fetch(`/api/spots/search`, {
+    method: "POST",
     headers: {
       "Content-type": "application/json",
     },
+    body: searchQuery
   });
   const data = await res.json();
   dispatch(spotslistQuery(data.spots));
