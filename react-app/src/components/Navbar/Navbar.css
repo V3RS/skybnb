@@ -4,6 +4,9 @@
   top: 0;
   background-color: white;
   z-index: 5;
+
+  /* background: url("./nav-bg.jpg");
+  background-repeat: no-repeat; */
 }
 .navbar {
   display: flex;
