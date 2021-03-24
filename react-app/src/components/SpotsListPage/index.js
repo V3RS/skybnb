@@ -4,12 +4,13 @@ import "./SpotsListPage.css";
 
 import MapContainer from "./MapContainer";
 import SpotsListEle from "./SpotsListEle";
-import { spotslistQueryTest } from "../../store/spotslist.js";
+import { spotslistSearch } from "../../store/spotslist.js";
 
 export default function SpotsListPage() {
   const dispatch = useDispatch();
   const handleTestQuery = () => {
-    dispatch(spotslistQueryTest());
+    dispatch(spotslistSearch());
+    console.log('test')
   };
   const spotslist = useSelector((state) => state.spotslist);
   return (
@@ -35,7 +36,7 @@ export default function SpotsListPage() {
               return (
                 <SpotsListEle
                   img={spot.pictures[1]}
-                  location_desc={spot.description.slice(30)}
+                  location_desc={spot.description.slice(0, 35)}
                   title={spot.title}
                   description="Testing · testing · testing · testing"
                   star={4.4}

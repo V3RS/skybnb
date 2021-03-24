@@ -161,10 +161,23 @@
   margin-bottom: 10px;
 }
 
+.searchform__container{
+    /* margin: 0 20% 0 20%; */
+    display: grid;
+    border: 1px solid #484848;
+    grid-template-columns: 1fr 3fr 3fr 1fr;
+    font-family: Raleway;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    width: 450px;
+    margin-top: 20px;
+    position: relative;
+
 .location__container {
   height: 50px;
   border-radius: 50px;
   position: relative;
+
 }
 
 .location__container:hover {
@@ -182,6 +195,129 @@
   position: absolute;
   top: 25px;
   left: 10px;
+}
+
+
+.location__container > input{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    width: 130px;
+}
+
+
+.startdate__container{
+    height: 50px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.startdate__container:hover{
+    background-color: #B1EAB8;
+    transition: .5s;
+}
+
+.startdate__container > label{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.startdate__container > input{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    width: 130px;
+}
+
+.enddate__container{
+    height: 50px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.enddate__container:hover{
+    background-color: #B1EAB8;
+    transition: .5s;
+}
+
+.enddate__container > label{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.enddate__container > input{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    width: 130px;
+}
+
+.guests__container{
+    height: 50px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.guests__container:hover{
+    background-color: #B1EAB8;
+    transition: .5s;
+}
+
+.guests__container > label{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.guests__container > input{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    width: 130px;
+}
+
+.searchform__button{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #63d471;
+    color: white;
+    border: 1px solid #63d471;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    right: 20px;
+    top: 10px;
+}
+
+.searchform__cancel{
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #63d471;
+    color: white;
+    border: 1px solid #63d471;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 #github__link {
