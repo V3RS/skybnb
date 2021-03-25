@@ -20,7 +20,7 @@ export const loginUser = ({email, password}) => async dispatch => {
   if (user){
     console.log(user);
     const loggedInUser = user
-    dispatch(loginAction(loggedInUser.username))
+    dispatch(loginAction(loggedInUser))
     return loggedInUser
   }
 };
@@ -31,7 +31,8 @@ const sessionReducer = (state = initialState, action) => {
   switch(action.type){
     case LOGIN: {
       const newState = {}
-      newState.username = action.user
+      newState.username = action.user.username
+      newState.id = action.user.id
       return newState;
     }
     default:
