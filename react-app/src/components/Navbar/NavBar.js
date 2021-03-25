@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
 import LoginModal from "../LoginModal";
 import SignUpModal from "../SignupModal";
 import LogoutButton from "../auth/LogoutButton";
 import logo from "./logo.png";
 import * as spotslistActions from "../../store/spotslist";
+import { openSignup, openLogin } from "../../store/modal.js";
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
   const session = useSelector((state) => state.session);
@@ -17,12 +18,20 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const toggle = () => setOpen(!open);
   const toggleSearch = () => setOpenSearch(!openSearch);
   const dispatch = useDispatch();
+  const session = useSelector((state) => state.session);
 
   const handleSubmit = (e) => {
     console.log("test");
     e.preventDefault();
     history.push("/spotslistpage");
     return dispatch(spotslistActions.spotslistSearch(searchQuery));
+  };
+
+  const hostSessionHandler = () => {
+    if (session.id) {
+      history.push("/createspot");
+      window.scrollTo(0, 0);
+    } else dispatch(openSignup());
   };
 
   return (
@@ -76,8 +85,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         <div className="navbar__account">
           <p
             onClick={() => {
-              history.push("/createspot");
-              window.scrollTo(0, 0);
+              if (session.id) {
+                history.push("/createspot");
+                window.scrollTo(0, 0);
+              } else dispatch(openSignup());
             }}
           >
             Become a host
@@ -95,18 +106,14 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           {open && !authenticated && (
             <div className="dropdown__menu">
               <ul className="dropdown__list">
-                <LoginModal
-                  authenticated={authenticated}
-                  setAuthenticated={setAuthenticated}
-                ></LoginModal>
-                <SignUpModal
-                  authenticated={authenticated}
-                  setAuthenticated={setAuthenticated}
-                />
+                <p onClick={() => dispatch(openLogin())}>Log in</p>
+                <p onClick={() => dispatch(openSignup())}>Sign up</p>
                 <p
                   onClick={() => {
-                    history.push("/createspot");
-                    window.scrollTo(0, 0);
+                    if (session.id) {
+                      history.push("/createspot");
+                      window.scrollTo(0, 0);
+                    } else dispatch(openSignup());
                   }}
                 >
                   Host your home
@@ -122,8 +129,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
                 </p>
                 <p
                   onClick={() => {
-                    history.push("/createspot");
-                    window.scrollTo(0, 0);
+                    if (session.id) {
+                      history.push("/createspot");
+                      window.scrollTo(0, 0);
+                    } else dispatch(openSignup());
                   }}
                 >
                   Host your home

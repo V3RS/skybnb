@@ -28,6 +28,13 @@ def authenticate():
     return {'errors': ['Unauthorized']}, 401
 
 
+@auth_routes.route('/demo-login', methods=['POST'])
+def demoLogin():
+    user = User.query.filter(User.email == 'demo@aa.io').first()
+    login_user(user)
+    return user.to_dict()
+
+
 @auth_routes.route('/login', methods=['POST'])
 def login():
     """
