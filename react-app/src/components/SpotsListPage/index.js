@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./SpotsListPage.css";
@@ -10,32 +10,39 @@ import { spotslistSearch } from "../../store/spotslist.js";
 export default function SpotsListPage() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const handleTestQuery = () => {
-    dispatch(spotslistSearch());
-  };
   const spotslist = useSelector((state) => state.spotslist.spots);
-  const locations = [];
-  if (spotslist) {
-    spotslist.forEach((spot) => {
-      const location = {
-        id: spot.id,
-        location: { lat: spot.lat, lng: spot.lng },
-        picture: spot.pictures[0],
-        price: spot.price,
-        name: spot.title,
-      };
-      locations.push(location);
-    });
-  } else {
-    locations.push({
-      name: "App Academy",
-      location: { lat: 37.799278, lng: -122.401138 },
-    });
-    locations.push({
-      name: "Jedi Temple",
-      location: { lat: 37.550409, lng: -122.059313 },
-    });
-  }
+  const [locations, setLocations] = useState();
+
+  useEffect(() => {
+    setLocations(
+      spotslist?.map((spot) => {
+        return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
+      })
+    );
+  }, [locations]);
+
+  // if (spotslist) {
+  //   spotslist.forEach((spot) => {
+  //     const location = {
+  //       id: spot.id,
+  //       location: { lat: spot.lat, lng: spot.lng },
+  //       picture: spot.pictures[0],
+  //       price: spot.price,
+  //       name: spot.title,
+  //     };
+  //     locations.push(location);
+  //   });
+  // } else {
+  //   locations.push({
+  //     name: "App Academy",
+  //     location: { lat: 37.799278, lng: -122.401138 },
+  //   });
+  //   locations.push({
+  //     name: "Jedi Temple",
+  //     location: { lat: 37.550409, lng: -122.059313 },
+  //   });
+  // }
+
   const searchExtras = useSelector((state) => state.spotslist.search_extras);
 
   return (
@@ -86,8 +93,7 @@ export default function SpotsListPage() {
 
       <div className="spotslistpage-map-container">
         <h3>Googlemaps here</h3>
-        <MapContainer locations={locations} />
-        {/* {locations && <MapContainer locations={locations} />}
+        {locations && <MapContainer locations={locations} />}
         {!locations && (
           <MapContainer
             locations={[
@@ -101,7 +107,7 @@ export default function SpotsListPage() {
               },
             ]}
           />
-        )} */}
+        )}
       </div>
     </div>
   );
