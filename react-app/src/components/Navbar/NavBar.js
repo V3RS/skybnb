@@ -10,6 +10,7 @@ import * as spotslistActions from "../../store/spotslist";
 import { openSignup, openLogin } from "../../store/modal.js";
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
+  const session = useSelector((state) => state.session);
   const history = useHistory();
   const [open, setOpen] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
@@ -123,7 +124,9 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           {open && authenticated && (
             <div className="dropdown__menu">
               <ul className="dropdown__list">
-                <p onClick={() => history.push("/account")}>Account</p>
+                <p onClick={() => history.push(`/users/${session.id}`)}>
+                  Account
+                </p>
                 <p
                   onClick={() => {
                     if (session.id) {
