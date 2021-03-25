@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {useDispatch} from "react-redux"
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/Navbar/NavBar";
@@ -8,7 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import SpotPage from "./components/SpotPage";
 import { authenticate } from "./services/auth";
-
+import * as sessionActions from "./store/session";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
 
@@ -17,13 +18,17 @@ import LoginModal from "./components/LoginModal";
 import SpotsListPage from "./components/SpotsListPage";
 import ProfileImgForm from "./components/ProfileImgForm";
 import ProfilePage from "./components/ProfilePage";
-import DropZone from "./components/Dropzone";
 import CommingSoon from "./components/ComingSoon";
 import PictureSliderModal from "./components/PictureSliderModal";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(sessionActions.restoreUser()).then(() => setLoaded(true))
+  }, [dispatch])
 
   useEffect(() => {
     (async () => {
@@ -78,9 +83,6 @@ function App() {
         </Route>
         <Route path="/users/:id" exact={true}>
           <ProfilePage />
-        </Route>
-        <Route path="/photoupload" exact={true}>
-          <DropZone />
         </Route>
         <Route path="/createspot" exact={true}>
           <CommingSoon />

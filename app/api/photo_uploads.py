@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from app.models import db, UserImage
 from flask_login import current_user, login_required
+from sqlalchemy import delete
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -31,6 +32,9 @@ def upload_image():
 
     url = upload["url"]
     # flask_login allows us to get the current user from the request
+    remove_image = delete(UserImage).where(UserImage.user_id == current_user.id).execution_options(synchronize_session="fetch")
+    db.session.execute(remove_image)
+    db.session.commit()
     new_image = UserImage(user_id=current_user.id, img_url=url)
     db.session.add(new_image)
     db.session.commit()

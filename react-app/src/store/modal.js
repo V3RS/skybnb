@@ -6,6 +6,8 @@ const MODAL_OPEN_SEARCH = "searchModal/open";
 const MODAL_CLOSE_SEARCH = "searchModal/close";
 const MODAL_OPEN_PICTURESLIDER = "pictureSlider/open";
 const MODAL_CLOSE_PICTURESLIDER = "pictureSlider/close";
+const MODAL_OPEN_DROPZONE = "dropzone/open";
+const MODAL_CLOSE_DROPZONE = "dropzone/close";
 
 export const openLogin = () => {
   return {
@@ -54,10 +56,24 @@ export const closePictureSlider = () => {
     type: MODAL_CLOSE_PICTURESLIDER,
   };
 };
+export const openDropZone = () => {
+  return {
+    type: MODAL_OPEN_DROPZONE,
+  };
+};
+
+export const closeDropZone = () => {
+  return {
+    type: MODAL_CLOSE_DROPZONE,
+  };
+};
+
+
 const initialState = {
   loginShow: false,
   signupShow: false,
   pictureSliderShow: false,
+  dropZoneShow: false,
 };
 
 const modalReducer = (state = initialState, action) => {
@@ -86,6 +102,12 @@ const modalReducer = (state = initialState, action) => {
       return newState;
     case MODAL_CLOSE_PICTURESLIDER:
       newState = Object.assign({}, state, { pictureSliderShow: false });
+      return newState;
+    case MODAL_OPEN_DROPZONE:
+      newState = Object.assign({}, state, { dropZoneShow: true });
+      return newState;
+    case MODAL_CLOSE_DROPZONE:
+      newState = Object.assign({}, state, { dropZoneShow: false });
       return newState;
     default:
       return state;
