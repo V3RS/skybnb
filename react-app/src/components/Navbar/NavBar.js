@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
-import LoginModal from "../LoginModal";
-import SignUpModal from "../SignupModal";
 import LogoutButton from "../auth/LogoutButton";
 import logo from "./logo.png";
 import * as spotslistActions from "../../store/spotslist";
@@ -18,7 +16,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const toggle = () => setOpen(!open);
   const toggleSearch = () => setOpenSearch(!openSearch);
   const dispatch = useDispatch();
-  const session = useSelector((state) => state.session);
 
   const handleSubmit = (e) => {
     console.log("test");
