@@ -1,6 +1,8 @@
 import React from "react";
 import "./SpotsListEle.css";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { openPictureSlider } from "../../../store/modal.js";
 
 export default function SpotsListEle({
   id,
@@ -13,12 +15,23 @@ export default function SpotsListEle({
   total,
 }) {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const openSlider = () => dispatch(openPictureSlider());
+
   const handleSpotsPageRedirect = (spot_id) => {
     history.push(`/spots/${spot_id}`);
+    window.scrollTo(0, 0);
   };
   return (
-    <div className="spotslistele" onClick={() => handleSpotsPageRedirect(id)}>
-      <img src={img} alt="" />
+    <div
+      className="spotslistele"
+      onClick={(e) => {
+        if (e.target.tagName.toLowerCase() == "img") return;
+        handleSpotsPageRedirect(id);
+      }}
+    >
+      <img src={img} alt="" onClick={openSlider} />
       <i className="far fa-heart"></i>
 
       <div className="spotslistele-info-container">

@@ -104,6 +104,7 @@
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   object-fit: fill;
+  cursor: pointer;
 }
 
 #fourth__pic {
@@ -115,12 +116,20 @@
 }
 
 .spot__pictures {
+  cursor: pointer;
   width: 275px;
   height: 242px;
   padding-left: 10px;
   padding-bottom: 4px;
   object-fit: cover;
 }
+
+.spot__pictures:hover,
+.spot__first__picture:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
 .four_pics_container {
   height: 500px;
   display: flex;

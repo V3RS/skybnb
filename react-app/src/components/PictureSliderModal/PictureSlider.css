@@ -1,0 +1,6 @@
+.slider__pictures {
+  height: 750px;
+  width: 1500px;
+  border-radius: 10px;
+  object-fit: fill;
+}

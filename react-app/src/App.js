@@ -18,6 +18,8 @@ import SpotsListPage from "./components/SpotsListPage";
 import ProfileImgForm from "./components/ProfileImgForm";
 import ProfilePage from "./components/ProfilePage";
 import DropZone from "./components/Dropzone";
+import CommingSoon from "./components/ComingSoon";
+import PictureSliderModal from "./components/PictureSliderModal";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -49,6 +51,7 @@ function App() {
         </Route>
         <Route path="/spotslistpage" exact={true}>
           <SpotsListPage></SpotsListPage>
+          <PictureSliderModal />
         </Route>
         <Route path="/login" exact={true}>
           <LoginForm
@@ -76,8 +79,11 @@ function App() {
         <Route path="/users/:id" exact={true}>
           <ProfilePage />
         </Route>
-        <Route  path="/photoupload" exact={true}>
+        <Route path="/photoupload" exact={true}>
           <DropZone />
+        </Route>
+        <Route path="/createspot" exact={true}>
+          <CommingSoon />
         </Route>
         <ProtectedRoute
           path="/users"
@@ -97,7 +103,8 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
         <Route path="/spots/:spotId" exact={true}>
-          <SpotPage auth={authenticated} />
+          <SpotPage />
+          <PictureSliderModal />
         </Route>
       </Switch>
       <Footer />

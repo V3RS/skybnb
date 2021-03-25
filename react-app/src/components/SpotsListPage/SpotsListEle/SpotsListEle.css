@@ -9,6 +9,12 @@
   height: 200px;
   width: 300px;
   border-radius: 10px;
+  z-index: 5px;
+}
+
+.spotslistele > img:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
 }
 
 .spotslistele > .fa-heart {
