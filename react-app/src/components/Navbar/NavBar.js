@@ -33,10 +33,11 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         </div>
 
         {!openSearch && (
-          <div className="navbar__search">
-            <button onClick={() => toggleSearch(!openSearch)}>
-              Start your search
-            </button>
+          <div
+            className="navbar__search"
+            onClick={() => toggleSearch(!openSearch)}
+          >
+            <button>Start your search</button>
             <i class="fas fa-search"></i>
           </div>
         )}
@@ -54,7 +55,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
                 <i class="far fa-times-circle fa-2x"></i>
               </button>
               <div className="location__container">
-                <label>Location</label>
+                <label>Location/Title</label>
                 <input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}

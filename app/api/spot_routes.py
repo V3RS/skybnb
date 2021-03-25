@@ -29,13 +29,30 @@ def get_spot_pictures(id):
     pictures = Picture.query.filter_by(spot_id=id).all()
     return {"pictures": [picture.to_dict() for picture in pictures]}
 
+
 @spot_routes.route('/search', methods=["POST"])
 def get_spots_query():
-    searchString = request.data.decode("UTF-8")
-    # Spots = Spot.query.filter(func.lower(Spot.address).contains(func.lower(searchString))).all()
-    Spots = Spot.query.filter(Spot.address.ilike(f"%{searchString}%"))
-    return_obj = {"spots": [spot.to_dict_with_picture() for spot in Spots]}
-    print(Spots[0].pictures)
+    search_string = request.data.decode("UTF-8")
+    spots = []
+
+    # another to search and make the search case insensitive
+    # Spots = Spot.query.filter(func.lower(Spot.address).contains(func.lower(search_string))).all()
+    spots_search_adrress = Spot.query.filter(
+        Spot.address.ilike(f"%{search_string}%"))
+    spots_search_title = Spot.query.filter(
+        Spot.title.ilike(f"%{search_string}%"))
+    spots_search_adrress = [spot.to_dict_with_picture()
+                            for spot in spots_search_adrress]
+    spots_search_title = [spot.to_dict_with_picture()
+                          for spot in spots_search_title]
+    spots.extend(spots_search_adrress)
+    spots.extend(spots_search_title)
+    # The for loop below is to remove any duplicate spots for our search functionality
+    return_spots = []
+    for s in spots:
+        if s not in return_spots:
+            return_spots.append(s)
+    return_obj = {"spots": return_spots}
     return return_obj
 
 # @spot_routes.route('/<int:id>/pictures')
