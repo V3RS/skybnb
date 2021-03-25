@@ -14,17 +14,30 @@ export default function SpotsListPage() {
     dispatch(spotslistSearch());
   };
   const spotslist = useSelector((state) => state.spotslist.spots);
-  const locations = spotslist?.map((spot) => {
-    return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
-  });
-  const searchQuery = useSelector((state) => state.spotslist.search_extras);
-  const handleSpotsPageRedirect = (id) => {
-    alert("boo");
-    history.push(`/spots/${id}`);
-  };
-  const handleTest = () => {
-    alert("testing");
-  };
+  const locations = [];
+  if (spotslist) {
+    spotslist.forEach((spot) => {
+      const location = {
+        id: spot.id,
+        location: { lat: spot.lat, lng: spot.lng },
+        picture: spot.pictures[0],
+        price: spot.price,
+        name: spot.title,
+      };
+      locations.push(location);
+    });
+  } else {
+    locations.push({
+      name: "App Academy",
+      location: { lat: 37.799278, lng: -122.401138 },
+    });
+    locations.push({
+      name: "Jedi Temple",
+      location: { lat: 37.550409, lng: -122.059313 },
+    });
+  }
+  const searchExtras = useSelector((state) => state.spotslist.search_extras);
+
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
@@ -53,9 +66,9 @@ export default function SpotsListPage() {
                   location_desc={spot.description.slice(0, 35)}
                   title={spot.title}
                   description="Testing · testing · testing · testing"
-                  star={4.4}
+                  rating={spot.rating}
+                  reviews_count={spot.reviews_count}
                   price={spot.price}
-                  total={spot.price * 3}
                 />
               );
             })
@@ -73,7 +86,8 @@ export default function SpotsListPage() {
 
       <div className="spotslistpage-map-container">
         <h3>Googlemaps here</h3>
-        {locations && <MapContainer locations={locations} />}
+        <MapContainer locations={locations} />
+        {/* {locations && <MapContainer locations={locations} />}
         {!locations && (
           <MapContainer
             locations={[
@@ -87,7 +101,7 @@ export default function SpotsListPage() {
               },
             ]}
           />
-        )}
+        )} */}
       </div>
     </div>
   );

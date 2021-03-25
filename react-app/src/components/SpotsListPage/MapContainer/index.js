@@ -8,7 +8,9 @@ import {
 } from "@react-google-maps/api";
 
 const MapContainer = ({ locations }) => {
-  const spotslist = useSelector((state) => state.spotslist.spots);
+  // const locations = spotslist?.map((spot) => {
+  //   return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
+  // });
 
   // const [currentPosition, setCurrentPosition] = useState({});
 
@@ -32,16 +34,28 @@ const MapContainer = ({ locations }) => {
     lat: 37.550409,
     lng: -122.059313,
   };
-  console.log(locations);
+
   return (
-    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={defaultCenter}>
-        {locations &&
-          locations.map((item) => {
-            return <Marker key={item.name} position={item.location} />;
-          })}
-      </GoogleMap>
-    </LoadScript>
+    <>
+      {locations && (
+        <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}>
+          <GoogleMap
+            mapContainerStyle={mapStyles}
+            zoom={13}
+            center={defaultCenter}
+          >
+            {locations.map((location) => {
+              return (
+                <Marker
+                  key={location.name}
+                  position={{ lat: location.lat, lng: location.lng }}
+                />
+              );
+            })}
+          </GoogleMap>
+        </LoadScript>
+      )}
+    </>
   );
 };
 

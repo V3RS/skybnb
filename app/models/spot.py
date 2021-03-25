@@ -34,6 +34,11 @@ class Spot(db.Model):
 
 
     def to_dict_with_picture(self):
+        total = 0
+        for review in self.reviews:
+            total += review.rating
+        rating = total / len(self.reviews)
+
         return {
             "id": self.id,
             "title": self.title,
@@ -44,4 +49,6 @@ class Spot(db.Model):
             "price": float(self.price),
             "host_id": self.host_id,
             "pictures": [picture.img_url for picture in self.pictures],
+            "rating": "{:.1f}".format(rating),
+            "reviews_count": len(self.reviews)
         }
