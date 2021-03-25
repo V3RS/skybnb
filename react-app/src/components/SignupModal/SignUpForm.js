@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { signUp, login } from "../../services/auth";
+import { signUp } from "../../services/auth";
 import { openLogin, closeSignup } from "../../store/modal.js";
 import { useDispatch } from "react-redux";
+import * as sessionActions from "../../store/session";
 
 import "./SignupModal.css";
 
@@ -23,12 +24,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   };
 
   const onDemoLogin = async () => {
-    const demoUser = await login("demo@aa.io", "password");
-    if (!demoUser.errors) {
-      setAuthenticated(true);
-    } else {
-      return;
-    }
+    setAuthenticated(true);
+    dispatch(closeSignup());
+    await dispatch(sessionActions.demoLoginUser());
   };
 
   const dispatch = useDispatch();

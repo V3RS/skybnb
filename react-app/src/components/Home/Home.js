@@ -1,9 +1,21 @@
 import React from "react";
 import "./Home.css";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { openSignup } from "../../store/modal.js";
 
 function Home() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const session = useSelector((state) => state.session);
+
+  const hostSessionHandler = () => {
+    if (session.id) {
+      history.push("/createspot");
+      window.scrollTo(0, 0);
+    } else dispatch(openSignup());
+  };
+
   return (
     <div>
       <div className="landing-page">
@@ -59,8 +71,10 @@ function Home() {
           </h4>
           <button
             onClick={() => {
-              history.push("/createspot");
-              window.scrollTo(0, 0);
+              if (session.id) {
+                history.push("/createspot");
+                window.scrollTo(0, 0);
+              } else dispatch(openSignup());
             }}
           >
             Become a Host

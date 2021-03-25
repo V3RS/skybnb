@@ -1,50 +1,56 @@
-import { login, authenticate } from "../services/auth";
+import { login, authenticate, demoLogin } from "../services/auth";
 
+const LOGIN = "session/LOGIN";
+const LOGOUT = "session/LOGOUT";
+const SIGNUP = "users/SIGNUP";
 
-
-const LOGIN = 'session/LOGIN'
-const LOGOUT = 'session/LOGOUT'
-const SIGNUP = 'users/SIGNUP'
-
-const loginAction = user => ({
+const loginAction = (user) => ({
   type: LOGIN,
-  user
-})
+  user,
+});
 
 const logout = () => ({
-  type: LOGOUT
-})
+  type: LOGOUT,
+});
 
-export const loginUser = ({email, password}) => async dispatch => {
+export const loginUser = ({ email, password }) => async (dispatch) => {
   const user = await login(email, password);
-  if (user){
-    console.log(user);
-    const loggedInUser = user
-    dispatch(loginAction(loggedInUser))
-    return loggedInUser
+  if (user) {
+    // console.log(user);
+    const loggedInUser = user;
+    dispatch(loginAction(loggedInUser));
+    return loggedInUser;
   }
 };
 
-export const restoreUser = () => async dispatch => {
-  const user = await authenticate();
-    dispatch(loginAction(user));
-    return user;
+export const demoLoginUser = () => async (dispatch) => {
+  const user = await demoLogin();
+  if (user) {
+    const loggedInUser = user;
+    dispatch(loginAction(loggedInUser));
+    return loggedInUser;
+  }
 };
 
-const initialState = {user:null}
+export const restoreUser = () => async (dispatch) => {
+  const user = await authenticate();
+  dispatch(loginAction(user));
+  return user;
+};
+
+const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
-  switch(action.type){
+  switch (action.type) {
     case LOGIN: {
-      const newState = {}
-      newState.username = action.user.username
-      newState.id = action.user.id
+      const newState = {};
+      newState.username = action.user.username;
+      newState.id = action.user.id;
       return newState;
     }
     default:
       return state;
   }
-}
-
+};
 
 export default sessionReducer;

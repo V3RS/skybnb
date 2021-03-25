@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { login } from "../../services/auth";
 import { closeLogin, openSignup } from "../../store/modal.js";
 import { useDispatch } from "react-redux";
-import * as sessionActions from '../../store/session';
+import * as sessionActions from "../../store/session";
 
 import "./LoginModal.css";
 
@@ -15,15 +14,17 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    setErrors(['']);
-    const user = await dispatch(sessionActions.loginUser({email, password}))
+    setErrors([""]);
+    const user = await dispatch(sessionActions.loginUser({ email, password }));
     // const data = await user.json()
 
     if (user.errors) {
-      setErrors(user.errors)
+      setErrors(user.errors);
     } else {
       setAuthenticated(true);
     }
+
+    dispatch(closeLogin());
 
     // const user = await login(email, password);
     // if (!user.errors) {
@@ -33,12 +34,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
 
   const onDemoLogin = async () => {
-    const demoUser = await login("demo@aa.io", "password");
-    if (!demoUser.errors) {
-      setAuthenticated(true);
-    } else {
-      setErrors(demoUser.errors);
-    }
+    setAuthenticated(true);
+    await dispatch(sessionActions.demoLoginUser());
+    dispatch(closeLogin());
   };
 
   const updateEmail = (e) => {
@@ -101,7 +99,12 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <div className="after-or"></div>
         </div>
       </form>
-      <button className="loginFormBtns" id="demoBtn" onClick={onDemoLogin}>
+      <button
+        className="loginFormBtns"
+        id="demoBtn"
+        onClick={onDemoLogin}
+        type="button"
+      >
         Demo Log in
       </button>
       <div className="login__switch">
