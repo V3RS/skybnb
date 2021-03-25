@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import { closeLogin, openSignup } from "../../store/modal.js";
 import { useDispatch } from "react-redux";
-import * as sessionActions from '../../store/session';
+import * as sessionActions from "../../store/session";
 
 import "./LoginModal.css";
 
@@ -15,12 +15,12 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    setErrors(['']);
-    const user = await dispatch(sessionActions.loginUser({email, password}))
+    setErrors([""]);
+    const user = await dispatch(sessionActions.loginUser({ email, password }));
     // const data = await user.json()
 
     if (user.errors) {
-      setErrors(user.errors)
+      setErrors(user.errors);
     } else {
       setAuthenticated(true);
     }
@@ -33,7 +33,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
 
   const onDemoLogin = async () => {
-    const demoUser = await login("demo@aa.io", "password");
+    const demoUser = await dispatch(
+      sessionActions.loginUser({ email: "demo@aa.io", password: "password" })
+    );
     if (!demoUser.errors) {
       setAuthenticated(true);
     } else {

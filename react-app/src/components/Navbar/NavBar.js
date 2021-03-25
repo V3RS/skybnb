@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./Navbar.css";
 import LoginModal from "../LoginModal";
 import SignUpModal from "../SignupModal";
@@ -9,6 +9,7 @@ import logo from "./logo.png";
 import * as spotslistActions from "../../store/spotslist";
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
+  const session = useSelector((state) => state.session);
   const history = useHistory();
   const [open, setOpen] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
@@ -116,7 +117,9 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           {open && authenticated && (
             <div className="dropdown__menu">
               <ul className="dropdown__list">
-                <p onClick={() => history.push("/account")}>Account</p>
+                <p onClick={() => history.push(`/users/${session.id}`)}>
+                  Account
+                </p>
                 <p
                   onClick={() => {
                     history.push("/createspot");
