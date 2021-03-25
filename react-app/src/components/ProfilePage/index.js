@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router";
+import {useSelector} from "react-redux"
+import DropZoneModal from "../DropZoneModal"
 import "./profilePage.css"
 
 
@@ -7,10 +9,11 @@ export default function ProfilePage() {
   const { id } = useParams();
   const [user, setUser] = useState()
   const [picture, setPicture] = useState()
+  const session = useSelector(
+    (state) => state.session
+  );
 
-  const picClick = () => {
 
-  }
 
   useEffect(() => {
     async function fetchUser() {
@@ -18,8 +21,7 @@ export default function ProfilePage() {
       const data = await res.json();
       setUser(data)
     }
-
-
+    
     fetchUser()
   }, [id])
 
@@ -40,7 +42,8 @@ export default function ProfilePage() {
     <div className="profile_container">
     <div className="profile_card">
       <img src={picture} className="profile_picture"/>
-      <button className="picture_button" onClick={picClick}>Upload a Picture</button>
+      {/* <button className="picture_button" onClick={picClick}>Upload a Picture</button> */}
+      {id == session.id && <DropZoneModal />}
       <div className="user_confirmed">{username} Confirmed</div>
       <div><i className="fas fa-check-square"></i> E-Mail</div>
     </div>

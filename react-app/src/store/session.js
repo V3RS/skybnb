@@ -1,4 +1,4 @@
-import { login } from "../services/auth";
+import { login, authenticate } from "../services/auth";
 
 
 
@@ -23,6 +23,12 @@ export const loginUser = ({email, password}) => async dispatch => {
     dispatch(loginAction(loggedInUser))
     return loggedInUser
   }
+};
+
+export const restoreUser = () => async dispatch => {
+  const user = await authenticate();
+    dispatch(loginAction(user));
+    return user;
 };
 
 const initialState = {user:null}
