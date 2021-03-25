@@ -35,7 +35,11 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     <div className="navbar__container">
       <div className="navbar">
         <div className="navbar__header" onClick={() => history.push("/")}>
-          <img className="navbar__icon" src={logo} alt="" />
+          <img
+            className="navbar__icon"
+            src="https://skybnb.s3.amazonaws.com/logo.png"
+            alt=""
+          />
           <h2>skybnb</h2>
         </div>
 
