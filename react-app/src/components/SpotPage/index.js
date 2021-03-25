@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { getOneSpot } from "../../services/spot";
+import { useDispatch } from "react-redux";
+import { openPictureSlider } from "../../store/modal.js";
+
 import "./SpotPage.css";
 
 export default function SpotPage() {
   const { spotId } = useParams();
   const [spot, setSpot] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(async () => {
     const fetchData = async () => {
@@ -15,6 +19,8 @@ export default function SpotPage() {
     };
     fetchData();
   }, []);
+
+  const openSlider = () => dispatch(openPictureSlider());
 
   // console.log("SPOTT", spot);
 
@@ -59,17 +65,19 @@ export default function SpotPage() {
                   className="spot__first__picture"
                   src={picture?.img_url}
                   alt="spot-picture"
+                  onClick={openSlider}
                 />
               </div>
             ))}
           </div>
           <div className="four_pics_container">
-            {spot?.pictures?.slice(1).map((picture, i) => (
+            {spot?.pictures?.slice(1, 5).map((picture, i) => (
               <div key={picture.id}>
                 <img
                   className="spot__pictures"
                   id={radIdFunc(i)}
                   src={picture.img_url}
+                  onClick={openSlider}
                   alt="spot-picture"
                 />
               </div>

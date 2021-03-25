@@ -2,8 +2,10 @@ const MODAL_OPEN_LOGIN = "loginModal/open";
 const MODAL_CLOSE_LOGIN = "loginModal/close";
 const MODAL_OPEN_SIGNUP = "signupModal/open";
 const MODAL_CLOSE_SIGNUP = "signupModal/close";
-const MODAL_OPEN_SEARCH = 'searchModal/open';
-const MODAL_CLOSE_SEARCH = 'searchModal/close'
+const MODAL_OPEN_SEARCH = "searchModal/open";
+const MODAL_CLOSE_SEARCH = "searchModal/close";
+const MODAL_OPEN_PICTURESLIDER = "pictureSlider/open";
+const MODAL_CLOSE_PICTURESLIDER = "pictureSlider/close";
 
 export const openLogin = () => {
   return {
@@ -32,15 +34,31 @@ export const closeSignup = () => {
 export const openSearch = () => {
   return {
     type: MODAL_OPEN_SEARCH,
-  }
-}
+  };
+};
 
 export const closeSearch = () => {
   return {
     type: MODAL_CLOSE_SEARCH,
-  }
-}
-const initialState = { loginShow: false, signupShow: false };
+  };
+};
+
+export const openPictureSlider = () => {
+  return {
+    type: MODAL_OPEN_PICTURESLIDER,
+  };
+};
+
+export const closePictureSlider = () => {
+  return {
+    type: MODAL_CLOSE_PICTURESLIDER,
+  };
+};
+const initialState = {
+  loginShow: false,
+  signupShow: false,
+  pictureSliderShow: false,
+};
 
 const modalReducer = (state = initialState, action) => {
   let newState;
@@ -59,10 +77,16 @@ const modalReducer = (state = initialState, action) => {
       return newState;
     case MODAL_OPEN_SEARCH:
       newState = Object.assign({}, state, { searchShow: true });
-      return newState
+      return newState;
     case MODAL_CLOSE_SEARCH:
       newState = Object.assign({}, state, { searchShow: false });
-      return newState
+      return newState;
+    case MODAL_OPEN_PICTURESLIDER:
+      newState = Object.assign({}, state, { pictureSliderShow: true });
+      return newState;
+    case MODAL_CLOSE_PICTURESLIDER:
+      newState = Object.assign({}, state, { pictureSliderShow: false });
+      return newState;
     default:
       return state;
   }

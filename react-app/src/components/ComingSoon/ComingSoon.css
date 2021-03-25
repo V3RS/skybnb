@@ -1,0 +1,30 @@
+.coming__soon__container {
+  position: relative;
+}
+
+.cs__title {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  color: #63d471;
+  font-size: 56px;
+  font-weight: bold;
+}
+
+#go__back {
+  position: absolute;
+  top: 20%;
+  left: 43.5%;
+  color: #63d471;
+  font-size: 26px;
+  font-weight: bold;
+  border-radius: 15px;
+  background-color: #484848;
+  /* border: 2px solid black; */
+  width: 250px;
+  height: 50px;
+}
+
+#go__back:hover {
+  background-color: #686868;
+}
