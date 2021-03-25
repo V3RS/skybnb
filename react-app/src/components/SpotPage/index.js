@@ -64,7 +64,7 @@ export default function SpotPage() {
             ))}
           </div>
           <div className="four_pics_container">
-            {spot?.pictures?.slice(1).map((picture, i) => (
+            {spot?.pictures?.slice(1, 5).map((picture, i) => (
               <div key={picture.id}>
                 <img
                   className="spot__pictures"
