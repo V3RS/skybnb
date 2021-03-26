@@ -10,7 +10,7 @@ export default function PictureSlider() {
   const spotslist = useSelector((state) => state.spotslist.spots);
   const [pictures, setPictures] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (spotId) {
       const fetchData = async () => {
         const data = await getOneSpot(spotId);
@@ -21,7 +21,7 @@ export default function PictureSlider() {
       // console.log("do i exist?");
       setPictures(spotslist[0].pictures);
     }
-  }, []);
+  }, [spotId, spotslist]);
 
   return (
     <div>
@@ -30,7 +30,7 @@ export default function PictureSlider() {
           <img
             className="slider__pictures"
             src={spotId ? picture?.img_url : picture}
-            alt="spot-picture"
+            alt="spot"
           />
         </div>
       ))}

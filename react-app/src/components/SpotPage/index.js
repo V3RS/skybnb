@@ -12,13 +12,13 @@ export default function SpotPage() {
   const [spot, setSpot] = useState({});
   const dispatch = useDispatch();
 
-  useEffect(async () => {
+  useEffect(() => {
     const fetchData = async () => {
       const data = await getOneSpot(spotId);
       setSpot(data);
     };
     fetchData();
-  }, []);
+  }, [spotId]);
 
   const openSlider = () => dispatch(openPictureSlider());
 
@@ -43,17 +43,17 @@ export default function SpotPage() {
               {spot?.rating}
               <p id="reviews_count">
                 ({spot?.reviews_count}{" "}
-                {spot?.reviews_count != 1 ? "reviews" : "review"}){" "}
+                {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
               </p>
             </div>
             <div className="spot__address">{spot?.address}</div>
           </div>
           <div className="spot-shbtns-container">
             <button className="spot-shbtns">
-              <i class="far fa-share-square"></i>Share
+              <i className="far fa-share-square"></i>Share
             </button>
             <button className="spot-shbtns">
-              <i class="far fa-heart"></i>Save
+              <i className="far fa-heart"></i>Save
             </button>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function SpotPage() {
                 <img
                   className="spot__first__picture"
                   src={picture?.img_url}
-                  alt="spot-picture"
+                  alt="spot"
                   onClick={openSlider}
                 />
               </div>
@@ -78,7 +78,7 @@ export default function SpotPage() {
                   id={radIdFunc(i)}
                   src={picture.img_url}
                   onClick={openSlider}
-                  alt="spot-picture"
+                  alt="spot"
                 />
               </div>
             ))}

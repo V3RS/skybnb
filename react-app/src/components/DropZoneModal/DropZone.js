@@ -7,7 +7,6 @@ const DropZone = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [validFiles, setValidFiles] = useState([]);
-  const [imageLoading, setImageLoading] = useState(false);
   const fileInputRef = useRef();
   const history = useHistory()
 
@@ -97,7 +96,6 @@ const fileType = (fileName) => {
 
     // aws uploads can be a bit slow—displaying
     // some sort of loading message is a good idea
-    setImageLoading(true);
 
     const res = await fetch("/api/photo_upload", {
       method: "POST",
@@ -105,10 +103,8 @@ const fileType = (fileName) => {
     });
     if (res.ok) {
       await res.json();
-      setImageLoading(false);
       history.push("/");
     } else {
-      setImageLoading(false);
       // a real app would probably use more advanced
       // error handling
       console.log("error");
@@ -149,7 +145,7 @@ const fileType = (fileName) => {
                             <span className={`file-name ${data.invalid ? 'file-error' : ''}`}>{data.name}</span>
                             <span className="file-size">({fileSize(data.size)})</span> {data.invalid && <span className='file-error-message'>({errorMessage})</span>}
                         </div>
-                        <div className="file-remove" onClick={() => removeFile(data.name)}><i class="fas fa-trash-alt"></i></div>
+                        <div className="file-remove" onClick={() => removeFile(data.name)}><i className="fas fa-trash-alt"></i></div>
                     </div>
                 )
             }

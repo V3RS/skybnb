@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { useSelector, useDispatch } from "react-redux";
-import { openLogin, closeLogin } from "../../store/modal.js";
+import { closeLogin } from "../../store/modal.js";
 import LoginForm from "./LoginForm";
 
 Modal.setAppElement(document.getElementById("root"));
@@ -11,9 +11,9 @@ const LoginModal = ({ authenticated, setAuthenticated }) => {
   const loginState = useSelector((state) => state.modal.loginShow);
 
   const closeModal = () => dispatch(closeLogin());
-  const customStyles = {
-    content: {},
-  };
+  // const customStyles = {
+  //   content: {},
+  // };
 
   return (
     <>

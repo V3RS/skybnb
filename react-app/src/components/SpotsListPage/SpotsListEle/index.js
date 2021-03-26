@@ -27,7 +27,7 @@ export default function SpotsListEle({
     <div
       className="spotslistele"
       onClick={(e) => {
-        if (e.target.tagName.toLowerCase() == "img") return;
+        if (e.target.tagName.toLowerCase() === "img") return;
         handleSpotsPageRedirect(id);
       }}
     >
