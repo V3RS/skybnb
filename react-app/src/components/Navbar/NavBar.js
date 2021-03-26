@@ -24,12 +24,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     return dispatch(spotslistActions.spotslistSearch(searchQuery));
   };
 
-  const hostSessionHandler = () => {
-    if (session.id) {
-      history.push("/createspot");
-      window.scrollTo(0, 0);
-    } else dispatch(openSignup());
-  };
 
   return (
     <div className="navbar__container">
@@ -49,7 +43,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             onClick={() => toggleSearch(!openSearch)}
           >
             <button>Start your search</button>
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </div>
         )}
         {openSearch && (
@@ -63,7 +57,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
                 className="searchform__cancel"
                 onClick={() => toggleSearch(!openSearch)}
               >
-                <i class="far fa-times-circle fa-2x"></i>
+                <i className="far fa-times-circle fa-2x"></i>
               </button>
               <div className="location__container">
                 <label>Location/Title</label>
@@ -94,6 +88,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           >
             Become a host
           </p>
+
           <a
             href="https://github.com/V3RS/skybnb"
             target="_blank"
@@ -102,9 +97,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           >
             <i class="fab fa-github"></i>
           </a>
+
           <div className="account__dropdown" onClick={() => toggle(!open)}>
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-user-circle fa-2x"></i>
+            <i className="fas fa-bars"></i>
+            <i className="fas fa-user-circle fa-2x"></i>
           </div>
           {open && !authenticated && (
             <div className="dropdown__menu">
