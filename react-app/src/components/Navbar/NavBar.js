@@ -94,12 +94,14 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           >
             Become a host
           </p>
-          <i
-            class="fab fa-github"
-            onClick={() =>
-              (window.location.href = "https://github.com/V3RS/skybnb")
-            }
-          ></i>
+          <a
+            href="https://github.com/V3RS/skybnb"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="github__link"
+          >
+            <i class="fab fa-github"></i>
+          </a>
           <div className="account__dropdown" onClick={() => toggle(!open)}>
             <i class="fas fa-bars"></i>
             <i class="fas fa-user-circle fa-2x"></i>
