@@ -167,8 +167,7 @@
 
 .bookingform__container{
   position: absolute;
-  top: 625px;
-  right: 0px;
+  top: 0px;
   border: 2px solid black;
   width: 375px;
   border-radius: 50px;

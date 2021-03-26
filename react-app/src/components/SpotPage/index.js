@@ -161,6 +161,7 @@ export default function SpotPage() {
           {/* seeders need to fixed this is small fix for now */}
           <MapContainer location={{ lat: spot.lng, lng: spot.lat }} />
       </div>
+      </div>
     </div>
   );
 }
