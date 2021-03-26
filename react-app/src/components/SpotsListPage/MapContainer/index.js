@@ -32,7 +32,6 @@ const MapContainer = ({ locations }) => {
     lat: 37.550409,
     lng: -122.059313,
   };
-  console.log(locations);
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}>
       <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={defaultCenter}>
