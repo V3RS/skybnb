@@ -121,7 +121,7 @@ const DropZone = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="upload-container">
         <button className="file-upload-btn" onClick={() => uploadFiles()}>
           Upload Photo
         </button>
