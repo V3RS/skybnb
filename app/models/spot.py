@@ -17,6 +17,7 @@ class Spot(db.Model):
     user = relationship("User", back_populates='spots')
     pictures = relationship("Picture", back_populates='spot')
     reviews = relationship("Review", back_populates='spot')
+    bookedspots = relationship("BookedSpot", back_populates='spot')
     # reviews = relationship("Review", secondary=spotsreviewsjoins, back_populates="spot")
     # amenities = relationship("Amenity", secondary=spotsamenitiesjoins, back_populates="spot")
 

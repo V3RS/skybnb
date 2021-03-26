@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
   spots = relationship("Spot", back_populates='user')
   reviews = relationship("Review", back_populates='user')
   image = relationship("UserImage", back_populates='user')
+  bookedspots = relationship("BookedSpot", back_populates='user')
 
   @property
   def password(self):
