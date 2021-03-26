@@ -46,10 +46,10 @@ export default function SpotsListPage() {
               <SpotsListEle
                 className="spotslistele"
                 id={spot.id}
-                img={spot.pictures[0]}
+                imgs={spot.pictures}
                 location_desc={spot.description.slice(0, 35)}
                 title={spot.title}
-                description="Testing · testing · testing · testing"
+                description={spot.address}
                 star={4.4}
                 price={spot.price}
                 total={spot.price * 3}

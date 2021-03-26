@@ -4,3 +4,78 @@
   border-radius: 10px;
   object-fit: fill;
 }
+
+.slider__container {
+  height: 750px;
+  width: 1500px;
+}
+
+#left__btn,
+#right__btn {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  border: 1px solid #484848;
+  position: absolute;
+  top: 50%;
+}
+
+#left__btn {
+  left: 2%;
+}
+
+#right__btn {
+  right: 2%;
+}
+
+.close__modal__pictures {
+  height: 34px;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 3%;
+  left: 2%;
+  font-size: 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  line-height: 18px;
+  background: rgba(34, 34, 34, 0.1);
+  border: none;
+}
+
+.close__modal__pictures:hover {
+  background: rgba(124, 121, 121, 0.1);
+  /* background: red; */
+}
+
+.picture-shbtns {
+  position: absolute;
+  top: 4.5%;
+  right: 2%;
+  background: none;
+  border: none;
+}
+
+#pic__sh {
+  margin-right: 2.5rem;
+}
+
+.close {
+  margin-right: 0.4rem;
+}
+
+.PictureOuterModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  border: none;
+}

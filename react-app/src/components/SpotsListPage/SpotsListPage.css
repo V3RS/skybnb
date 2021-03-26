@@ -43,4 +43,19 @@
   width: 50%;
   margin: 0;
   right: 10px;
+  padding-bottom: 1.5rem;
+}
+
+#search_slider_btns {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* bottom: 10px; */
+  z-index: 10px;
+}
+
+#not1,
+#not2 {
+  border-radius: 50%;
+  background: none;
 }
