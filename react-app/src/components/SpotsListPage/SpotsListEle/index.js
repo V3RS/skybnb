@@ -1,7 +1,6 @@
 import React from "react";
 import "./SpotsListEle.css";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 // import { openPictureSlider } from "../../../store/modal.js";
 import {
   CarouselProvider,
@@ -24,8 +23,6 @@ export default function SpotsListEle({
   price,
 }) {
   const history = useHistory();
-  const dispatch = useDispatch();
-
   // const openSlider = () => dispatch(openPictureSlider());
 
   const handleSpotsPageRedirect = (spot_id) => {
@@ -40,8 +37,8 @@ export default function SpotsListEle({
           e.target.id === "slider_btn1" ||
           e.target.id === "slider_btn2" ||
           e.target.id === "not1" ||
-          e.target.id == "not2" ||
-          e.target.id == "not3" ||
+          e.target.id === "not2" ||
+          e.target.id === "not3" ||
           e.target.tagName.toLowerCase() === "button"
         )
           return;

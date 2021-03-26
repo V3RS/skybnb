@@ -1,6 +1,6 @@
 .container {
   transform: translateY(-100%);
-  margin:250px;
+  margin: 250px;
 }
 
 .container p {
@@ -15,14 +15,14 @@
   margin: 0;
   width: 500px;
   height: 200px;
-  border: 4px dashed #63D471;
+  border: 4px dashed #63d471;
 }
 
 .upload-icon {
   width: 50px;
   height: 50px;
   background: url(../../images/upload.png) no-repeat center center;
-  color: #63D471;
+  color: #63d471;
   background-size: 100%;
   text-align: center;
   margin: 0 auto;
@@ -31,20 +31,19 @@
 
 .drop-message {
   text-align: center;
-  color: #63D471;
+  color: #63d471;
   font-family: Arial;
   font-size: 20px;
 }
-
 
 .file-display-container {
   position: fixed;
   width: 805px;
 }
 
-.file-status-bar{
+.file-status-bar {
   width: 100%;
-  vertical-align:top;
+  vertical-align: top;
   margin-top: 10px;
   margin-bottom: 20px;
   position: relative;
@@ -57,7 +56,7 @@
 }
 
 .file-type {
-  display: inline-block!important;
+  display: inline-block !important;
   position: absolute;
   font-size: 12px;
   font-weight: 700;
@@ -67,15 +66,15 @@
   border-radius: 2px;
   box-shadow: 1px 1px 2px #abc;
   color: #fff;
-  background: #63D471;
+  background: #63d471;
   text-transform: uppercase;
 }
 
 .file-name {
   display: inline-block;
-  vertical-align:top;
+  vertical-align: top;
   margin-left: 50px;
-  color: #63D471;
+  color: #63d471;
 }
 
 .file-error {
@@ -98,18 +97,18 @@
 }
 
 .file-size {
-  display:inline-block;
-  vertical-align:top;
-  color:#30693D;
-  margin-left:10px;
-  margin-right:5px;
+  display: inline-block;
+  vertical-align: top;
+  color: #30693d;
+  margin-left: 10px;
+  margin-right: 5px;
   margin-left: 10px;
   color: #484848;
   font-weight: 700;
   font-size: 14px;
 }
 
-.file-remove  {
+.file-remove {
   position: absolute;
   top: 20px;
   right: 10px;
@@ -129,7 +128,7 @@
   margin-bottom: 5px;
   border: none;
   border-radius: 7px;
-  background-color: #63D471;
+  background-color: #63d471;
 }
 
 .file-upload-btn:hover {
@@ -140,15 +139,21 @@
   display: none;
 }
 
-.InnerModal {
+.DropZoneInnerModal {
   height: 300px;
   width: 530px;
+  text-decoration: none;
+  background: white;
+  height: fit-content;
+  border-radius: 20px;
+  outline: none;
 }
 
 .upload-container {
   position: sticky;
   left: 0;
   width: 100%;
-  padding-left:10px;
-  padding-top:22px;
+  padding-left: 10px;
+  padding-top: 22px;
+  padding-bottom: 22px;
 }
