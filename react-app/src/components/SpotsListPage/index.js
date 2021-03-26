@@ -1,51 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
+// import { useHistory } from "react-router-dom";
 import "./SpotsListPage.css";
 
 import MapContainer from "./MapContainer";
 import SpotsListEle from "./SpotsListEle";
-import { spotslistSearch } from "../../store/spotslist.js";
+// import { spotslistSearch } from "../../store/spotslist.js";
 
 export default function SpotsListPage() {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const history = useHistory();
   const spotslist = useSelector((state) => state.spotslist.spots);
-  const searchExtras = useSelector((state) => state.spotslist.search_extras);
-  const [locations, setLocations] = useState();
-  useEffect(() => {
-    setLocations(
-      spotslist?.map((spot) => {
-        return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
-      })
-    );
-  }, [locations]);
-
+  const locations = spotslist?.map((spot) => {
+    // seeders need to be fixed quixk fix for now
+    return { name: spot.title, location: { lat: spot.lng, lng: spot.lat } };
+  });
+  // const searchQuery = useSelector((state) => state.spotslist.search_extras);
+  // const handleSpotsPageRedirect = (id) => {
+  //   alert("boo");
+  //   history.push(`/spots/${id}`);
+  // };
+  // const handleTest = () => {
+  //   alert("testing");
+  // };
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
         <div className="spotslist-header">
-          {/* {!spotslist && (
-            <>
-              <div className="spotslist-info">
-                <p>Search meta-data here</p>
-                <h2>Search Criteria Display - e.g. Unique Stay</h2>
-              </div>
-            </>
-          )}
-          {spotslist && (
-            <>
-              <div className="spotslist-info">
-                <p>Spots found!</p>
-                <h2>Searched for "{searchExtras.searchQuery}" Stays</h2>
-              </div>
-            </>
-          )} */}
           <div className="spotslist-info">
             <p>Search meta-data here</p>
             <h2>Search Criteria Display - e.g. Unique Stay</h2>
           </div>
-
           <div className="spotslistpage-filter-btn-container">
             <button className="spotslistpage-filter-btn">
               Cancellation flexibility
@@ -56,22 +41,23 @@ export default function SpotsListPage() {
           </div>
         </div>
         {
-          spotslist &&
-            spotslist.map((spot) => {
-              return (
-                <SpotsListEle
-                  className="spotslistele"
-                  id={spot.id}
-                  img={spot.pictures[1]}
-                  location_desc={spot.description.slice(0, 42) + "..."}
-                  title={spot.title}
-                  description="Testing · testing · testing · testing"
-                  rating={spot.rating}
-                  reviews_count={spot.reviews_count}
-                  price={spot.price}
-                />
-              );
-            })
+          spotslist?.map((spot) => {
+            return (
+              <SpotsListEle
+                className="spotslistele"
+                id={spot.id}
+                img={spot.pictures[0]}
+                location_desc={spot.description.slice(0, 35)}
+                title={spot.title}
+                description="Testing · testing · testing · testing"
+                star={4.4}
+                price={spot.price}
+                rating={spot.rating}
+                reviews_count={spot.reviews_count}
+                key={spot.id}
+              />
+            );
+          })
           // <SpotsListEle
           //   img="https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           //   location_desc="Somewhere in a galaxy far far away"
@@ -85,6 +71,7 @@ export default function SpotsListPage() {
       </div>
 
       <div className="spotslistpage-map-container">
+        <h3>Googlemaps here</h3>
         {locations && <MapContainer locations={locations} />}
         {!locations && (
           <MapContainer
