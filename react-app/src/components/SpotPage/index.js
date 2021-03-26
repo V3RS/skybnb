@@ -4,13 +4,19 @@ import { Link } from "react-router-dom";
 import { getOneSpot } from "../../services/spot";
 import { useDispatch } from "react-redux";
 import { openPictureSlider } from "../../store/modal.js";
+
 import { DateRange } from "react-date-range"
+
+import MapContainer from "./MapContainer";
+
+
 import "./SpotPage.css";
 
 export default function SpotPage() {
   const { spotId } = useParams();
   const [spot, setSpot] = useState({});
   const dispatch = useDispatch();
+
 
   const [ranges, setRanges] = useState([{
     start: new Date(),
@@ -19,19 +25,17 @@ export default function SpotPage() {
   }])
 
 
-
-
-  useEffect(async () => {
+  useEffect(() => {
     const fetchData = async () => {
       const data = await getOneSpot(spotId);
       setSpot(data);
     };
     fetchData();
-  }, []);
+  }, [spotId]);
 
   const openSlider = () => dispatch(openPictureSlider());
 
-  // console.log("SPOTT", spot);
+//   console.log("SPOTT", spot);
 
   const radIdFunc = (i) => {
     if (i === 2) return "fourth__pic";
@@ -57,17 +61,17 @@ export default function SpotPage() {
               {spot?.rating}
               <p id="reviews_count">
                 ({spot?.reviews_count}{" "}
-                {spot?.reviews_count != 1 ? "reviews" : "review"}){" "}
+                {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
               </p>
             </div>
             <div className="spot__address">{spot?.address}</div>
           </div>
           <div className="spot-shbtns-container">
             <button className="spot-shbtns">
-              <i class="far fa-share-square"></i>Share
+              <i className="far fa-share-square"></i>Share
             </button>
             <button className="spot-shbtns">
-              <i class="far fa-heart"></i>Save
+              <i className="far fa-heart"></i>Save
             </button>
           </div>
         </div>
@@ -78,7 +82,7 @@ export default function SpotPage() {
                 <img
                   className="spot__first__picture"
                   src={picture?.img_url}
-                  alt="spot-picture"
+                  alt="spot"
                   onClick={openSlider}
                 />
               </div>
@@ -92,7 +96,7 @@ export default function SpotPage() {
                   id={radIdFunc(i)}
                   src={picture.img_url}
                   onClick={openSlider}
-                  alt="spot-picture"
+                  alt="spot"
                 />
               </div>
             ))}
@@ -106,7 +110,8 @@ export default function SpotPage() {
             </Link>
           </div>
         </div>
-        <div className="bookingform__container">
+        <div className="booking__and__amenties">
+               <div className="bookingform__container">
           <form onSubmit={(e) => handleSubmit(e)}>
           <div className="bookingform__title">
             <h2>${spot?.price}/night</h2>
@@ -126,7 +131,35 @@ export default function SpotPage() {
             <button className='bookingform__submit' type='submit'>Book Trip</button>
           </div>
           </form>
+         </div>
+              </div>
+        <div className="reviews__container">
+          <div className="average__review__rating">
+            <div id="rating">
+              <i id="star__spot_page" className="fas fa-star"></i>
+              {spot?.rating}
+              <p id="reviews_count">
+                ({spot?.reviews_count}{" "}
+                {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
+              </p>
+            </div>
+          </div>
+          {spot?.reviews?.map((review) => (
+            <div key={review.id}>
+              <div className="spot__reviews">
+                <div className="spot__reviews__author">
+                  <Link to={`/users/${review.user.id}`}>
+                    {review.user.username}
+                  </Link>
+                </div>
+                <div className="spot__reviews__comment">{review.comment} </div>
+              </div>
+            </div>
+          ))}
         </div>
+        <div className="spotmap__container">
+          {/* seeders need to fixed this is small fix for now */}
+          <MapContainer location={{ lat: spot.lng, lng: spot.lat }} />
       </div>
     </div>
   );

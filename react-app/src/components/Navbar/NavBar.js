@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
 import LogoutButton from "../auth/LogoutButton";
-import logo from "./logo.png";
+// import logo from "./logo.png";
 import * as spotslistActions from "../../store/spotslist";
 import { openSignup, openLogin } from "../../store/modal.js";
 
@@ -13,23 +13,28 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const [open, setOpen] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [picture, setPicture] = useState();
   const toggle = () => setOpen(!open);
   const toggleSearch = () => setOpenSearch(!openSearch);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    console.log("test");
+    // console.log("test");
     e.preventDefault();
     history.push("/spotslistpage");
     return dispatch(spotslistActions.spotslistSearch(searchQuery));
   };
 
-  const hostSessionHandler = () => {
-    if (session.id) {
-      history.push("/createspot");
-      window.scrollTo(0, 0);
-    } else dispatch(openSignup());
-  };
+  useEffect(() => {
+    async function fetchImg(data) {
+      const image = await fetch(`/api/users/picture/${data.id}`);
+      const img_url = await image.json();
+      if (img_url) setPicture(img_url.img_url);
+    }
+    if (authenticated) {
+      fetchImg(session);
+    }
+  }, [authenticated, session]);
 
   return (
     <div className="navbar__container">
@@ -49,7 +54,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             onClick={() => toggleSearch(!openSearch)}
           >
             <button>Start your search</button>
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </div>
         )}
         {openSearch && (
@@ -91,17 +96,23 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           >
             Become a host
           </p>
+
           <a
             href="https://github.com/V3RS/skybnb"
             target="_blank"
             rel="noopener noreferrer"
             id="github__link"
           >
-            <i class="fab fa-github"></i>
+            <i className="fab fa-github"></i>
           </a>
+
           <div className="account__dropdown" onClick={() => toggle(!open)}>
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-user-circle fa-2x"></i>
+            <i className="fas fa-bars"></i>
+            {picture ? (
+              <img className="nav_user_pic" src={picture} alt="profile-pic" />
+            ) : (
+              <i className="fas fa-user-circle fa-2x"></i>
+            )}
           </div>
           {open && !authenticated && (
             <div className="dropdown__menu">

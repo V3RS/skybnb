@@ -344,3 +344,9 @@
   color: #63d471;
   transition: 0.5s;
 }
+
+.nav_user_pic {
+  height: 32px;
+  width: 32px;
+  border-radius: 100%;
+}

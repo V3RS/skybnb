@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+// import { useSelector } from "react-redux";
 import {
   GoogleMap,
   LoadScript,
   Marker,
-  InfoWindow,
+  // InfoWindow,
 } from "@react-google-maps/api";
 
 const MapContainer = ({ locations }) => {
-  const spotslist = useSelector((state) => state.spotslist.spots);
+  // const spotslist = useSelector((state) => state.spotslist.spots);
 
   // const [currentPosition, setCurrentPosition] = useState({});
 
@@ -28,14 +28,17 @@ const MapContainer = ({ locations }) => {
     width: "100%",
   };
 
-  const defaultCenter = {
-    lat: 37.550409,
-    lng: -122.059313,
-  };
-  console.log(locations);
+  // const defaultCenter = {
+  //   lat: 37.550409,
+  //   lng: -122.059313,
+  // };
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={defaultCenter}>
+      <GoogleMap
+        mapContainerStyle={mapStyles}
+        zoom={13}
+        center={locations[0].location}
+      >
         {locations &&
           locations.map((item) => {
             return <Marker key={item.name} position={item.location} />;

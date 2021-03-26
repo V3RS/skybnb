@@ -10,9 +10,9 @@ export default function SpotsListEle({
   location_desc,
   title,
   description,
-  star,
+  rating,
+  reviews_count,
   price,
-  total,
 }) {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -27,13 +27,11 @@ export default function SpotsListEle({
     <div
       className="spotslistele"
       onClick={(e) => {
-        if (e.target.tagName.toLowerCase() == "img") return;
+        if (e.target.tagName.toLowerCase() === "img") return;
         handleSpotsPageRedirect(id);
       }}
     >
       <img src={img} alt="" onClick={openSlider} />
-      <i className="far fa-heart"></i>
-
       <div className="spotslistele-info-container">
         <div className="spotslistele-info-top">
           <span>{location_desc}</span>
@@ -43,10 +41,17 @@ export default function SpotsListEle({
         </div>
 
         <div className="spotslistele-info-bot">
-          <i className="fas fa-star">{star}</i>
+          {reviews_count > 0 && (
+            <i className="fas fa-star">
+              <div>{rating}</div>
+              <div className="review_count">({reviews_count})</div>
+            </i>
+          )}
+
           <div className="spotslistele-price-div">
-            <div>${price}/ night</div>
-            <div>${total} total</div>
+            <div className="spotslistele-price">
+              <strong>${price}</strong> / night
+            </div>
           </div>
         </div>
       </div>

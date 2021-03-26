@@ -7,10 +7,11 @@
   display: flex;
   flex-direction: column;
   width: 1128px;
-  height: 1500px;
+  /* height: 1500px; */
   /* border: 2px solid black; */
   position: relative;
   top: 30px;
+  margin-bottom: 3rem;
 }
 
 .spot-page-title {
@@ -141,7 +142,11 @@
 .host__detail__container {
   position: relative;
   display: flex;
-  top: 50px;
+  /* top: 50px; */
+  border-bottom: 1px solid #dddddd;
+  width: 600px;
+  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 #host {
@@ -158,6 +163,7 @@
 .host__title {
   font-size: 20px;
 }
+
 
 .bookingform__container{
   position: absolute;
@@ -296,3 +302,37 @@
   background-color: #63d471;
   transition: .5s;
 }
+
+.spot__reviews {
+  border: 1px solid black;
+  position: relative;
+  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.reviews__container {
+  /* border: 1px solid black; */
+  border-bottom: 1px solid #dddddd;
+  position: relative;
+  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.booking__and__amenties {
+  border-bottom: 1px solid #dddddd;
+  position: relative;
+  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  width: 600px;
+  height: 400px;
+}
+
+.spotmap__container {
+  /* padding-bottom: 1.5rem; */
+  margin-top: 1.5rem;
+  /* margin-bottom: 1.5rem; */
+  height: 550px;
+  border-bottom: 1px solid #dddddd;
+  overflow: fit-content;
+}
+

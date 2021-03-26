@@ -61,7 +61,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   return (
     <div className="login-container">
       <button className="close__modal" onClick={closeModal}>
-        <i class="fas fa-times"></i>
+        <i className="fas fa-times"></i>
       </button>
       <div id="login-title">Log in</div>
       <form onSubmit={onLogin}>

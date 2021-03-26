@@ -1,30 +1,29 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
+// import { useHistory } from "react-router-dom";
 import "./SpotsListPage.css";
 
 import MapContainer from "./MapContainer";
 import SpotsListEle from "./SpotsListEle";
-import { spotslistSearch } from "../../store/spotslist.js";
+// import { spotslistSearch } from "../../store/spotslist.js";
 
 export default function SpotsListPage() {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const handleTestQuery = () => {
-    dispatch(spotslistSearch());
-  };
+  // const dispatch = useDispatch();
+  // const history = useHistory();
   const spotslist = useSelector((state) => state.spotslist.spots);
+
   const locations = spotslist?.map((spot) => {
-    return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
+    // seeders need to be fixed quixk fix for now
+    return { name: spot.title, location: { lat: spot.lng, lng: spot.lat } };
   });
-  const searchQuery = useSelector((state) => state.spotslist.search_extras);
-  const handleSpotsPageRedirect = (id) => {
-    alert("boo");
-    history.push(`/spots/${id}`);
-  };
-  const handleTest = () => {
-    alert("testing");
-  };
+  // const searchQuery = useSelector((state) => state.spotslist.search_extras);
+  // const handleSpotsPageRedirect = (id) => {
+  //   alert("boo");
+  //   history.push(`/spots/${id}`);
+  // };
+  // const handleTest = () => {
+  //   alert("testing");
+  // };
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
@@ -52,9 +51,9 @@ export default function SpotsListPage() {
                 location_desc={spot.description.slice(0, 35)}
                 title={spot.title}
                 description="Testing · testing · testing · testing"
-                star={4.4}
                 price={spot.price}
-                total={spot.price * 3}
+                rating={spot.rating}
+                reviews_count={spot.reviews_count}
                 key={spot.id}
               />
             );

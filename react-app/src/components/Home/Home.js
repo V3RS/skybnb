@@ -9,12 +9,6 @@ function Home() {
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
 
-  const hostSessionHandler = () => {
-    if (session.id) {
-      history.push("/createspot");
-      window.scrollTo(0, 0);
-    } else dispatch(openSignup());
-  };
 
   return (
     <div>
