@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
 import LogoutButton from "../auth/LogoutButton";
-import logo from "./logo.png";
+// import logo from "./logo.png";
 import * as spotslistActions from "../../store/spotslist";
 import { openSignup, openLogin } from "../../store/modal.js";
 
@@ -95,7 +95,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             rel="noopener noreferrer"
             id="github__link"
           >
-            <i class="fab fa-github"></i>
+            <i className="fab fa-github"></i>
           </a>
 
           <div className="account__dropdown" onClick={() => toggle(!open)}>
