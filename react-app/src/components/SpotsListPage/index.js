@@ -5,32 +5,47 @@ import "./SpotsListPage.css";
 
 import MapContainer from "./MapContainer";
 import SpotsListEle from "./SpotsListEle";
-// import { spotslistSearch } from "../../store/spotslist.js";
+import { spotslistSearch } from "../../store/spotslist.js";
 
 export default function SpotsListPage() {
-  // const dispatch = useDispatch();
-  // const history = useHistory();
+  const dispatch = useDispatch();
+  const history = useHistory();
   const spotslist = useSelector((state) => state.spotslist.spots);
-  const locations = spotslist?.map((spot) => {
-    // seeders need to be fixed quixk fix for now
-    return { name: spot.title, location: { lat: spot.lng, lng: spot.lat } };
-  });
-  // const searchQuery = useSelector((state) => state.spotslist.search_extras);
-  // const handleSpotsPageRedirect = (id) => {
-  //   alert("boo");
-  //   history.push(`/spots/${id}`);
-  // };
-  // const handleTest = () => {
-  //   alert("testing");
-  // };
+  const searchExtras = useSelector((state) => state.spotslist.search_extras);
+  const [locations, setLocations] = useState();
+  const [numSpots, setNumSpots] = useState("5");
+  useEffect(() => {
+    setLocations(
+      spotslist?.map((spot) => {
+        return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
+      })
+    );
+    setNumSpots(spotslist?.length().toString());
+    console.log("spotslist", spotslist);
+    console.log("spotslist?.length()", spotslist?.length());
+  }, [locations, numSpots]);
+
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
         <div className="spotslist-header">
-          <div className="spotslist-info">
-            <p>Search meta-data here</p>
-            <h2>Search Criteria Display - e.g. Unique Stay</h2>
-          </div>
+          {!spotslist && (
+            <>
+              <div className="spotslist-info">
+                <p>Search meta-data here</p>
+                <h2>Search Criteria Display - e.g. Unique Stay</h2>
+              </div>
+            </>
+          )}
+          {spotslist && (
+            <>
+              <div className="spotslist-info">
+                <p>{numSpots} Spots found!</p>
+                <h2>Searched for "{searchExtras.searchQuery}" Stays</h2>
+              </div>
+            </>
+          )}
+
           <div className="spotslistpage-filter-btn-container">
             <button className="spotslistpage-filter-btn">
               Cancellation flexibility
@@ -70,7 +85,6 @@ export default function SpotsListPage() {
       </div>
 
       <div className="spotslistpage-map-container">
-        <h3>Googlemaps here</h3>
         {locations && <MapContainer locations={locations} />}
         {!locations && (
           <MapContainer
