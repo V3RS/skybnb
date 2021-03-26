@@ -164,6 +164,145 @@
   font-size: 20px;
 }
 
+
+.bookingform__container{
+  position: absolute;
+  top: 625px;
+  right: 0px;
+  border: 2px solid black;
+  width: 375px;
+  border-radius: 50px;
+  box-shadow: 1px 1px 10px 1px;
+}
+
+.bookingform__title{
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  justify-content: space-between;
+}
+
+.bookingform__title > h4{
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.bookingform__title > h2{
+  margin-top: 20px;
+}
+
+.rdrDateDisplay{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.bookingform__date input {
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #484848;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.rdrMonthAndYearWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 10px;
+}
+
+.rdrMonthAndYearWrapper select {
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 10px;
+  
+}
+
+.rdrMonthAndYearWrapper button {
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: #63d471;
+}
+
+.rdrWeekDays{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* margin-right: 10px; */
+  justify-content: center;
+}
+
+.rdrWeekDays > span{
+  color: #63d471
+}
+.rdrWeekDay{
+  margin-left: 15px;
+}
+.rdrDays {
+  display: grid;
+  background-color: #484848;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.rdrDays > button{
+  border: none;
+  background-color: #484848;
+  border-radius: 10px;
+  height: 30px;
+  font-weight: bold;
+}
+
+.rdrDays > button:hover{
+  background-color: #63d471;
+  transition: .5s;
+}
+
+.rdrDayNumber > span{
+  color: white
+}
+
+.rdrMonth{
+  background-color: #484848;
+  padding-top: 5px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+}
+
+.rdrDayDisabled  span {
+  color: gray;
+}
+
+.rdrDayDisabled {
+  cursor: not-allowed; 
+}
+
+
+
+.bookingform__submit{
+  border: none;
+  border-radius: 50px;
+  height: 50px;
+  width: 200px;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #B1EAB8;
+}
+
+.submit__container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.bookingform__submit:hover{
+  background-color: #63d471;
+  transition: .5s;
+}
+
 .spot__reviews {
   border: 1px solid black;
   position: relative;
@@ -196,3 +335,4 @@
   border-bottom: 1px solid #dddddd;
   overflow: fit-content;
 }
+
