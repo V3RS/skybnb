@@ -37,12 +37,11 @@ const MapContainer = ({ locations }) => {
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={13}
-        center={locations[0].location}
+        center={locations[0]?.location}
       >
-        {locations &&
-          locations.map((item) => {
-            return <Marker key={item.name} position={item.location} />;
-          })}
+        {locations?.map((item) => {
+          return <Marker key={item.name} position={item.location} />;
+        })}
       </GoogleMap>
     </LoadScript>
   );
