@@ -10,7 +10,7 @@ const MapContainer = ({ location }) => {
   //   lat: 37.550409,
   //   lng: -122.059313,
   // };
-  console.log("LOCATION", location);
+  // console.log("LOCATION", location);
 
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}>

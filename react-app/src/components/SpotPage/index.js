@@ -23,7 +23,7 @@ export default function SpotPage() {
 
   const openSlider = () => dispatch(openPictureSlider());
 
-  console.log("SPOTT", spot);
+  // console.log("SPOTT", spot);
 
   const radIdFunc = (i) => {
     if (i === 2) return "fourth__pic";

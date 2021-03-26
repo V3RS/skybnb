@@ -19,7 +19,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    console.log("test");
+    // console.log("test");
     e.preventDefault();
     history.push("/spotslistpage");
     return dispatch(spotslistActions.spotslistSearch(searchQuery));
