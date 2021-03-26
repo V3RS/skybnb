@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  width: 800px;
+  width: 500px;
   height: 200px;
   border: 4px dashed #63D471;
 }
@@ -138,4 +138,17 @@
 
 .file-input {
   display: none;
-} 
+}
+
+.InnerModal {
+  height: 300px;
+  width: 530px;
+}
+
+.upload-container {
+  position: sticky;
+  left: 0;
+  width: 100%;
+  padding-left:10px;
+  padding-top:22px;
+}
