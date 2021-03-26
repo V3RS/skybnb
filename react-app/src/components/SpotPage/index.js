@@ -101,7 +101,7 @@ export default function SpotPage() {
               {spot?.rating}
               <p id="reviews_count">
                 ({spot?.reviews_count}{" "}
-                {spot?.reviews_count != 1 ? "reviews" : "review"}){" "}
+                {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
               </p>
             </div>
           </div>

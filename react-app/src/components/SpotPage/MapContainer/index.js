@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const MapContainer = ({ location }) => {
@@ -6,10 +6,10 @@ const MapContainer = ({ location }) => {
     height: "510px",
     width: "100%",
   };
-  const defaultCenter = {
-    lat: 37.550409,
-    lng: -122.059313,
-  };
+  // const defaultCenter = {
+  //   lat: 37.550409,
+  //   lng: -122.059313,
+  // };
   console.log("LOCATION", location);
 
   return (
