@@ -5,14 +5,20 @@
   height: 200px;
   cursor: pointer;
 }
-.spotslistele > img {
+.slider__pictures__spot__list {
   height: 200px;
   width: 300px;
   border-radius: 10px;
   z-index: 5px;
 }
 
-.spotslistele > img:hover {
+.slider__container__spot__list {
+  height: 200px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.slider__pictures__spot__list {
   transition: transform 0.1s ease-in-out;
   transform: scale(1.02);
   opacity: 0.95;

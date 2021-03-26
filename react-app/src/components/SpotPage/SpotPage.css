@@ -43,6 +43,7 @@
 .spot-shbtns-container {
   display: flex;
   position: absolute;
+  top: 8px;
   left: 980px;
 }
 

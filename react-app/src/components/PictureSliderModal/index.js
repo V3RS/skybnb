@@ -21,9 +21,9 @@ const PictureSliderModal = () => {
       <Modal
         isOpen={pictureSliderState}
         closeTimeoutMS={200}
-        onRequestClose={closeModal}
+        // onRequestClose={closeModal}
         contentLabel="Picture Slider Modal"
-        overlayClassName="OuterModal"
+        overlayClassName="PictureOuterModal"
         // style={customStyles}
         className="InnerModal"
       >
