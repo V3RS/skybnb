@@ -23,7 +23,7 @@ export default function SpotPage() {
 
   const openSlider = () => dispatch(openPictureSlider());
 
-  console.log("SPOTT", spot);
+  // console.log("SPOTT", spot);
 
   const radIdFunc = (i) => {
     if (i === 2) return "fourth__pic";
@@ -101,7 +101,7 @@ export default function SpotPage() {
               {spot?.rating}
               <p id="reviews_count">
                 ({spot?.reviews_count}{" "}
-                {spot?.reviews_count != 1 ? "reviews" : "review"}){" "}
+                {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
               </p>
             </div>
           </div>
