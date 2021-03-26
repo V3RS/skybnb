@@ -29,7 +29,11 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     <div className="navbar__container">
       <div className="navbar">
         <div className="navbar__header" onClick={() => history.push("/")}>
-          <img className="navbar__icon" src={logo} alt="" />
+          <img
+            className="navbar__icon"
+            src="https://skybnb.s3.amazonaws.com/logo.png"
+            alt=""
+          />
           <h2>skybnb</h2>
         </div>
 
@@ -84,12 +88,16 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           >
             Become a host
           </p>
-          <i
-            className="fab fa-github"
-            onClick={() =>
-              (window.location.href = "https://github.com/V3RS/skybnb")
-            }
-          ></i>
+
+          <a
+            href="https://github.com/V3RS/skybnb"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="github__link"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+
           <div className="account__dropdown" onClick={() => toggle(!open)}>
             <i className="fas fa-bars"></i>
             <i className="fas fa-user-circle fa-2x"></i>

@@ -1,15 +1,24 @@
-.footer__container{
-    background-color: #B1EAB8;
-    font-family: Raleway;
-    border-top: 1px solid #63D471;
+.footer__container {
+  background-color: #b1eab8;
+  font-family: Raleway;
+  border-top: 1px solid #63d471;
 }
 
-.footer__organizer{
-    display: flex;
-    margin: 0 10% 0 10%;
-    justify-content: space-between;
+.footer__organizer {
+  display: flex;
+  margin: 0 10% 0 10%;
+  justify-content: space-between;
 }
 
-.footer__container  p{
-    cursor: pointer;
+.footer__container p {
+  cursor: pointer;
+}
+
+.footer__links:hover {
+  color: #2e5f34;
+}
+
+.footer__links {
+  text-decoration: none;
+  color: #484848;
 }

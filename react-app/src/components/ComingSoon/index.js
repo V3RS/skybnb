@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 
 import "./ComingSoon.css";
 
-
 export default function CommingSoon() {
   const history = useHistory();
 
