@@ -13,23 +13,19 @@ export default function SpotsListPage() {
   const spotslist = useSelector((state) => state.spotslist.spots);
   const searchExtras = useSelector((state) => state.spotslist.search_extras);
   const [locations, setLocations] = useState();
-  const [numSpots, setNumSpots] = useState("5");
   useEffect(() => {
     setLocations(
       spotslist?.map((spot) => {
         return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
       })
     );
-    setNumSpots(spotslist?.length().toString());
-    console.log("spotslist", spotslist);
-    console.log("spotslist?.length()", spotslist?.length());
-  }, [locations, numSpots]);
+  }, [locations]);
 
   return (
     <div className="spotslistpage-container">
       <div className="spotslistpage-spotslist-container">
         <div className="spotslist-header">
-          {!spotslist && (
+          {/* {!spotslist && (
             <>
               <div className="spotslist-info">
                 <p>Search meta-data here</p>
@@ -40,11 +36,15 @@ export default function SpotsListPage() {
           {spotslist && (
             <>
               <div className="spotslist-info">
-                <p>{numSpots} Spots found!</p>
+                <p>Spots found!</p>
                 <h2>Searched for "{searchExtras.searchQuery}" Stays</h2>
               </div>
             </>
-          )}
+          )} */}
+          <div className="spotslist-info">
+            <p>Search meta-data here</p>
+            <h2>Search Criteria Display - e.g. Unique Stay</h2>
+          </div>
 
           <div className="spotslistpage-filter-btn-container">
             <button className="spotslistpage-filter-btn">
@@ -63,7 +63,7 @@ export default function SpotsListPage() {
                   className="spotslistele"
                   id={spot.id}
                   img={spot.pictures[1]}
-                  location_desc={spot.description.slice(0, 35)}
+                  location_desc={spot.description.slice(0, 42) + "..."}
                   title={spot.title}
                   description="Testing · testing · testing · testing"
                   rating={spot.rating}
