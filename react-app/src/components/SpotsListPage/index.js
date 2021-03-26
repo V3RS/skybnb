@@ -11,6 +11,7 @@ export default function SpotsListPage() {
   // const dispatch = useDispatch();
   // const history = useHistory();
   const spotslist = useSelector((state) => state.spotslist.spots);
+
   const locations = spotslist?.map((spot) => {
     // seeders need to be fixed quixk fix for now
     return { name: spot.title, location: { lat: spot.lng, lng: spot.lat } };
@@ -50,7 +51,6 @@ export default function SpotsListPage() {
                 location_desc={spot.description.slice(0, 35)}
                 title={spot.title}
                 description="Testing · testing · testing · testing"
-                star={4.4}
                 price={spot.price}
                 rating={spot.rating}
                 reviews_count={spot.reviews_count}
