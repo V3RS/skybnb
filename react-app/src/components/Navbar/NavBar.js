@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
@@ -13,6 +13,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const [open, setOpen] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [picture, setPicture] = useState()
   const toggle = () => setOpen(!open);
   const toggleSearch = () => setOpenSearch(!openSearch);
   const dispatch = useDispatch();
@@ -24,6 +25,16 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     return dispatch(spotslistActions.spotslistSearch(searchQuery));
   };
 
+  useEffect(() => {
+    async function fetchImg(data) {
+      const image = await fetch(`/api/users/picture/${data.id}`);
+      const img_url = await image.json();
+      if (img_url) setPicture(img_url.img_url);
+    }
+    if (session) {
+      fetchImg(session);
+    }
+  }, [session]);
 
   return (
     <div className="navbar__container">
@@ -100,7 +111,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 
           <div className="account__dropdown" onClick={() => toggle(!open)}>
             <i className="fas fa-bars"></i>
-            <i className="fas fa-user-circle fa-2x"></i>
+            {picture ? <img className="nav_user_pic" src={picture} alt="profile-pic"/>:<i i className="fas fa-user-circle fa-2x"></i>}
           </div>
           {open && !authenticated && (
             <div className="dropdown__menu">

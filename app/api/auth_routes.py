@@ -81,11 +81,10 @@ def sign_up():
         db.session.commit()
         login_user(user)
         new_user = user.to_dict()
-        # print ("THIS IS THE NEW USER =================>", new_user)
         new_image = UserImage(user_id=new_user['id'], img_url="https://skybnb.s3.amazonaws.com/porg1.jfif")
         db.session.add(new_image)
         db.session.commit()
-        return user.to_dict()
+        return new_user
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 

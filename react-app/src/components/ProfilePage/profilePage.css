@@ -7,6 +7,7 @@ div {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  padding-bottom: 20px;
 }
 
 .profile_card.profile_info {
@@ -32,6 +33,10 @@ div {
 
 .profile_info{
   width: auto;
+}
+
+.profile-info * {
+  margin: 5px;
 }
 
 .profile_picture{
