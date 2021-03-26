@@ -32,7 +32,12 @@ export default function SpotsListEle({
       }}
     >
       <img src={img} alt="" onClick={openSlider} />
-      <i className="far fa-heart"></i>
+      {reviews_count > 0 && (
+        <i className="fas fa-star">
+          <div>{rating}</div>
+          <div className="review_count">({reviews_count})</div>
+        </i>
+      )}
 
       <div className="spotslistele-info-container">
         <div className="spotslistele-info-top">
