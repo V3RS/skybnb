@@ -28,13 +28,17 @@ const MapContainer = ({ locations }) => {
     width: "100%",
   };
 
-  const defaultCenter = {
-    lat: 37.550409,
-    lng: -122.059313,
-  };
+  // const defaultCenter = {
+  //   lat: 37.550409,
+  //   lng: -122.059313,
+  // };
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}>
-      <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={defaultCenter}>
+      <GoogleMap
+        mapContainerStyle={mapStyles}
+        zoom={13}
+        center={locations[0].location}
+      >
         {locations &&
           locations.map((item) => {
             return <Marker key={item.name} position={item.location} />;
