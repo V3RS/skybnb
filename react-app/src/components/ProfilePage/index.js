@@ -36,9 +36,9 @@ export default function ProfilePage() {
   return (
     <div className="profile_container">
       <div className="profile_card">
-        <img src={picture} className="profile_picture" alt=""/>
+        <img src={picture} className="profile_picture" alt="" />
         {/* <button className="picture_button" onClick={picClick}>Upload a Picture</button> */}
-        {id === session.id.toString() && <DropZoneModal />}
+        {id === session.id?.toString() && <DropZoneModal />}
         <div className="user_confirmed">{username} Confirmed</div>
         <div>
           <i className="fas fa-check-square"></i> E-Mail
@@ -49,7 +49,9 @@ export default function ProfilePage() {
         <div>
           <i className="fas fa-star"></i> Reviews
         </div>
-        <a className="report_user" href="/report_user">Report User</a>
+        <a className="report_user" href="/report_user">
+          Report User
+        </a>
       </div>
     </div>
   );
