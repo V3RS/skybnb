@@ -7,7 +7,9 @@ import "./profilePage.css";
 export default function ProfilePage() {
   const { id } = useParams();
   const [user, setUser] = useState();
-  const [picture, setPicture] = useState();
+  const [picture, setPicture] = useState(
+    "https://53.cdn.ekm.net/ekmps/shops/stormtrooper/images/original-stormtrooper-stunt-helmet-109-p.jpg?v=1"
+  );
   const session = useSelector((state) => state.session);
 
   useEffect(() => {
@@ -35,21 +37,34 @@ export default function ProfilePage() {
 
   return (
     <div className="profile_container">
-      <div className="profile_card">
-        <img src={picture} className="profile_picture" alt=""/>
-        {/* <button className="picture_button" onClick={picClick}>Upload a Picture</button> */}
-        {id === session.id.toString() && <DropZoneModal />}
-        <div className="user_confirmed">{username} Confirmed</div>
-        <div>
-          <i className="fas fa-check-square"></i> E-Mail
+      <div className="profile_container_left">
+        <div className="profile_card">
+          <img src={picture} className="profile_picture" alt="" />
+          {/* <button className="picture_button" onClick={picClick}>Upload a Picture</button> */}
+          {session && session.id && id === session.id.toString() && (
+            <DropZoneModal />
+          )}
+          <div className="user_confirmed">{username} Confirmed</div>
+          <div>
+            <i className="fas fa-check-square"></i> E-Mail
+          </div>
         </div>
       </div>
-      <div className="profile_info">
-        <h1 className="user_greeting">Hi, I'm {username}</h1>
-        <div>
-          <i className="fas fa-star"></i> Reviews
+      <div className="profile_container_right">
+        <div className="profile_info">
+          {session.id && (
+            <>
+              <h1 className="user_greeting">Hi, I'm {username}</h1>
+              <div>
+                <i className="fas fa-star"></i> Reviews
+              </div>
+              <a className="report_user" href="/report_user">
+                Report User
+              </a>
+            </>
+          )}
         </div>
-        <a className="report_user" href="/report_user">Report User</a>
+        <div className="profile_bookings"></div>
       </div>
     </div>
   );

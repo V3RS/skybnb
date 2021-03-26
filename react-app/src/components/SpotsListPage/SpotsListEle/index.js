@@ -45,8 +45,9 @@ export default function SpotsListEle({
         <div className="spotslistele-info-bot">
           <i className="fas fa-star">{star}</i>
           <div className="spotslistele-price-div">
-            <div>${price}/ night</div>
-            <div>${total} total</div>
+            <div className="spotslistele-price">
+              <strong>${price}</strong> / night
+            </div>
           </div>
         </div>
       </div>
