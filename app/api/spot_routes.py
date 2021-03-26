@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import Spot, User, Picture, Review
+from app.models import Spot, User, Picture, Review, UserImage
 from sqlalchemy import func
 
 
@@ -11,6 +11,7 @@ def get_one_spot(id):
     spot = Spot.query.get(id)
     pictures = Picture.query.filter_by(spot_id=id).all()
     host = User.query.get(spot.host_id)
+    # host_image = UserImage.query.filter_by(user_id=spot.host_id)
     reviews = Review.query.filter_by(spot_id=id).all()
     total = 0
     for review in reviews:
@@ -19,8 +20,21 @@ def get_one_spot(id):
     spotData = {**spot.to_dict()}
     spotData["pictures"] = [picture.to_dict() for picture in pictures]
     spotData["host"] = host.to_dict()
+    # if host_image.to_dict():
+    #     spotData["host_image"] = host_image.to_dict()
+    # else:
+    #     spotData["host_image"] = {}
     spotData["rating"] = "{:.1f}".format(rating)
     spotData["reviews_count"] = len(reviews)
+    spotData["reviews"] = [review.to_dict() for review in reviews]
+    for review in spotData["reviews"]:
+        user = User.query.get(review["user_id"])
+        review["user"] = user.to_dict()
+        # user_image = UserImage.query.filter_by(user_id=user.id)
+        # if user_image.to_dict():
+        #     review["user_image"] = user_image.to_dict()
+        # else:
+        #     review["user_image"] = {}
     return spotData
 
 

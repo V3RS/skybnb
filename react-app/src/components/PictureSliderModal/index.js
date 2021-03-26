@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { useSelector, useDispatch } from "react-redux";
-import { openPictureSlider, closePictureSlider } from "../../store/modal.js";
+import { closePictureSlider } from "../../store/modal.js";
 import PictureSlider from "./PictureSlider";
 
 Modal.setAppElement(document.getElementById("root"));
@@ -18,7 +18,6 @@ const PictureSliderModal = () => {
 
   return (
     <>
-      <p onClick={() => dispatch(openPictureSlider())}>Picture Slider</p>
       <Modal
         isOpen={pictureSliderState}
         closeTimeoutMS={200}

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getOneSpot } from "../../services/spot";
 import { useDispatch } from "react-redux";
 import { openPictureSlider } from "../../store/modal.js";
+import MapContainer from "./MapContainer";
 
 import "./SpotPage.css";
 
@@ -22,7 +23,7 @@ export default function SpotPage() {
 
   const openSlider = () => dispatch(openPictureSlider());
 
-  // console.log("SPOTT", spot);
+  console.log("SPOTT", spot);
 
   const radIdFunc = (i) => {
     if (i === 2) return "fourth__pic";
@@ -91,6 +92,35 @@ export default function SpotPage() {
               {spot?.host?.username}
             </Link>
           </div>
+        </div>
+        <div className="booking__and__amenties"></div>
+        <div className="reviews__container">
+          <div className="average__review__rating">
+            <div id="rating">
+              <i id="star__spot_page" className="fas fa-star"></i>
+              {spot?.rating}
+              <p id="reviews_count">
+                ({spot?.reviews_count}{" "}
+                {spot?.reviews_count != 1 ? "reviews" : "review"}){" "}
+              </p>
+            </div>
+          </div>
+          {spot?.reviews?.map((review) => (
+            <div key={review.id}>
+              <div className="spot__reviews">
+                <div className="spot__reviews__author">
+                  <Link to={`/users/${review.user.id}`}>
+                    {review.user.username}
+                  </Link>
+                </div>
+                <div className="spot__reviews__comment">{review.comment} </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="spotmap__container">
+          {/* seeders need to fixed this is small fix for now */}
+          <MapContainer location={{ lat: spot.lng, lng: spot.lat }} />
         </div>
       </div>
     </div>

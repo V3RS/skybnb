@@ -12,7 +12,8 @@ export default function SpotsListPage() {
   // const history = useHistory();
   const spotslist = useSelector((state) => state.spotslist.spots);
   const locations = spotslist?.map((spot) => {
-    return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
+    // seeders need to be fixed quixk fix for now
+    return { name: spot.title, location: { lat: spot.lng, lng: spot.lat } };
   });
   // const searchQuery = useSelector((state) => state.spotslist.search_extras);
   // const handleSpotsPageRedirect = (id) => {
