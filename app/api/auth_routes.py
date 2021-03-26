@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, db, UserImage
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -80,7 +80,11 @@ def sign_up():
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        return user.to_dict()
+        new_user = user.to_dict()
+        new_image = UserImage(user_id=new_user['id'], img_url="https://skybnb.s3.amazonaws.com/porg1.jfif")
+        db.session.add(new_image)
+        db.session.commit()
+        return new_user
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 

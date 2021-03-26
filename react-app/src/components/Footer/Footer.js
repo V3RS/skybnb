@@ -32,6 +32,7 @@ function Footer() {
               className="footer__links"
               target="_blank"
               rel="noopener noreferrer"
+              href="https://angel.co/u/veerkaran-singh"
             >
               AngelList
             </a>
@@ -41,6 +42,7 @@ function Footer() {
               className="footer__links"
               target="_blank"
               rel="noopener noreferrer"
+              href='/'
             >
               Portfolio Site
             </a>
@@ -83,7 +85,7 @@ function Footer() {
               className="footer__links"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://angel.co/u/veerkaran-singh"
+              href='/'
             >
               Portfolio Site
             </a>
@@ -126,6 +128,7 @@ function Footer() {
               className="footer__links"
               target="_blank"
               rel="noopener noreferrer"
+              href='/'
             >
               Portfolio Site
             </a>
@@ -168,6 +171,7 @@ function Footer() {
               className="footer__links"
               target="_blank"
               rel="noopener noreferrer"
+              href='/'
             >
               Portfolio Site
             </a>
