@@ -331,4 +331,5 @@
 }
 #github__link:hover {
   color: #63d471;
+  transition: 0.5s;
 }
