@@ -119,7 +119,8 @@ export default function SpotPage() {
           ))}
         </div>
         <div className="spotmap__container">
-          <MapContainer location={{ lat: spot.lat, lng: spot.lng }} />
+          {/* seeders need to fixed this is small fix for now */}
+          <MapContainer location={{ lat: spot.lng, lng: spot.lat }} />
         </div>
       </div>
     </div>
