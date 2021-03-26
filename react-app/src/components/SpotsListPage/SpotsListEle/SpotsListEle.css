@@ -67,5 +67,14 @@
 
 .spotslistele-price {
   font-weight: 500;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
+}
+
+.spotslistele-info-bot > .fa-star {
+  display: flex;
+  flex-direction: row;
+}
+
+.review_count {
+  font-weight: 300;
 }

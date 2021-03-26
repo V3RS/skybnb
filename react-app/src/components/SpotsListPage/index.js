@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-// import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./SpotsListPage.css";
 
 import MapContainer from "./MapContainer";
@@ -41,22 +41,22 @@ export default function SpotsListPage() {
           </div>
         </div>
         {
-          spotslist?.map((spot) => {
-            return (
-              <SpotsListEle
-                className="spotslistele"
-                id={spot.id}
-                img={spot.pictures[0]}
-                location_desc={spot.description.slice(0, 35)}
-                title={spot.title}
-                description="Testing · testing · testing · testing"
-                star={4.4}
-                price={spot.price}
-                total={spot.price * 3}
-                key={spot.id}
-              />
-            );
-          })
+          spotslist &&
+            spotslist.map((spot) => {
+              return (
+                <SpotsListEle
+                  className="spotslistele"
+                  id={spot.id}
+                  img={spot.pictures[1]}
+                  location_desc={spot.description.slice(0, 35)}
+                  title={spot.title}
+                  description="Testing · testing · testing · testing"
+                  rating={spot.rating}
+                  reviews_count={spot.reviews_count}
+                  price={spot.price}
+                />
+              );
+            })
           // <SpotsListEle
           //   img="https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           //   location_desc="Somewhere in a galaxy far far away"

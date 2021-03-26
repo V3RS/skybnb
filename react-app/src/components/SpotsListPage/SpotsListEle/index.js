@@ -10,9 +10,9 @@ export default function SpotsListEle({
   location_desc,
   title,
   description,
-  star,
+  rating,
+  reviews_count,
   price,
-  total,
 }) {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -48,7 +48,13 @@ export default function SpotsListEle({
         </div>
 
         <div className="spotslistele-info-bot">
-          <i className="fas fa-star">{star}</i>
+          {reviews_count > 0 && (
+            <i className="fas fa-star">
+              <div>{rating}</div>
+              <div className="review_count">({reviews_count})</div>
+            </i>
+          )}
+
           <div className="spotslistele-price-div">
             <div className="spotslistele-price">
               <strong>${price}</strong> / night
