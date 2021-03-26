@@ -64,12 +64,9 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             method="POST"
           >
             <div className="searchform__container">
-              <button
-                className="searchform__cancel"
+                <i className="searchform__cancel"
                 onClick={() => toggleSearch(!openSearch)}
-              >
-                <i className="far fa-times-circle fa-2x"></i>
-              </button>
+                class="far fa-times-circle fa-2x"></i>
               <div className="location__container">
                 <label>Location/Title</label>
                 <input

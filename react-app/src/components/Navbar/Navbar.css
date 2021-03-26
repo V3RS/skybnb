@@ -62,6 +62,17 @@
   width: 30px;
 }
 
+.searchform__container > i {
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #63d471;
+  color: white;
+  border: 1px solid #63d471;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
 .navbar__search > button {
   border: none;
   padding: 10px;

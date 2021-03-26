@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { getOneSpot } from "../../services/spot";
 import { useDispatch } from "react-redux";
 import { openPictureSlider } from "../../store/modal.js";
+
+import { DateRange } from "react-date-range"
+
 import MapContainer from "./MapContainer";
+
 
 import "./SpotPage.css";
 
@@ -12,6 +16,14 @@ export default function SpotPage() {
   const { spotId } = useParams();
   const [spot, setSpot] = useState({});
   const dispatch = useDispatch();
+
+
+  const [ranges, setRanges] = useState([{
+    start: new Date(),
+    endDate: null,
+    key: 'selection'
+  }])
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +35,7 @@ export default function SpotPage() {
 
   const openSlider = () => dispatch(openPictureSlider());
 
-  // console.log("SPOTT", spot);
+//   console.log("SPOTT", spot);
 
   const radIdFunc = (i) => {
     if (i === 2) return "fourth__pic";
@@ -31,6 +43,11 @@ export default function SpotPage() {
     else return "other__pics";
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(ranges)
+  }
+  const today = new Date();
   return (
     <div id="spc">
       <div className="spot-page-container">
@@ -93,7 +110,29 @@ export default function SpotPage() {
             </Link>
           </div>
         </div>
-        <div className="booking__and__amenties"></div>
+        <div className="booking__and__amenties">
+               <div className="bookingform__container">
+          <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="bookingform__title">
+            <h2>${spot?.price}/night</h2>
+            <h4><i id="star__spot_page" className="fas fa-star"></i>{spot?.rating}</h4>
+          </div>
+          <div className="bookingform__date">
+            <DateRange
+              minDate={today}
+              // disabledDates={[]}
+              editableDateInputs={true}
+              onChange={item => setRanges([item.selection])}
+              moveRangeOnFirstSelection={false}
+              ranges={ranges}
+              />
+          </div>
+          <div className='submit__container'>
+            <button className='bookingform__submit' type='submit'>Book Trip</button>
+          </div>
+          </form>
+         </div>
+              </div>
         <div className="reviews__container">
           <div className="average__review__rating">
             <div id="rating">
@@ -121,7 +160,7 @@ export default function SpotPage() {
         <div className="spotmap__container">
           {/* seeders need to fixed this is small fix for now */}
           <MapContainer location={{ lat: spot.lng, lng: spot.lat }} />
-        </div>
+      </div>
       </div>
     </div>
   );

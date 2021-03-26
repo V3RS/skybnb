@@ -17,6 +17,7 @@ class Spot(db.Model):
     user = relationship("User", back_populates='spots')
     pictures = relationship("Picture", back_populates='spot')
     reviews = relationship("Review", back_populates='spot')
+    bookedspots = relationship("BookedSpot", back_populates='spot')
     # reviews = relationship("Review", secondary=spotsreviewsjoins, back_populates="spot")
     # amenities = relationship("Amenity", secondary=spotsamenitiesjoins, back_populates="spot")
 
@@ -34,6 +35,11 @@ class Spot(db.Model):
 
 
     def to_dict_with_picture(self):
+        total = 0
+        for review in self.reviews:
+            total += review.rating
+        rating = total / len(self.reviews)
+
         return {
             "id": self.id,
             "title": self.title,
@@ -44,4 +50,6 @@ class Spot(db.Model):
             "price": float(self.price),
             "host_id": self.host_id,
             "pictures": [picture.img_url for picture in self.pictures],
+            "rating": "{:.1f}".format(rating),
+            "reviews_count": len(self.reviews)
         }

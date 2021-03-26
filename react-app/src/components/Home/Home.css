@@ -55,12 +55,14 @@
 .hostsharing__container{
     margin: 0 10% 100px 10%;
     font-family: Raleway;
+    overflow: hidden;
+    position: relative;
 }
 
 .hostsharing__text__container{
     position: absolute;
-    top: 1700px;
-    left: 300px;
+    top: 0px;
+    left: 100px;
     width: 400px;
 }
 

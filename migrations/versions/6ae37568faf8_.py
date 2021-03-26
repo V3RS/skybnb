@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8af4f15a1488
+Revision ID: 6ae37568faf8
 Revises: 
-Create Date: 2021-03-25 16:20:15.700739
+Create Date: 2021-03-26 16:21:32.452110
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8af4f15a1488'
+revision = '6ae37568faf8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -53,6 +53,16 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('bookedspots',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('start_date', sa.Date(), nullable=False),
+    sa.Column('end_date', sa.Date(), nullable=False),
+    sa.Column('spot_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['spot_id'], ['spots.id'], ),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('pictures',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('img_url', sa.String(), nullable=False),
@@ -84,6 +94,7 @@ def downgrade():
     op.drop_table('spotsamenitiesjoins')
     op.drop_table('reviews')
     op.drop_table('pictures')
+    op.drop_table('bookedspots')
     op.drop_table('user_image')
     op.drop_table('spots')
     op.drop_table('users')
