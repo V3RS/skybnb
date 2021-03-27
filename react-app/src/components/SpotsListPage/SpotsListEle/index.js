@@ -71,9 +71,6 @@ export default function SpotsListEle({
             <i className="fas fa-angle-right" id="slider_btn2"></i>
           </ButtonNext>
         </div>
-        <div id="not3">
-          <DotGroup />
-        </div>
       </CarouselProvider>
       <i className="far fa-heart fa-lg"></i>
       <div className="spotslistele-info-container">
