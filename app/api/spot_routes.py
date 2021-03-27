@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, request
-from app.models import Spot, User, Picture, Review, UserImage
+from app.models import Spot, User, Picture, Review, UserImage, BookedSpot, db
 from sqlalchemy import func
-
-
+from app.forms.booking_form import BookingForm
+import datetime
 spot_routes = Blueprint('spots', __name__)
 
 
@@ -80,3 +80,22 @@ def get_spots_query():
 #     spot = Spot.query.get(id)
 #     host = User.query.get(spot.host_id)
 #     return host.to_dict()
+
+@spot_routes.route('/book', methods=['POST'])
+def get_booked_spot():
+    form = BookingForm()
+    # print(form.userId)
+    # print(form.startDate)
+    # print(form.data['userId'])
+    # print(form.endDate)
+    # print(form.data['endDate'])
+
+    booked_spot = BookedSpot(
+        spot_id=form.data['spotId'],
+        start_date=form.data['startDate'],
+        end_date=form.data['endDate'],
+        user_id=form.data['userId']
+    )
+    db.session.add(booked_spot)
+    db.session.commit()
+    return 'test'
