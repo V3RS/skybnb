@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link, useHistory } from "react-router-dom";
 import { getOneSpot } from "../../services/spot";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openPictureSlider } from "../../store/modal.js";
 
 import { DateRange } from "react-date-range";
 
 import MapContainer from "./MapContainer";
+
+import * as bookingActions from "../../store/spot.js"
+
 
 import "./SpotPage.css";
 
@@ -16,14 +19,14 @@ export default function SpotPage() {
   const [spot, setSpot] = useState({});
   const dispatch = useDispatch();
   const history = useHistory();
+  const session = useSelector((state) => state.session)
+  const [ranges, setRanges] = useState([{
+    start: new Date(),
+    endDate: null,
+    key: 'selection'
+  }])
 
-  const [ranges, setRanges] = useState([
-    {
-      start: new Date(),
-      endDate: null,
-      key: "selection",
-    },
-  ]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,9 +47,10 @@ export default function SpotPage() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(ranges);
-  };
+
+    e.preventDefault()
+    dispatch(bookingActions.bookSpot(spotId, ranges[0].startDate, ranges[0].endDate, session.id))
+  }
   const today = new Date();
   return (
     <div id="spc">
