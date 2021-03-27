@@ -19,5 +19,6 @@ class BookedSpot(db.Model):
             "start_date": self.start_date,
             "end_date": self.end_date,
             "spot_id": self.spot_id,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "spot": self.spot.to_dict_with_picture(),
         }

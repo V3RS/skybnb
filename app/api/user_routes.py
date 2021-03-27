@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User, UserImage
+from app.models import User, UserImage, Review, BookedSpot, Spot
 from sqlalchemy import select
 
 user_routes = Blueprint('users', __name__)
@@ -26,3 +26,18 @@ def picture(id):
     user_image = UserImage.query.filter_by(user_id=id).first()
     print("THIS IS THE USER IMAGE", user_image)
     return user_image.to_dict()
+
+# @user_routes.route('/reviews/<int:id>')
+# def reviews(id):
+#     user_reviews =
+
+@user_routes.route('/bookings/', methods=["POST"])
+def user_bookings():
+    req_id = request.data.decode("UTF-8")
+    user_bookings = BookedSpot.query.filter_by(user_id=req_id).all()
+    # ret_list = []
+    # for booking in user_bookings:
+    #     spot = Spot.query.get(booking.spot_id)
+    #     ret_list.append(spot.to_dict_with_bookings())
+
+    return {"bookings": [booking.to_dict() for booking in user_bookings]}

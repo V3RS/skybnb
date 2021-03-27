@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import DropZoneModal from "../DropZoneModal";
+import SingleBooking from "./SingleBooking";
 import "./profilePage.css";
 
 export default function ProfilePage() {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [user, setUser] = useState();
   const [picture, setPicture] = useState(
     "https://53.cdn.ekm.net/ekmps/shops/stormtrooper/images/original-stormtrooper-stunt-helmet-109-p.jpg?v=1"
   );
+  const [reviews, setReviews] = useState([]);
+  const [bookings, setBookings] = useState([]);
   const session = useSelector((state) => state.session);
 
   useEffect(() => {
@@ -28,13 +32,32 @@ export default function ProfilePage() {
       const img_url = await image.json();
       if (img_url) setPicture(img_url.img_url);
     }
+
+    async function fetchReviews(data) {
+      const reviews = await fetch(`/api/users/reviews/${data.id}`);
+    }
+
+    async function fetchBookings(data) {
+      const res = await fetch(`/api/users/bookings/`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: data.id,
+      });
+
+      const bookings_obj = await res.json();
+
+      if (res.ok) setBookings(bookings_obj.bookings);
+    }
     if (user) {
       fetchImg(user);
+      fetchBookings(user);
     }
   }, [user]);
 
   const username = user?.username;
-
+  console.log(bookings);
   return (
     <div className="profile_container">
       <div className="profile_container_left">
@@ -55,16 +78,23 @@ export default function ProfilePage() {
           {session.id && (
             <>
               <h1 className="user_greeting">Hi, I'm {username}</h1>
-              <div>
-                <i className="fas fa-star"></i> Reviews
+              <div className="report_user_container">
+                <div>
+                  <i className="fas fa-star"></i> Reviews
+                </div>
+                <a className="report_user" href="/report_user">
+                  Report User
+                </a>
               </div>
-              <a className="report_user" href="/report_user">
-                Report User
-              </a>
             </>
           )}
         </div>
-        <div className="profile_bookings"></div>
+        <div className="profile_bookings">
+          <div className="profile_bookings_header">Bookings</div>
+          {bookings.map((booking) => {
+            return <SingleBooking booking={booking} />;
+          })}
+        </div>
       </div>
     </div>
   );
