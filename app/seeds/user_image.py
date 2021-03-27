@@ -41,6 +41,6 @@ def seed_user_image():
   db.session.commit()
 
 
-def undo_spots():
+def undo_user_image():
     db.session.execute('TRUNCATE user_image;')
     db.session.commit()

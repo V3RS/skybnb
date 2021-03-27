@@ -23,7 +23,7 @@ def seed_spots():
     spot7 = Spot(title="Chewbacca's Treehouse", lat=29.7387, lng=-90.8765,
                  address="4484 LA-1, Raceland, LA 70394", description="aaaaahnr huurh wrrhw aarrragghuuhw",
                  price=223, host_id=6)
-    spot8 = Spot(title="Luke's X-Wing Fighter", lat=37.2513, lng=,-115.8390,
+    spot8 = Spot(title="Luke's X-Wing Fighter", lat=37.2513, lng=-115.8390,
                  address="Groom Lake, NV", description="Use the force or not... Just don't get shot down.",
                  price=100000, host_id=7)
     spot9 = Spot(title="The Millennium Falcon", lat=28.5232, lng=-80.6840,
