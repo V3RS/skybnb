@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getOneSpot } from "../../services/spot";
 import { useDispatch, useSelector } from "react-redux";
 import { openPictureSlider } from "../../store/modal.js";
@@ -18,13 +18,14 @@ export default function SpotPage() {
   const { spotId } = useParams();
   const [spot, setSpot] = useState({});
   const dispatch = useDispatch();
+  const history = useHistory();
   const session = useSelector((state) => state.session)
-
   const [ranges, setRanges] = useState([{
     start: new Date(),
     endDate: null,
     key: 'selection'
   }])
+
 
 
   useEffect(() => {
@@ -117,6 +118,22 @@ export default function SpotPage() {
               {spot?.host?.username}
             </Link>
           </div>
+          <div id="spot__guests">
+            {spot?.id % 2 === 0 ? "3" : "4"} guests ·{" "}
+            {spot?.id % 2 === 0 ? "2" : "5"} bedroom ·{" "}
+            {spot?.id % 2 === 0 ? "2" : "5"} bed ·{" "}
+            {spot?.id % 2 === 0 ? "3" : "4"} bath
+          </div>
+          <div
+            id="host__image"
+            onClick={() => history.push(`/users/${spot.host_id}`)}
+          >
+            <img
+              className="pro__pic"
+              src="https://53.cdn.ekm.net/ekmps/shops/stormtrooper/images/original-stormtrooper-stunt-helmet-109-p.jpg?v=1"
+              alt="host profile picture"
+            ></img>
+          </div>
         </div>
         <div className="booking__and__amenties">
           <div className="amenities__container">
@@ -174,9 +191,20 @@ export default function SpotPage() {
             <div key={review.id}>
               <div className="spot__reviews">
                 <div className="spot__reviews__author">
-                  <Link to={`/users/${review.user.id}`}>
+                  <div
+                    id="review__user__pic"
+                    onClick={() => history.push(`/users/${review.user.id}`)}
+                  >
+                    <img
+                      className="pro__pic"
+                      src="https://53.cdn.ekm.net/ekmps/shops/stormtrooper/images/original-stormtrooper-stunt-helmet-109-p.jpg?v=1"
+                      alt="review user profile picture"
+                    ></img>
+                  </div>
+                  <Link id="rev__author" to={`/users/${review.user.id}`}>
                     {review.user.username}
                   </Link>
+                  <div id="review__date">March 2021</div>
                 </div>
                 <div className="spot__reviews__comment">{review.comment} </div>
               </div>

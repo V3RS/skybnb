@@ -145,11 +145,35 @@
 .host__detail__container {
   position: relative;
   display: flex;
+  flex-direction: column;
   /* top: 50px; */
   border-bottom: 1px solid #dddddd;
   width: 600px;
   padding-bottom: 1.5rem;
   margin-top: 1.5rem;
+}
+
+#host__image {
+  border-radius: 50%;
+  position: absolute;
+  /* border: 1px solid black; */
+  height: 56px;
+  width: 56px;
+  /* display: inline-block; */
+  /* bottom: 25px; */
+  right: 15px;
+  cursor: pointer;
+}
+
+.pro__pic {
+  width: 100%;
+  height: 100%;
+}
+
+#spot__guests {
+  position: relative;
+  top: 0.3rem;
+  color: gray;
 }
 
 #host {
@@ -165,6 +189,8 @@
 
 .host__title {
   font-size: 20px;
+  position: relative;
+  max-width: 540px;
 }
 
 .bookingform__container {
@@ -309,6 +335,31 @@
   margin-top: 1.5rem;
 }
 
+#review__user__pic {
+  border-radius: 50%;
+  position: relative;
+  /* border: 1px solid black; */
+  height: 56px;
+  width: 56px;
+  /* display: inline-block; */
+  /* bottom: 25px; */
+  /* left: 3px; */
+  cursor: pointer;
+}
+
+#rev__author {
+  position: absolute;
+  top: 0.7rem;
+  left: 3.6rem;
+}
+
+#review__date {
+  position: absolute;
+  top: 1.9rem;
+  left: 3.6rem;
+  color: gray;
+}
+
 #reviews__container {
   /* border: 1px solid black; */
   border-bottom: 1px solid #dddddd;
@@ -335,7 +386,6 @@
   overflow: fit-content;
 }
 
-
 #rating__title {
   font-size: 26px;
   display: flex;
@@ -359,4 +409,3 @@
   bottom: 2px;
   height: 28px;
 }
-
