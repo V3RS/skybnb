@@ -12,10 +12,17 @@
   margin-right: 1%;
 }
 .spotslist-header {
-  padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  margin-top: 0.5rem;
   border-bottom: 1px solid #dddddd;
+}
+
+.spotslist-info > p {
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.spotslist-info > h2 {
+  margin-top: 0.25rem;
 }
 .spotslistpage-filter-btn {
   padding: 0.5rem;
@@ -42,5 +49,15 @@
 .spotslistpage-map-container {
   width: 50%;
   margin: 0;
+  margin-top: 1rem;
   right: 10px;
+  padding-bottom: 1.5rem;
+}
+
+#search_slider_btns {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* bottom: 10px; */
+  z-index: 10px;
 }

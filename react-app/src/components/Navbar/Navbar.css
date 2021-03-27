@@ -4,6 +4,7 @@
   top: 0;
   background-color: white;
   z-index: 5;
+  box-shadow: 1px 1px 10px 1px #dddddd;
 
   /* background: url("./nav-bg.jpg");
   background-repeat: no-repeat; */
@@ -62,6 +63,17 @@
   width: 30px;
 }
 
+.searchform__container > i {
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #63d471;
+  color: white;
+  border: 1px solid #63d471;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
 .navbar__search > button {
   border: none;
   padding: 10px;

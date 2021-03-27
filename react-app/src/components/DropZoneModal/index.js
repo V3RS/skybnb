@@ -8,28 +8,30 @@ Modal.setAppElement(document.getElementById("root"));
 
 const DropZoneModal = () => {
   const dispatch = useDispatch();
-  const dropZoneState = useSelector(
-    (state) => state.modal.dropZoneShow
-  );
+  const dropZoneState = useSelector((state) => state.modal.dropZoneShow);
 
   const closeModal = () => dispatch(closeDropZone());
 
   return (
     <>
-    <button className='picture_button' onClick={() => dispatch(openDropZone())}>Upload a Picture</button>
-    <Modal
-      isOpen={dropZoneState}
-      closeTimeoutMS={200}
-      onRequestClose={closeModal}
-      contentLabel="Picture Upload Modal"
-      overlayClassName="OuterModal"
-      className="InnerModal"
-    >
-    <DropZone />
-    </Modal>
+      <button
+        className="picture_button"
+        onClick={() => dispatch(openDropZone())}
+      >
+        Upload a Picture
+      </button>
+      <Modal
+        isOpen={dropZoneState}
+        closeTimeoutMS={200}
+        onRequestClose={closeModal}
+        contentLabel="Picture Upload Modal"
+        overlayClassName="OuterModal"
+        className="DropZoneInnerModal"
+      >
+        <DropZone />
+      </Modal>
     </>
-  )
-
-}
+  );
+};
 
 export default DropZoneModal;

@@ -11,9 +11,9 @@ export default function SpotsListPage() {
   // const dispatch = useDispatch();
   // const history = useHistory();
   const spotslist = useSelector((state) => state.spotslist.spots);
+
   const locations = spotslist?.map((spot) => {
-    // seeders need to be fixed quixk fix for now
-    return { name: spot.title, location: { lat: spot.lng, lng: spot.lat } };
+    return { name: spot.title, location: { lat: spot.lat, lng: spot.lng } };
   });
   // const searchQuery = useSelector((state) => state.spotslist.search_extras);
   // const handleSpotsPageRedirect = (id) => {
@@ -46,13 +46,13 @@ export default function SpotsListPage() {
               <SpotsListEle
                 className="spotslistele"
                 id={spot.id}
-                img={spot.pictures[0]}
+                imgs={spot.pictures}
                 location_desc={spot.description.slice(0, 35)}
                 title={spot.title}
-                description="Testing · testing · testing · testing"
-                star={4.4}
+                description={spot.address}
                 price={spot.price}
-                total={spot.price * 3}
+                rating={spot.rating}
+                reviews_count={spot.reviews_count}
                 key={spot.id}
               />
             );

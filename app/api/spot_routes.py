@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify, request
-from app.models import Spot, User, Picture, Review, UserImage
+
+from app.models import Spot, User, Picture, Review, UserImage, BookedSpot, db, spotsamenitiesjoins, Amenity
+
 from sqlalchemy import func
-
-
+from app.forms.booking_form import BookingForm
+import datetime
 spot_routes = Blueprint('spots', __name__)
 
 
@@ -12,13 +14,18 @@ def get_one_spot(id):
     pictures = Picture.query.filter_by(spot_id=id).all()
     host = User.query.get(spot.host_id)
     # host_image = UserImage.query.filter_by(user_id=spot.host_id)
+    # amenity_join = spotsamenitiesjoins.query.filter_by(spot_id=id).all()
+    # amenities = Amenity.query.filter_by(id=amenity_join.amenity_id).all()
     reviews = Review.query.filter_by(spot_id=id).all()
+    amenities = Amenity.query.join(spotsamenitiesjoins).filter((spotsamenitiesjoins.c.spot_id == id) & (spotsamenitiesjoins.c.amenity_id == Amenity.id)).all()
     total = 0
     for review in reviews:
         total += review.rating
     rating = total / len(reviews)
     spotData = {**spot.to_dict()}
+    spotData["amenities"] = [amenity.to_dict() for amenity in amenities]
     spotData["pictures"] = [picture.to_dict() for picture in pictures]
+    # spotData["amenities"] = [amenity.to_dict() for amenity in amenities]
     spotData["host"] = host.to_dict()
     # if host_image.to_dict():
     #     spotData["host_image"] = host_image.to_dict()
@@ -80,3 +87,22 @@ def get_spots_query():
 #     spot = Spot.query.get(id)
 #     host = User.query.get(spot.host_id)
 #     return host.to_dict()
+
+@spot_routes.route('/book', methods=['POST'])
+def get_booked_spot():
+    form = BookingForm()
+    # print(form.userId)
+    # print(form.startDate)
+    # print(form.data['userId'])
+    # print(form.endDate)
+    # print(form.data['endDate'])
+
+    booked_spot = BookedSpot(
+        spot_id=form.data['spotId'],
+        start_date=form.data['startDate'],
+        end_date=form.data['endDate'],
+        user_id=form.data['userId']
+    )
+    db.session.add(booked_spot)
+    db.session.commit()
+    return 'test'
