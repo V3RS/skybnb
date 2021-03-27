@@ -118,7 +118,7 @@ export default function SpotPage() {
           <div className="amenities__container">
             <ul>
               {spot?.amenities?.map((amenity) => {
-                return <li key={amenity.id}>{amenity.name}</li>;
+                return <li key={amenity.id}>{amenity.amenity}</li>;
               })}
             </ul>
           </div>
