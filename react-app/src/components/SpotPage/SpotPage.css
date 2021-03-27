@@ -142,6 +142,27 @@
   flex-wrap: wrap;
 }
 
+#show__all__pics__container {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 165px;
+}
+
+#showpics__btn {
+  height: 34px;
+  font-size: 16px;
+  width: 100%;
+}
+
+#showpics__btn:hover {
+  opacity: 0.8;
+}
+
+.fa-images {
+  margin-right: 4px;
+}
+
 .host__detail__container {
   position: relative;
   display: flex;
@@ -197,10 +218,24 @@
   position: absolute;
   top: -42px;
   right: -520px;
-  border: 2px solid black;
+  /* border: 1px solid #dddddd; */
   width: 375px;
-  border-radius: 50px;
-  box-shadow: 1px 1px 10px 1px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 1px #808080;
+}
+
+#cal_rev_count {
+  color: gray;
+}
+
+#cal_rating {
+  color: #484848;
+}
+
+#cal_rev_count,
+#cal_rating,
+#star__spot_page__cal {
+  font-size: 18px;
 }
 
 .bookingform__title {
@@ -252,7 +287,7 @@
   width: 20px;
   height: 20px;
   border: none;
-  background-color: #63d471;
+  background-color: #dddddd;
 }
 
 .rdrWeekDays {
@@ -263,20 +298,21 @@
 }
 
 .rdrWeekDays > span {
-  color: #63d471;
+  color: #484848;
+  /* color: #217a2c; */
 }
 .rdrWeekDay {
   margin-left: 15px;
 }
 .rdrDays {
   display: grid;
-  background-color: #484848;
+  background-color: #dddddd;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .rdrDays > button {
   border: none;
-  background-color: #484848;
+  background-color: #dddddd;
   border-radius: 10px;
   height: 30px;
   font-weight: bold;
@@ -288,18 +324,18 @@
 }
 
 .rdrDayNumber > span {
-  color: white;
+  color: #484848;
 }
 
 .rdrMonth {
-  background-color: #484848;
+  background-color: #dddddd;
   padding-top: 5px;
   margin-top: 5px;
   padding-bottom: 5px;
 }
 
 .rdrDayDisabled span {
-  color: gray;
+  color: rgb(185, 185, 185);
 }
 
 .rdrDayDisabled {
@@ -308,12 +344,12 @@
 
 .bookingform__submit {
   border: none;
-  border-radius: 50px;
+  border-radius: 10px;
   height: 50px;
   width: 200px;
   font-weight: bold;
   font-size: 20px;
-  background-color: #b1eab8;
+  background-color: #63d471;
 }
 
 .submit__container {
@@ -324,12 +360,20 @@
 }
 
 .bookingform__submit:hover {
-  background-color: #63d471;
-  transition: 0.5s;
+  background-color: #217a2c;
+  transition: 0.2s;
+}
+
+.amenity__li {
+  list-style: none;
+  font-size: 18px;
+  margin-bottom: 1rem;
+  color: #484848;
+  font-weight: bold;
 }
 
 .spot__reviews {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: relative;
   padding-bottom: 1.5rem;
   margin-top: 1.5rem;
@@ -347,15 +391,26 @@
   cursor: pointer;
 }
 
+.spot__reviews__comment {
+  position: relative;
+  top: 0.5rem;
+  max-width: 30rem;
+}
+
 #rev__author {
   position: absolute;
+  color: black;
   top: 0.7rem;
   left: 3.6rem;
 }
 
+#rev__author:hover {
+  color: #63d471;
+}
+
 #review__date {
   position: absolute;
-  top: 1.9rem;
+  top: 2rem;
   left: 3.6rem;
   color: gray;
 }
@@ -366,6 +421,10 @@
   position: relative;
   padding-bottom: 1.5rem;
   margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 1000px;
 }
 
 .booking__and__amenties {
@@ -374,7 +433,13 @@
   padding-bottom: 1.5rem;
   margin-top: 1.5rem;
   width: 600px;
-  height: 400px;
+}
+
+.amenities__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .spotmap__container {
