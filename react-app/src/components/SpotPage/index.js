@@ -9,8 +9,7 @@ import { DateRange } from "react-date-range";
 
 import MapContainer from "./MapContainer";
 
-import * as bookingActions from "../../store/spot.js"
-
+import * as bookingActions from "../../store/spot.js";
 
 import "./SpotPage.css";
 
@@ -19,14 +18,14 @@ export default function SpotPage() {
   const [spot, setSpot] = useState({});
   const dispatch = useDispatch();
   const history = useHistory();
-  const session = useSelector((state) => state.session)
-  const [ranges, setRanges] = useState([{
-    start: new Date(),
-    endDate: null,
-    key: 'selection'
-  }])
-
-
+  const session = useSelector((state) => state.session);
+  const [ranges, setRanges] = useState([
+    {
+      start: new Date(),
+      endDate: null,
+      key: "selection",
+    },
+  ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +37,7 @@ export default function SpotPage() {
 
   const openSlider = () => dispatch(openPictureSlider());
 
-  console.log("SPOTT", spot);
+  // console.log("SPOTT", spot);
 
   const radIdFunc = (i) => {
     if (i === 2) return "fourth__pic";
@@ -47,10 +46,16 @@ export default function SpotPage() {
   };
 
   const handleSubmit = (e) => {
-
-    e.preventDefault()
-    dispatch(bookingActions.bookSpot(spotId, ranges[0].startDate, ranges[0].endDate, session.id))
-  }
+    e.preventDefault();
+    dispatch(
+      bookingActions.bookSpot(
+        spotId,
+        ranges[0].startDate,
+        ranges[0].endDate,
+        session.id
+      )
+    );
+  };
   const today = new Date();
   return (
     <div id="spc">
@@ -67,7 +72,7 @@ export default function SpotPage() {
                 {spot?.rating}
                 <p id="reviews_count">
                   ({spot?.reviews_count}{" "}
-                  {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
+                  {spot?.reviews_count !== 1 ? "reviews" : "review"})
                 </p>
               </div>
             </a>
@@ -110,6 +115,12 @@ export default function SpotPage() {
               </div>
             ))}
           </div>
+          <div id="show__all__pics__container">
+            <button id="showpics__btn" onClick={openSlider}>
+              <i className="fas fa-images"></i>
+              Show all photos
+            </button>
+          </div>
         </div>
         <div className="host__detail__container">
           <div className="host__title">
@@ -137,19 +148,27 @@ export default function SpotPage() {
         </div>
         <div className="booking__and__amenties">
           <div className="amenities__container">
-            <ul>
+            <div>
               {spot?.amenities?.map((amenity) => {
-                return <li key={amenity.id}>{amenity.amenity}</li>;
+                return (
+                  <div className="amenity__li" key={amenity.id}>
+                    {amenity.amenity}
+                  </div>
+                );
               })}
-            </ul>
+            </div>
           </div>
           <div className="bookingform__container">
             <form onSubmit={(e) => handleSubmit(e)}>
               <div className="bookingform__title">
                 <h2>${spot?.price}/night</h2>
                 <h4>
-                  <i id="star__spot_page" className="fas fa-star"></i>
-                  {spot?.rating}
+                  <a href="#scr-reviews">
+                    <i id="star__spot_page__cal" className="fas fa-star"></i>
+                    <span id="cal_rating">{spot?.rating}</span>
+
+                    <span id="cal_rev_count"> ({spot?.reviews_count})</span>
+                  </a>
                 </h4>
               </div>
               <div className="bookingform__date">
@@ -187,7 +206,7 @@ export default function SpotPage() {
               </div>
             </div>
           </div>
-          {spot?.reviews?.map((review) => (
+          {spot?.reviews?.slice(0, 7).map((review) => (
             <div key={review.id}>
               <div className="spot__reviews">
                 <div className="spot__reviews__author">
@@ -210,6 +229,9 @@ export default function SpotPage() {
               </div>
             </div>
           ))}
+          <div id="show__all__revs">
+            {/* modal for all reviews pass in the reviews array */}
+          </div>
         </div>
         <div id="spot__map" className="spotmap__container">
           <MapContainer location={{ lat: spot.lat, lng: spot.lng }} />
