@@ -8,9 +8,9 @@ def seed_user_image():
   user2 = UserImage(img_url = "https://skybnb.s3.amazonaws.com/emperor.jfif",
                     user_id=2)
   user3 = UserImage(img_url = "https://skybnb.s3.amazonaws.com/jabba.jfif",
-                    user_id=3)
-  user4 = UserImage(img_url = "https://skybnb.s3.amazonaws.com/lando.jfif",
                     user_id=4)
+  user4 = UserImage(img_url = "https://skybnb.s3.amazonaws.com/lando.jfif",
+                    user_id=3)
   user5 = UserImage(img_url = "https://skybnb.s3.amazonaws.com/yoda.jfif",
                     user_id=5)
   user6 = UserImage(img_url = "https://skybnb.s3.amazonaws.com/chewy.jfif",

@@ -9,19 +9,19 @@ def seed_reviews():
     review3 = Review(
         comment="My favorite place to stay listet on skybnb, royal amenities, full service, great defensive location, no sith lords visible", user_id=1, rating=5, spot_id=3)
     review4 = Review(
-        comment="My favorite place to stay listet on skybnb, royal amenities, full service, great defensive location, no sith lords visible", user_id=1, rating=5, spot_id=4)
+        comment="A little modernest paradise. Hope you love black.", user_id=9, rating=5, spot_id=4)
     review5 = Review(
-        comment="My favorite place to stay listet on skybnb, royal amenities, full service, great defensive location, no sith lords visible", user_id=1, rating=5, spot_id=5)
+        comment="This place sucks. They toss you in carbonite for no reason.", user_id=7, rating=1, spot_id=5)
     review6 = Review(
-        comment="My favorite place to stay listet on skybnb, royal amenities, full service, great defensive location, no sith lords visible", user_id=1, rating=5, spot_id=6)
+        comment="Dank and dreary, lots of frog eggs to eat", user_id=10, rating=4, spot_id=6)
     review7 = Review(
-        comment="My favorite place to stay listet on skybnb, royal amenities, full service, great defensive location, no sith lords visible", user_id=1, rating=5, spot_id=7)
+        comment="Ummm lively this place is. A house in the trees it is. Fall you shouldn't", user_id=5, rating=3, spot_id=7)
     review8 = Review(
-        comment="My favorite place to stay listet on skybnb, royal amenities, full service, great defensive location, no sith lords visible", user_id=1, rating=5, spot_id=8)
+        comment="This ship takes my husband away for long trips. I'm not a big fan of that", user_id=9, rating=1, spot_id=8)
     review9 = Review(
-        comment="My favorite place to stay listet on skybnb, royal amenities, full service, great defensive location, no sith lords visible", user_id=1, rating=5, spot_id=9)
+        comment="She used to be mind. Han took her from me in a sabbac game. She really is a beaut.", user_id=3, rating=4, spot_id=9)
     review10 = Review(
-        comment="My favorite place to stay listet on skybnb, royal amenities, full service, great defensive location, no sith lords visible", user_id=1, rating=5, spot_id=10)
+        comment="BEEP BOOP BEEP BEEP BOOP", user_id=1, rating=2, spot_id=10)
 
     db.session.add(review1)
     db.session.add(review2)
@@ -35,25 +35,25 @@ def seed_reviews():
     db.session.add(review10)
 
     review11 = Review(
-        comment="This place stinks! Not a place fit for a royal star princess", user_id=2, rating=1, spot_id=1)
+        comment="This place stinks! Not a place fit for a royal star princess", user_id=11, rating=1, spot_id=1)
     review12 = Review(
-        comment="Love the neighborhood but very blend accomodations in the jedi temple, apparently they dont believe in hot water for showers", user_id=2, rating=2, spot_id=2)
+        comment="Love the neighborhood but very blend accomodations in the jedi temple, apparently they dont believe in hot water for showers", user_id=9, rating=2, spot_id=2)
     review13 = Review(
-        comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=2, rating=5, spot_id=3)
+        comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=11, rating=5, spot_id=3)
     review14 = Review(
-        comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=2, rating=5, spot_id=4)
+        comment="Everything is fine here now... *BLAST* Boring conversation anyway.", user_id=8, rating=1, spot_id=4)
     review15 = Review(
-        comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=2, rating=5, spot_id=5)
+        comment="They tried to hide my prize. I had the deal altered!!!!", user_id=2, rating=1, spot_id=5)
     review16 = Review(
-        comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=2, rating=5, spot_id=6)
+        comment="Owner is a workaholic, He taught me everything I know.", user_id=7, rating=5, spot_id=6)
     review17 = Review(
-        comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=2, rating=5, spot_id=7)
+        comment="This place is littered with walking carpets. Get them out of my way", user_id=9, rating=2, spot_id=7)
     review18 = Review(
-        comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=2, rating=5, spot_id=8)
+        comment="This ship is the best ever", user_id=1, rating=5, spot_id=8)
     review19 = Review(
-        comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=2, rating=5, spot_id=9)
+        comment="uuh uughguughhhghghghhhgh uggguh", user_id=6, rating=5, spot_id=9)
     review20 = Review(
-        comment="LOVE this place!!! Plush decors and the bedding is so soft and clean! Great Palace fit for a star princess", user_id=2, rating=5, spot_id=10)
+        comment="Hooked me up with my friend that I hadn't seen in a while. Dropped me in an Rancor pit. Overall not too bad.", user_id=7, rating=4, spot_id=10)
     db.session.add(review11)
     db.session.add(review12)
     db.session.add(review13)
