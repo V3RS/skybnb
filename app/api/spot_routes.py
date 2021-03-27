@@ -13,11 +13,10 @@ def get_one_spot(id):
     spot = Spot.query.get(id)
     pictures = Picture.query.filter_by(spot_id=id).all()
     host = User.query.get(spot.host_id)
-    # host_image = UserImage.query.filter_by(user_id=spot.host_id)
-    # amenity_join = spotsamenitiesjoins.query.filter_by(spot_id=id).all()
-    # amenities = Amenity.query.filter_by(id=amenity_join.amenity_id).all()
+    host_image = UserImage.query.filter_by(user_id=spot.host_id).first()
     reviews = Review.query.filter_by(spot_id=id).all()
-    amenities = Amenity.query.join(spotsamenitiesjoins).filter((spotsamenitiesjoins.c.spot_id == id) & (spotsamenitiesjoins.c.amenity_id == Amenity.id)).all()
+    amenities = Amenity.query.join(spotsamenitiesjoins).filter(
+        (spotsamenitiesjoins.c.spot_id == id) & (spotsamenitiesjoins.c.amenity_id == Amenity.id)).all()
     total = 0
     for review in reviews:
         total += review.rating
@@ -25,18 +24,16 @@ def get_one_spot(id):
     spotData = {**spot.to_dict()}
     spotData["amenities"] = [amenity.to_dict() for amenity in amenities]
     spotData["pictures"] = [picture.to_dict() for picture in pictures]
-    # spotData["amenities"] = [amenity.to_dict() for amenity in amenities]
     spotData["host"] = host.to_dict()
-    # if host_image.to_dict():
-    #     spotData["host_image"] = host_image.to_dict()
-    # else:
-    #     spotData["host_image"] = {}
+    spotData["host_image"] = host_image.to_dict()
     spotData["rating"] = "{:.1f}".format(rating)
     spotData["reviews_count"] = len(reviews)
     spotData["reviews"] = [review.to_dict() for review in reviews]
     for review in spotData["reviews"]:
         user = User.query.get(review["user_id"])
+        img = UserImage.query.filter_by(user_id=user.id).first()
         review["user"] = user.to_dict()
+        review["img"] = img.to_dict()
         # user_image = UserImage.query.filter_by(user_id=user.id)
         # if user_image.to_dict():
         #     review["user_image"] = user_image.to_dict()

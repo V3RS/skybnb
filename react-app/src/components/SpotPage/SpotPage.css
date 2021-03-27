@@ -189,6 +189,8 @@
 .pro__pic {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 #spot__guests {
@@ -401,7 +403,7 @@
   position: absolute;
   color: black;
   top: 0.7rem;
-  left: 3.6rem;
+  left: 4rem;
 }
 
 #rev__author:hover {
@@ -411,7 +413,7 @@
 #review__date {
   position: absolute;
   top: 2rem;
-  left: 3.6rem;
+  left: 4rem;
   color: gray;
 }
 

@@ -37,7 +37,7 @@ export default function SpotPage() {
 
   const openSlider = () => dispatch(openPictureSlider());
 
-  // console.log("SPOTT", spot);
+  console.log("SPOTT", spot);
 
   const radIdFunc = (i) => {
     if (i === 2) return "fourth__pic";
@@ -141,7 +141,7 @@ export default function SpotPage() {
           >
             <img
               className="pro__pic"
-              src="https://53.cdn.ekm.net/ekmps/shops/stormtrooper/images/original-stormtrooper-stunt-helmet-109-p.jpg?v=1"
+              src={spot?.host_image?.img_url}
               alt="host profile picture"
             ></img>
           </div>
@@ -216,7 +216,7 @@ export default function SpotPage() {
                   >
                     <img
                       className="pro__pic"
-                      src="https://53.cdn.ekm.net/ekmps/shops/stormtrooper/images/original-stormtrooper-stunt-helmet-109-p.jpg?v=1"
+                      src={review.img.img_url}
                       alt="review user profile picture"
                     ></img>
                   </div>
