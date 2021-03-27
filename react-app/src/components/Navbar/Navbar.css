@@ -4,6 +4,7 @@
   top: 0;
   background-color: white;
   z-index: 5;
+  box-shadow: 1px 1px 10px 1px #dddddd;
 
   /* background: url("./nav-bg.jpg");
   background-repeat: no-repeat; */
