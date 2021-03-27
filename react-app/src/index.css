@@ -4,10 +4,15 @@
 
 * {
   font-family: Raleway;
+  scroll-behavior: smooth;
 }
 button {
   cursor: pointer;
   outline: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
