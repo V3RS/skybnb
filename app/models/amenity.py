@@ -10,8 +10,9 @@ class Amenity(db.Model):
     amenity = db.Column(db.String, nullable=False, unique=True)
     spot = relationship("Spot", secondary=spotsamenitiesjoins, backref=db.backref('spotamenity', lazy = 'dynamic'))
 
+
     def to_dict(self):
         return {
             "id": self.id,
-            "name": self.amenity,
+            "amenity": self.amenity,
         }

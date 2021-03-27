@@ -309,7 +309,7 @@
   margin-top: 1.5rem;
 }
 
-.reviews__container {
+#reviews__container {
   /* border: 1px solid black; */
   border-bottom: 1px solid #dddddd;
   position: relative;
@@ -334,3 +334,29 @@
   border-bottom: 1px solid #dddddd;
   overflow: fit-content;
 }
+
+
+#rating__title {
+  font-size: 26px;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+#star__spot_page__title {
+  padding-right: 0.2rem;
+}
+
+#reviews_count__title {
+  position: relative;
+  bottom: 55px;
+  color: gray;
+  padding-left: 2.4rem;
+}
+
+.rat_revs_container {
+  position: relative;
+  bottom: 2px;
+  height: 28px;
+}
+

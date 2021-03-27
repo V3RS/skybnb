@@ -53,17 +53,22 @@ export default function SpotPage() {
         <div className="spot-page-title">
           <h3>{spot?.title}</h3>
         </div>
+
         <div className="spot-secondHeading">
           <div className="rating__address">
-            <div id="rating">
-              <i id="star__spot_page" className="fas fa-star"></i>
-              {spot?.rating}
-              <p id="reviews_count">
-                ({spot?.reviews_count}{" "}
-                {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
-              </p>
-            </div>
-            <div className="spot__address">{spot?.address}</div>
+            <a href="#scr-reviews">
+              <div id="rating">
+                <i id="star__spot_page" className="fas fa-star"></i>
+                {spot?.rating}
+                <p id="reviews_count">
+                  ({spot?.reviews_count}{" "}
+                  {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
+                </p>
+              </div>
+            </a>
+            <a href="#spot__map">
+              <div className="spot__address">{spot?.address}</div>
+            </a>
           </div>
           <div className="spot-shbtns-container">
             <button className="spot-shbtns">
@@ -137,22 +142,28 @@ export default function SpotPage() {
                 />
               </div>
               <div className="submit__container">
-                <button className="bookingform__submit" type="submit">
+                <button
+                  id="scr-reviews"
+                  className="bookingform__submit"
+                  type="submit"
+                >
                   Book Trip
                 </button>
               </div>
             </form>
           </div>
         </div>
-        <div className="reviews__container">
-          <div className="average__review__rating">
-            <div id="rating">
-              <i id="star__spot_page" className="fas fa-star"></i>
-              {spot?.rating}
-              <p id="reviews_count">
-                ({spot?.reviews_count}{" "}
-                {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
-              </p>
+        <div id="reviews__container">
+          <div className="average__review__rating__title">
+            <div id="rating__title">
+              <i id="star__spot_page__title" className="fas fa-star"></i>
+              <div className="rat_revs_container">
+                {spot?.rating}
+                <p id="reviews_count__title">
+                  ({spot?.reviews_count}{" "}
+                  {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
+                </p>
+              </div>
             </div>
           </div>
           {spot?.reviews?.map((review) => (
@@ -168,7 +179,7 @@ export default function SpotPage() {
             </div>
           ))}
         </div>
-        <div className="spotmap__container">
+        <div id="spot__map" className="spotmap__container">
           <MapContainer location={{ lat: spot.lat, lng: spot.lng }} />
         </div>
       </div>

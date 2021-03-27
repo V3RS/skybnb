@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { getOneSpot } from "../../services/spot";
-import { useSelector, useDispatch } from "react-redux";
-
+import { useDispatch } from "react-redux";
 import { closePictureSlider } from "../../store/modal.js";
 
 import {
@@ -18,22 +17,16 @@ import "./PictureSlider.css";
 
 export default function PictureSlider() {
   const { spotId } = useParams();
-  const spotslist = useSelector((state) => state.spotslist.spots);
   const [pictures, setPictures] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (spotId) {
-      const fetchData = async () => {
-        const data = await getOneSpot(spotId);
-        setPictures(data.pictures);
-      };
-      fetchData();
-    } else {
-      // console.log("do i exist?");
-      setPictures(spotslist[0].pictures);
-    }
-  }, [spotId, spotslist]);
+    const fetchData = async () => {
+      const data = await getOneSpot(spotId);
+      setPictures(data.pictures);
+    };
+    fetchData();
+  }, [spotId]);
 
   const closeModal = () => dispatch(closePictureSlider());
   return (
@@ -55,11 +48,11 @@ export default function PictureSlider() {
       >
         <Slider className="slider__container">
           {pictures?.map((picture, i) => (
-            <Slide index={i} key={spotId ? picture.id : picture}>
+            <Slide index={i} key={picture.id}>
               <div>
                 <img
                   className="slider__pictures"
-                  src={spotId ? picture?.img_url : picture}
+                  src={picture.img_url}
                   alt="spot"
                 />
               </div>
