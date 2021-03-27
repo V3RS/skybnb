@@ -16,7 +16,9 @@
 
 .spot-page-title {
   font-size: 30px;
-  /* width: 100%; */
+}
+.spot-page-title > h3 {
+  margin: 0;
 }
 #star__spot_page {
   padding-right: 2px;
@@ -167,7 +169,8 @@
 
 .bookingform__container {
   position: absolute;
-  top: 0px;
+  top: -42px;
+  right: -520px;
   border: 2px solid black;
   width: 375px;
   border-radius: 50px;
@@ -332,6 +335,7 @@
   overflow: fit-content;
 }
 
+
 #rating__title {
   font-size: 26px;
   display: flex;
@@ -355,3 +359,4 @@
   bottom: 2px;
   height: 28px;
 }
+

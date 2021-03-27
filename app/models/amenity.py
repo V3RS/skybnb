@@ -8,8 +8,8 @@ class Amenity(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     amenity = db.Column(db.String, nullable=False, unique=True)
-    spot = relationship("Spot", secondary=spotsamenitiesjoins,
-                        backref=db.backref('spotamenity', lazy='dynamic'))
+    spot = relationship("Spot", secondary=spotsamenitiesjoins, backref=db.backref('spotamenity', lazy = 'dynamic'))
+
 
     def to_dict(self):
         return {

@@ -51,7 +51,7 @@ export default function SpotPage() {
     <div id="spc">
       <div className="spot-page-container">
         <div className="spot-page-title">
-          <div>{spot?.title}</div>
+          <h3>{spot?.title}</h3>
         </div>
 
         <div className="spot-secondHeading">
@@ -108,13 +108,20 @@ export default function SpotPage() {
         </div>
         <div className="host__detail__container">
           <div className="host__title">
-            {spot?.title} by{" "}
+            {spot?.title} hosted by{" "}
             <Link id="host" to={`/users/${spot.host_id}`}>
               {spot?.host?.username}
             </Link>
           </div>
         </div>
         <div className="booking__and__amenties">
+          <div className="amenities__container">
+            <ul>
+              {spot?.amenities?.map((amenity) => {
+                return <li key={amenity.id}>{amenity.name}</li>;
+              })}
+            </ul>
+          </div>
           <div className="bookingform__container">
             <form onSubmit={(e) => handleSubmit(e)}>
               <div className="bookingform__title">
