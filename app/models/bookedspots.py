@@ -5,8 +5,8 @@ class BookedSpot(db.Model):
     __tablename__ = 'bookedspots'
 
     id= db.Column(db.Integer, primary_key=True)
-    start_date = db.Column(db.Date, nullable=False)
-    end_date = db.Column(db.Date, nullable=False)
+    start_date = db.Column(db.String, nullable=False)
+    end_date = db.Column(db.String, nullable=False)
     spot_id = db.Column(db.Integer, db.ForeignKey('spots.id'), nullable=False)
     spot = relationship("Spot", back_populates='bookedspots')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
