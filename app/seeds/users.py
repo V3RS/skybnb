@@ -6,14 +6,38 @@ def seed_users():
 
     demo = User(username='Demo', email='demo@aa.io',
                 password='password')
-    demo2 = User(username='Demo2', email='demo2@aa.io',
-                password='password')
+    emperor = User(username='Emperor Palpatine', email='d.sidous@ga.empire.boss.gov',
+                password='123456')
     lando = User(username='Lando Calrissian', email='landocalrissian@protonmail.com',
                 password="password")
+    jabba = User(username='Jabba The Hut', email='jthutt@gmail.com',
+                password="banthaPoodoo")
+    yoda = User(username='Yoda', email='yoda@doordonot.com',
+                password="YouWillB3")
+    chewy = User(username='Chewbacca', email='c.bacca@grrrrrr.net',
+                password="DontGoHan")
+    luke = User(username='Luke Skywalker', email='l.skywalker@doordonot.com',
+                password="Gimm3AHand")
+    han = User(username='Han Solo', email='theboss@nerfherder.io',
+                password="WhosScruffyLookin")
+    mara = User(username="Mara Jade", email='m.jade@ga.empire.hand.gov',
+                password="Emp3r0r2H4nd")
+    grogu = User(username='Grogu', email='grogu@yahoo.com',
+                password="B3oneBr0th")
+    padme = User(username='Padme Amidala', email='padme.amidala@palace.naboo.gov',
+                password="1uk3&13i4")
 
     db.session.add(demo)
-    db.session.add(demo2)
+    db.session.add(emperor)
     db.session.add(lando)
+    db.session.add(jabba)
+    db.session.add(yoda)
+    db.session.add(chewy)
+    db.session.add(luke)
+    db.session.add(han)
+    db.session.add(mara)
+    db.session.add(grogu)
+    db.session.add(padme)
 
     db.session.commit()
 

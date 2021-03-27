@@ -5,6 +5,7 @@ from .reviews import seed_reviews, undo_reviews
 from .spots import seed_spots, undo_spots
 from .spotsamenitiesjoins import seed_spotsamenitiesjoins, undo_spotsamenitiesjoins
 from .pictures import seed_pictures, undo_pictures
+from .user_image import seed_user_image, undo_user_image
 
 
 # Creates a seed group to hold our commands
@@ -18,6 +19,7 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_amenities()
+    seed_user_image()
     seed_spots()
     seed_reviews()
     seed_pictures()
@@ -32,6 +34,7 @@ def undo():
     undo_spotsamenitiesjoins()
     undo_amenities()
     undo_reviews()
+    undo_user_image()
     undo_pictures()
     undo_spots()
     undo_users()
