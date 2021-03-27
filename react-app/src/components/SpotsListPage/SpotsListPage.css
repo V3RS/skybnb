@@ -51,4 +51,13 @@
   margin: 0;
   margin-top: 1rem;
   right: 10px;
+  padding-bottom: 1.5rem;
+}
+
+#search_slider_btns {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* bottom: 10px; */
+  z-index: 10px;
 }

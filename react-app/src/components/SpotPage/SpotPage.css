@@ -16,7 +16,9 @@
 
 .spot-page-title {
   font-size: 30px;
-  /* width: 100%; */
+}
+.spot-page-title > h3 {
+  margin: 0;
 }
 #star__spot_page {
   padding-right: 2px;
@@ -43,6 +45,7 @@
 .spot-shbtns-container {
   display: flex;
   position: absolute;
+  top: 8px;
   left: 980px;
 }
 
@@ -164,33 +167,33 @@
   font-size: 20px;
 }
 
-
-.bookingform__container{
+.bookingform__container {
   position: absolute;
-  top: 0px;
+  top: -42px;
+  right: -520px;
   border: 2px solid black;
   width: 375px;
   border-radius: 50px;
   box-shadow: 1px 1px 10px 1px;
 }
 
-.bookingform__title{
+.bookingform__title {
   display: flex;
   margin-left: 20px;
   margin-right: 20px;
   justify-content: space-between;
 }
 
-.bookingform__title > h4{
+.bookingform__title > h4 {
   font-size: 20px;
   margin-top: 20px;
 }
 
-.bookingform__title > h2{
+.bookingform__title > h2 {
   margin-top: 20px;
 }
 
-.rdrDateDisplay{
+.rdrDateDisplay {
   display: flex;
   justify-content: space-between;
   margin-left: 10px;
@@ -216,7 +219,6 @@
   font-size: 14px;
   font-weight: bold;
   border-radius: 10px;
-  
 }
 
 .rdrMonthAndYearWrapper button {
@@ -227,17 +229,17 @@
   background-color: #63d471;
 }
 
-.rdrWeekDays{
+.rdrWeekDays {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   /* margin-right: 10px; */
   justify-content: center;
 }
 
-.rdrWeekDays > span{
-  color: #63d471
+.rdrWeekDays > span {
+  color: #63d471;
 }
-.rdrWeekDay{
+.rdrWeekDay {
   margin-left: 15px;
 }
 .rdrDays {
@@ -246,7 +248,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.rdrDays > button{
+.rdrDays > button {
   border: none;
   background-color: #484848;
   border-radius: 10px;
@@ -254,40 +256,38 @@
   font-weight: bold;
 }
 
-.rdrDays > button:hover{
+.rdrDays > button:hover {
   background-color: #63d471;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.rdrDayNumber > span{
-  color: white
+.rdrDayNumber > span {
+  color: white;
 }
 
-.rdrMonth{
+.rdrMonth {
   background-color: #484848;
   padding-top: 5px;
   margin-top: 5px;
   padding-bottom: 5px;
 }
 
-.rdrDayDisabled  span {
+.rdrDayDisabled span {
   color: gray;
 }
 
 .rdrDayDisabled {
-  cursor: not-allowed; 
+  cursor: not-allowed;
 }
 
-
-
-.bookingform__submit{
+.bookingform__submit {
   border: none;
   border-radius: 50px;
   height: 50px;
   width: 200px;
   font-weight: bold;
   font-size: 20px;
-  background-color: #B1EAB8;
+  background-color: #b1eab8;
 }
 
 .submit__container {
@@ -297,9 +297,9 @@
   margin-bottom: 10px;
 }
 
-.bookingform__submit:hover{
+.bookingform__submit:hover {
   background-color: #63d471;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .spot__reviews {
@@ -309,7 +309,7 @@
   margin-top: 1.5rem;
 }
 
-.reviews__container {
+#reviews__container {
   /* border: 1px solid black; */
   border-bottom: 1px solid #dddddd;
   position: relative;
@@ -333,5 +333,30 @@
   height: 550px;
   border-bottom: 1px solid #dddddd;
   overflow: fit-content;
+}
+
+
+#rating__title {
+  font-size: 26px;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+#star__spot_page__title {
+  padding-right: 0.2rem;
+}
+
+#reviews_count__title {
+  position: relative;
+  bottom: 55px;
+  color: gray;
+  padding-left: 2.4rem;
+}
+
+.rat_revs_container {
+  position: relative;
+  bottom: 2px;
+  height: 28px;
 }
 

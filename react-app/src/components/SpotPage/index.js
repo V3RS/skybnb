@@ -5,10 +5,12 @@ import { getOneSpot } from "../../services/spot";
 import { useDispatch, useSelector } from "react-redux";
 import { openPictureSlider } from "../../store/modal.js";
 
-import { DateRange } from "react-date-range"
+import { DateRange } from "react-date-range";
 
 import MapContainer from "./MapContainer";
+
 import * as bookingActions from "../../store/spot.js"
+
 
 import "./SpotPage.css";
 
@@ -35,7 +37,7 @@ export default function SpotPage() {
 
   const openSlider = () => dispatch(openPictureSlider());
 
-//   console.log("SPOTT", spot);
+  console.log("SPOTT", spot);
 
   const radIdFunc = (i) => {
     if (i === 2) return "fourth__pic";
@@ -44,6 +46,7 @@ export default function SpotPage() {
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault()
     dispatch(bookingActions.bookSpot(spotId, ranges[0].startDate, ranges[0].endDate, session.id))
   }
@@ -52,19 +55,24 @@ export default function SpotPage() {
     <div id="spc">
       <div className="spot-page-container">
         <div className="spot-page-title">
-          <div>{spot?.title}</div>
+          <h3>{spot?.title}</h3>
         </div>
+
         <div className="spot-secondHeading">
           <div className="rating__address">
-            <div id="rating">
-              <i id="star__spot_page" className="fas fa-star"></i>
-              {spot?.rating}
-              <p id="reviews_count">
-                ({spot?.reviews_count}{" "}
-                {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
-              </p>
-            </div>
-            <div className="spot__address">{spot?.address}</div>
+            <a href="#scr-reviews">
+              <div id="rating">
+                <i id="star__spot_page" className="fas fa-star"></i>
+                {spot?.rating}
+                <p id="reviews_count">
+                  ({spot?.reviews_count}{" "}
+                  {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
+                </p>
+              </div>
+            </a>
+            <a href="#spot__map">
+              <div className="spot__address">{spot?.address}</div>
+            </a>
           </div>
           <div className="spot-shbtns-container">
             <button className="spot-shbtns">
@@ -104,44 +112,62 @@ export default function SpotPage() {
         </div>
         <div className="host__detail__container">
           <div className="host__title">
-            {spot?.title} by{" "}
+            {spot?.title} hosted by{" "}
             <Link id="host" to={`/users/${spot.host_id}`}>
               {spot?.host?.username}
             </Link>
           </div>
         </div>
         <div className="booking__and__amenties">
-               <div className="bookingform__container">
-          <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="bookingform__title">
-            <h2>${spot?.price}/night</h2>
-            <h4><i id="star__spot_page" className="fas fa-star"></i>{spot?.rating}</h4>
+          <div className="amenities__container">
+            <ul>
+              {spot?.amenities?.map((amenity) => {
+                return <li key={amenity.id}>{amenity.amenity}</li>;
+              })}
+            </ul>
           </div>
-          <div className="bookingform__date">
-            <DateRange
-              minDate={today}
-              // disabledDates={[]}
-              editableDateInputs={true}
-              onChange={item => setRanges([item.selection])}
-              moveRangeOnFirstSelection={false}
-              ranges={ranges}
-              />
-          </div>
-          <div className='submit__container'>
-            <button className='bookingform__submit' type='submit'>Book Trip</button>
-          </div>
-          </form>
-         </div>
+          <div className="bookingform__container">
+            <form onSubmit={(e) => handleSubmit(e)}>
+              <div className="bookingform__title">
+                <h2>${spot?.price}/night</h2>
+                <h4>
+                  <i id="star__spot_page" className="fas fa-star"></i>
+                  {spot?.rating}
+                </h4>
               </div>
-        <div className="reviews__container">
-          <div className="average__review__rating">
-            <div id="rating">
-              <i id="star__spot_page" className="fas fa-star"></i>
-              {spot?.rating}
-              <p id="reviews_count">
-                ({spot?.reviews_count}{" "}
-                {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
-              </p>
+              <div className="bookingform__date">
+                <DateRange
+                  minDate={today}
+                  // disabledDates={[]}
+                  editableDateInputs={true}
+                  onChange={(item) => setRanges([item.selection])}
+                  moveRangeOnFirstSelection={false}
+                  ranges={ranges}
+                />
+              </div>
+              <div className="submit__container">
+                <button
+                  id="scr-reviews"
+                  className="bookingform__submit"
+                  type="submit"
+                >
+                  Book Trip
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="reviews__container">
+          <div className="average__review__rating__title">
+            <div id="rating__title">
+              <i id="star__spot_page__title" className="fas fa-star"></i>
+              <div className="rat_revs_container">
+                {spot?.rating}
+                <p id="reviews_count__title">
+                  ({spot?.reviews_count}{" "}
+                  {spot?.reviews_count !== 1 ? "reviews" : "review"}){" "}
+                </p>
+              </div>
             </div>
           </div>
           {spot?.reviews?.map((review) => (
@@ -157,10 +183,9 @@ export default function SpotPage() {
             </div>
           ))}
         </div>
-        <div className="spotmap__container">
-          {/* seeders need to fixed this is small fix for now */}
-          <MapContainer location={{ lat: spot.lng, lng: spot.lat }} />
-      </div>
+        <div id="spot__map" className="spotmap__container">
+          <MapContainer location={{ lat: spot.lat, lng: spot.lng }} />
+        </div>
       </div>
     </div>
   );
