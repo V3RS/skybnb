@@ -36,9 +36,9 @@ export default function SpotsListEle({
         if (
           e.target.id === "slider_btn1" ||
           e.target.id === "slider_btn2" ||
-          e.target.id === "not1" ||
-          e.target.id === "not2" ||
-          e.target.id === "not3" ||
+          e.target.id === "slid_btn1" ||
+          e.target.id === "slid_btn2" ||
+          e.target.id === "dot__group" ||
           e.target.tagName.toLowerCase() === "button"
         )
           return;
@@ -63,22 +63,24 @@ export default function SpotsListEle({
             </Slide>
           ))}
         </Slider>
-        <div id="search_slider_btns">
-          <ButtonBack id="not1">
-            <i className="fas fa-angle-left" id="slider_btn1"></i>
-          </ButtonBack>
-          <ButtonNext id="not2">
-            <i className="fas fa-angle-right" id="slider_btn2"></i>
-          </ButtonNext>
-        </div>
-        <div id="not3">
-          <DotGroup />
+        <div id="dot__group__container">
+          <div id="search_slider_btns">
+            <ButtonBack id="slid_btn1">
+              <i className="fas fa-angle-left fa-2x" id="slider_btn1"></i>
+            </ButtonBack>
+            <ButtonNext id="slid_btn2">
+              <i className="fas fa-angle-right fa-2x" id="slider_btn2"></i>
+            </ButtonNext>
+          </div>
+          <div id="dot__group">
+            <DotGroup />
+          </div>
         </div>
       </CarouselProvider>
       <i className="far fa-heart fa-lg"></i>
       <div className="spotslistele-info-container">
         <div className="spotslistele-info-top">
-          <span>{location_desc}</span>
+          <span>{location_desc}...</span>
           <h3>{title}</h3>
           <div className="info-top-line"></div>
           <p>{description}</p>

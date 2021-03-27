@@ -18,7 +18,7 @@
   border-radius: 10px;
 }
 
-.slider__pictures__spot__list {
+.slider__pictures__spot__list:hover {
   transition: transform 0.1s ease-in-out;
   transform: scale(1.02);
   opacity: 0.95;
@@ -83,4 +83,65 @@
 
 .review_count {
   font-weight: 300;
+}
+
+#slid_btn1,
+#slid_btn2 {
+  position: absolute;
+  bottom: 38%;
+  border-radius: 50%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  opacity: 0.7;
+}
+
+#slid_btn1 {
+  right: 4rem;
+}
+#slid_btn2 {
+  left: 9.5rem;
+}
+
+#search_slider_btns {
+  /* border: 1px solid black; */
+  position: relative;
+  bottom: 200px;
+  height: 200px;
+}
+
+#search_slider_btns {
+  display: none;
+  /* display: block; */
+}
+
+#dot__group__container {
+  /* border: 1px solid black; */
+  position: relative;
+  bottom: 200px;
+  height: 200px;
+  /* background-color: red; */
+}
+
+#dot__group__container > div {
+  position: absolute;
+  bottom: 4%;
+  left: 35%;
+  display: none;
+}
+
+#dot__group > div > button {
+  height: 16px;
+  margin-right: 0.3rem;
+  /* adding a border radius messed with the selected prop for the dot group */
+  /* border-radius: 50%; */
+  opacity: 0.7;
+}
+
+#dot__group__container:hover > div,
+#dot__group__container > div:hover {
+  display: block;
 }

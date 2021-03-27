@@ -61,9 +61,3 @@
   /* bottom: 10px; */
   z-index: 10px;
 }
-
-#not1,
-#not2 {
-  border-radius: 50%;
-  background: none;
-}
