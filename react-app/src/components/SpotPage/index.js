@@ -8,8 +8,10 @@ import {
   openComingSoon,
   openReviews,
   openSignup,
+  openReviewForm,
 } from "../../store/modal.js";
 import ReviewsModal from "../ReviewsModal";
+import ReviewFormModal from "../ReviewFormModal";
 
 import { DateRange } from "react-date-range";
 
@@ -71,6 +73,7 @@ export default function SpotPage() {
         rating={spot?.rating}
         reviews_count={spot?.reviews_count}
       />
+      <ReviewFormModal />
       <div className="spot-page-container">
         <div className="spot-page-title">
           <h3>{spot?.title}</h3>
@@ -228,29 +231,33 @@ export default function SpotPage() {
               </div>
             </div>
           </div>
-          {spot?.reviews?.slice(0, 7).map((review) => (
-            <div key={review.id}>
-              <div className="spot__reviews">
-                <div className="spot__reviews__author">
-                  <div
-                    id="review__user__pic"
-                    onClick={() => history.push(`/users/${review.user.id}`)}
-                  >
-                    <img
-                      className="pro__pic"
-                      src={review.img.img_url}
-                      alt="review user profile picture"
-                    ></img>
+          <div id="all_rev_container">
+            {spot?.reviews?.slice(0, 8).map((review) => (
+              <div key={review.id}>
+                <div className="spot__reviews">
+                  <div className="spot__reviews__author">
+                    <div
+                      id="review__user__pic"
+                      onClick={() => history.push(`/users/${review.user.id}`)}
+                    >
+                      <img
+                        className="pro__pic"
+                        src={review.img.img_url}
+                        alt="review user profile picture"
+                      ></img>
+                    </div>
+                    <Link id="rev__author" to={`/users/${review.user.id}`}>
+                      {review.user.username}
+                    </Link>
+                    <div id="review__date">March 2021</div>
                   </div>
-                  <Link id="rev__author" to={`/users/${review.user.id}`}>
-                    {review.user.username}
-                  </Link>
-                  <div id="review__date">March 2021</div>
+                  <div className="spot__reviews__comment">
+                    {review.comment}{" "}
+                  </div>
                 </div>
-                <div className="spot__reviews__comment">{review.comment} </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
           <div id="revs__btns__container">
             <div id="show__all__revs">
               <button id="revs__btn" onClick={openRev}>
@@ -262,7 +269,7 @@ export default function SpotPage() {
                 id="add__revs__btn"
                 onClick={
                   session.id
-                    ? () => dispatch(openComingSoon())
+                    ? () => dispatch(openReviewForm())
                     : () => dispatch(openSignup())
                 }
               >
