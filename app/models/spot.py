@@ -33,6 +33,16 @@ class Spot(db.Model):
             "host_id": self.host_id,
         }
 
+    def to_dict_with_bookings(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "address": self.address,
+            "host_id": self.host_id,
+            "description": self.description,
+            "pictures": [picture.img_url for picture in self.pictures],
+            "bookings": [booking.to_dict() for booking in self.bookedspots],
+        }
 
     def to_dict_with_picture(self):
         total = 0

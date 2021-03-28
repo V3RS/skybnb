@@ -1,0 +1,53 @@
+.singlebooking__container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 400px;
+}
+
+.singlebooking-image__container:hover {
+  cursor: pointer;
+}
+.singlebooking-info__container:hover {
+  cursor: pointer;
+}
+
+.singlebooking-image__container {
+  width: 100px;
+  height: 75px;
+}
+
+.singlebooking-image__container > img {
+  width: 100%;
+  height: 85%;
+  border-radius: 10px;
+}
+
+.singlebooking-info__container {
+  position: relative;
+  margin-left: 0.42rem;
+}
+.singlebooking-info__container > .singlebooking-title {
+  margin-top: 1px;
+}
+.singlebooking-info__container > .singlebooking-daterange__container {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.singlebooking-cancel__container {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+}
+.cancel-button {
+  background-color: #63d471;
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+}
+
+.cancel-button:hover {
+  color: white;
+}
