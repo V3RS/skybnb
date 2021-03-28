@@ -82,30 +82,32 @@ export default function ProfilePage() {
       </div>
       <div className="profile_container_right">
         <div className="profile_info">
-          {session.id && (
-            <>
-              <h1 className="user_greeting">Hi, I'm {username}</h1>
-              <div className="report_user_container">
-                <div
-                  className="profile-reviews-link"
-                  onClick={handleToggleReviews}
-                >
-                  <i className="fas fa-star"> </i> {reviews.length} Reviews
-                </div>
-                <div className="spacer">·</div>
-                <div
-                  className="profile-bookings-link"
-                  onClick={handleToggleReviewsFalse}
-                >
-                  {bookings?.length} Bookings
-                </div>
-                <div className="spacer">·</div>
-                <div className="report_user" onClick={openCS}>
-                  Report User
-                </div>
+          <>
+            <h1 className="user_greeting">Hi, I'm {username}</h1>
+            <div className="report_user_container">
+              <div
+                className="profile-reviews-link"
+                onClick={handleToggleReviews}
+              >
+                <i className="fas fa-star"> </i> {reviews.length} Reviews
               </div>
-            </>
-          )}
+              <div className="spacer">·</div>
+              {session && session.id && id === session.id.toString() && (
+                <>
+                  <div
+                    className="profile-bookings-link"
+                    onClick={handleToggleReviewsFalse}
+                  >
+                    {bookings?.length} Bookings
+                  </div>
+                  <div className="spacer">·</div>
+                </>
+              )}
+              <div className="report_user" onClick={openCS}>
+                Report User
+              </div>
+            </div>
+          </>
         </div>
         {!showReviews && (
           <div className="profile_bookings">

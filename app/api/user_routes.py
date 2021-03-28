@@ -14,7 +14,6 @@ def users():
 
 
 @user_routes.route('/<int:id>')
-@login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
@@ -24,6 +23,7 @@ def user(id):
 def picture(id):
     user_image = UserImage.query.filter_by(user_id=id).first()
     return user_image.to_dict()
+
 
 @user_routes.route('/reviews/<int:id>')
 def reviews(id):
@@ -36,6 +36,7 @@ def user_bookings():
     req_id = request.data.decode("UTF-8")
     user_bookings = BookedSpot.query.filter_by(user_id=req_id).all()
     return {"bookings": [booking.to_dict() for booking in user_bookings]}
+
 
 @user_routes.route('/bookings/delete', methods=["POST"])
 def user_delete_one_booking():
