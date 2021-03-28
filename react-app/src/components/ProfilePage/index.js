@@ -3,19 +3,28 @@ import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import DropZoneModal from "../DropZoneModal";
 import SingleBooking from "./SingleBooking";
+import { fetchAllBookings } from "../../store/bookings.js";
 import "./profilePage.css";
 
 export default function ProfilePage() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const bookings = useSelector((state) => state.bookings);
   const [user, setUser] = useState();
+  // const [bookings, setBookings] = useState([]);
   const [picture, setPicture] = useState(
     "https://53.cdn.ekm.net/ekmps/shops/stormtrooper/images/original-stormtrooper-stunt-helmet-109-p.jpg?v=1"
   );
   const [reviews, setReviews] = useState([]);
-  const [bookings, setBookings] = useState([]);
+
   const session = useSelector((state) => state.session);
 
+  useEffect(() => {
+    async function fetchBookings() {
+      dispatch(fetchAllBookings(id));
+    }
+    fetchBookings();
+  }, []);
   useEffect(() => {
     async function fetchUser() {
       const res = await fetch(`/api/users/${id}`);
@@ -33,26 +42,25 @@ export default function ProfilePage() {
       if (img_url) setPicture(img_url.img_url);
     }
 
-    async function fetchReviews(data) {
-      const reviews = await fetch(`/api/users/reviews/${data.id}`);
-    }
+    // async function fetchReviews(data) {
+    //   const reviews = await fetch(`/api/users/reviews/${data.id}`);
+    // }
 
-    async function fetchBookings(data) {
-      const res = await fetch(`/api/users/bookings/`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: data.id,
-      });
+    // async function fetchBookings(data) {
+    //   const res = await fetch(`/api/users/bookings/`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-type": "application/json",
+    //     },
+    //     body: data.id,
+    //   });
 
-      const bookings_obj = await res.json();
+    //   const bookings_obj = await res.json();
 
-      if (res.ok) setBookings(bookings_obj.bookings);
-    }
+    //   if (res.ok) setBookings(bookings_obj.bookings);
+    // }
     if (user) {
       fetchImg(user);
-      fetchBookings(user);
     }
   }, [user]);
 
@@ -91,9 +99,10 @@ export default function ProfilePage() {
         </div>
         <div className="profile_bookings">
           <div className="profile_bookings_header">Bookings</div>
-          {bookings.map((booking) => {
-            return <SingleBooking booking={booking} />;
-          })}
+          {bookings &&
+            bookings?.map((booking) => {
+              return <SingleBooking booking={booking} user_id={id} />;
+            })}
         </div>
       </div>
     </div>

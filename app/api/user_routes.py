@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User, UserImage, Review, BookedSpot, Spot
+from app.models import User, UserImage, Review, BookedSpot, Spot, db
 from sqlalchemy import select
 
 user_routes = Blueprint('users', __name__)
@@ -41,3 +41,13 @@ def user_bookings():
     #     ret_list.append(spot.to_dict_with_bookings())
 
     return {"bookings": [booking.to_dict() for booking in user_bookings]}
+
+@user_routes.route('/bookings/delete', methods=["POST"])
+def user_delete_one_booking():
+    booking_id = request.data.decode("UTF-8")
+    print("-------------------------")
+    print(booking_id)
+    canceled_booking = BookedSpot.query.get(booking_id)
+    db.session.delete(canceled_booking)
+    db.session.commit()
+    return canceled_booking

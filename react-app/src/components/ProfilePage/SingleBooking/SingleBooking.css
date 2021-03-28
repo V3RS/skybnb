@@ -1,9 +1,14 @@
 .singlebooking__container {
   display: flex;
   flex-direction: row;
+  position: relative;
+  width: 400px;
 }
 
-.singlebooking__container:hover {
+.singlebooking-image__container:hover {
+  cursor: pointer;
+}
+.singlebooking-info__container:hover {
   cursor: pointer;
 }
 
@@ -29,4 +34,20 @@
   font-size: 0.9rem;
   font-weight: 600;
   margin-top: 10px;
+}
+
+.singlebooking-cancel__container {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+}
+.cancel-button {
+  background-color: #63d471;
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+}
+
+.cancel-button:hover {
+  color: white;
 }
