@@ -1,14 +1,13 @@
 import React from "react";
 import "./Home.css";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { openSignup } from "../../store/modal.js";
+import { openSignup, openComingSoon } from "../../store/modal.js";
 
 function Home() {
-  const history = useHistory();
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
 
+  const openCS = () => dispatch(openComingSoon());
 
   return (
     <div>
@@ -25,28 +24,28 @@ function Home() {
       <div className="ammenities__container">
         <h2>Live anywhere</h2>
         <div className="ammenities__images">
-          <div className="single__ammenity">
+          <div className="single__ammenity" onClick={openCS}>
             <img
               alt=""
               src="https://pm1.narvii.com/6041/880e894abc46342473f11838a65ee9571a0f5c27_hq.jpg"
             />
             <h4>Temples</h4>
           </div>
-          <div className="single__ammenity">
+          <div className="single__ammenity" onClick={openCS}>
             <img
               alt=""
               src="https://www.denofgeek.com/wp-content/uploads/2016/01/millennium-falcon.jpg"
             />
             <h4>Space ships</h4>
           </div>
-          <div className="single__ammenity">
+          <div className="single__ammenity" onClick={openCS}>
             <img
               alt=""
               src="https://d3eys52k95jjdh.cloudfront.net/wp-content/uploads/2019/07/cropped-He_Tatooine_21.jpg"
             />
             <h4>Desert igloos</h4>
           </div>
-          <div className="single__ammenity">
+          <div className="single__ammenity" onClick={openCS}>
             <img
               alt=""
               src="https://api.time.com/wp-content/uploads/2019/12/cute-star-wars-characters-07.jpg"
@@ -66,8 +65,7 @@ function Home() {
           <button
             onClick={() => {
               if (session.id) {
-                history.push("/createspot");
-                window.scrollTo(0, 0);
+                dispatch(openComingSoon());
               } else dispatch(openSignup());
             }}
           >

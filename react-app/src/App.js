@@ -20,6 +20,7 @@ import ProfileImgForm from "./components/ProfileImgForm";
 import ProfilePage from "./components/ProfilePage";
 import CommingSoon from "./components/ComingSoon";
 import PictureSliderModal from "./components/PictureSliderModal";
+import ComingSoonModal from "./components/ComingSoonModal";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -58,6 +59,7 @@ function App() {
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
       />
+      <ComingSoonModal />
       <Switch>
         <Route exact path="/">
           <Home />
