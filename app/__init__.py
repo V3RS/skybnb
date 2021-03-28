@@ -11,6 +11,9 @@ from .api.auth_routes import auth_routes
 from .api.photo_uploads import photo_routes
 from .api.spot_routes import spot_routes
 
+
+from .api.review_routes import review_routes
+
 from .seeds import seed_commands
 
 from .config import Config
@@ -35,6 +38,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(photo_routes, url_prefix='/api/photo_upload')
 app.register_blueprint(spot_routes, url_prefix='/api/spots')
+app.register_blueprint(review_routes, url_prefix='/api/reviews')
 db.init_app(app)
 Migrate(app, db)
 
