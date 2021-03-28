@@ -11,6 +11,10 @@
   margin-left: 1%;
   margin-right: 1%;
 }
+.spl__container {
+  height: 93vh;
+  overflow: scroll;
+}
 .spotslist-header {
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #dddddd;
