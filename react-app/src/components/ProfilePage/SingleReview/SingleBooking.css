@@ -1,0 +1,54 @@
+.singlereview__container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 700px;
+}
+
+.singlereview-image__container:hover {
+  cursor: pointer;
+}
+.singlereview-info__container:hover {
+  cursor: pointer;
+}
+
+.singlereview-image__container {
+  width: 100px;
+  height: 75px;
+}
+
+.singlereview-image__container > img {
+  width: 100%;
+  height: 85%;
+  border-radius: 10px;
+}
+
+.singlereview-info__container {
+  position: relative;
+  margin-left: 0.42rem;
+  max-width: 500px;
+  overflow: hidden;
+}
+.singlereview-info__container > .singlereview-title {
+  margin-top: 1px;
+}
+.singlereview-info__container > .singlereview-daterange__container {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+/* .singlebooking-cancel__container {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+}
+.cancel-button {
+  background-color: #63d471;
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+}
+
+.cancel-button:hover {
+  color: white;
+} */

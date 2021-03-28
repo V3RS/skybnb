@@ -20,5 +20,6 @@ class Review(db.Model):
             "comment": self.comment,
             "rating": self.rating,
             "user_id": self.user_id,
-            "spot_id": self.spot_id
+            "spot_id": self.spot_id,
+            "spot": self.spot.to_dict_with_picture(),
         }

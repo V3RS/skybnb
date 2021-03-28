@@ -34,10 +34,6 @@ div {
   flex-direction: row;
 }
 
-.report_user {
-  margin-left: 2rem;
-}
-
 .profile_bookings_header {
   margin-bottom: 1rem;
 }
@@ -96,4 +92,17 @@ div {
 
 .picture_button:hover {
   background-color: #b1eab8;
+}
+
+.profile-reviews-link:hover {
+  cursor: pointer;
+}
+
+.profile-bookings-link:hover {
+  cursor: pointer;
+}
+
+.spacer {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
