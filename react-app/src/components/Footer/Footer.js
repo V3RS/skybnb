@@ -1,7 +1,13 @@
 import React from "react";
 import "./Footer.css";
+import { useDispatch } from "react-redux";
+import { openComingSoon } from "../../store/modal.js";
 
 function Footer() {
+  const dispatch = useDispatch();
+
+  const openCS = () => dispatch(openComingSoon());
+
   return (
     <div className="footer__container">
       <div className="footer__organizer">
@@ -38,14 +44,9 @@ function Footer() {
             </a>
           </p>
           <p>
-            <a
-              className="footer__links"
-              target="_blank"
-              rel="noopener noreferrer"
-              href='/'
-            >
+            <p className="footer__links" onClick={openCS}>
               Portfolio Site
-            </a>
+            </p>
           </p>
         </div>
         <div className="community__container">
@@ -81,14 +82,9 @@ function Footer() {
             </a>
           </p>
           <p>
-            <a
-              className="footer__links"
-              target="_blank"
-              rel="noopener noreferrer"
-              href='/'
-            >
+            <p className="footer__links" onClick={openCS}>
               Portfolio Site
-            </a>
+            </p>
           </p>
         </div>
         <div className="host__container">
@@ -124,14 +120,9 @@ function Footer() {
             </a>
           </p>
           <p>
-            <a
-              className="footer__links"
-              target="_blank"
-              rel="noopener noreferrer"
-              href='/'
-            >
+            <p className="footer__links" onClick={openCS}>
               Portfolio Site
-            </a>
+            </p>
           </p>
         </div>
         <div className="support__container">
@@ -167,14 +158,9 @@ function Footer() {
             </a>
           </p>
           <p>
-            <a
-              className="footer__links"
-              target="_blank"
-              rel="noopener noreferrer"
-              href='/'
-            >
+            <p className="footer__links" onClick={openCS}>
               Portfolio Site
-            </a>
+            </p>
           </p>
         </div>
       </div>

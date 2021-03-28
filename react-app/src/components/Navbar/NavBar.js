@@ -5,7 +5,7 @@ import "./Navbar.css";
 import LogoutButton from "../auth/LogoutButton";
 // import logo from "./logo.png";
 import * as spotslistActions from "../../store/spotslist";
-import { openSignup, openLogin } from "../../store/modal.js";
+import { openSignup, openLogin, openComingSoon } from "../../store/modal.js";
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
   const session = useSelector((state) => state.session);
@@ -24,6 +24,8 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     history.push("/spotslistpage");
     return dispatch(spotslistActions.spotslistSearch(searchQuery));
   };
+
+  const openCS = () => dispatch(openComingSoon());
 
   useEffect(() => {
     async function fetchImg(data) {
@@ -91,8 +93,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           <p
             onClick={() => {
               if (session.id) {
-                history.push("/createspot");
-                window.scrollTo(0, 0);
+                openCS();
               } else dispatch(openSignup());
             }}
           >

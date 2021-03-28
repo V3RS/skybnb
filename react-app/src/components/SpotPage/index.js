@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { Link, useHistory } from "react-router-dom";
 import { getOneSpot } from "../../services/spot";
 import { useDispatch, useSelector } from "react-redux";
-import { openPictureSlider } from "../../store/modal.js";
+import { openPictureSlider, openComingSoon } from "../../store/modal.js";
 
 import { DateRange } from "react-date-range";
 
@@ -37,7 +37,7 @@ export default function SpotPage() {
 
   const openSlider = () => dispatch(openPictureSlider());
 
-  console.log("SPOTT", spot);
+  // console.log("SPOTT", spot);
 
   const radIdFunc = (i) => {
     if (i === 2) return "fourth__pic";
@@ -66,25 +66,29 @@ export default function SpotPage() {
 
         <div className="spot-secondHeading">
           <div className="rating__address">
-            <a href="#scr-reviews">
-              <div id="rating">
-                <i id="star__spot_page" className="fas fa-star"></i>
-                {spot?.rating}
-                <p id="reviews_count">
-                  ({spot?.reviews_count}{" "}
-                  {spot?.reviews_count !== 1 ? "reviews" : "review"})
-                </p>
-              </div>
-            </a>
+            <div id="rating">
+              <i id="star__spot_page" className="fas fa-star"></i>
+              {spot?.rating}
+              <p id="reviews_count">
+                ({spot?.reviews_count}{" "}
+                {spot?.reviews_count !== 1 ? "reviews" : "review"})
+              </p>
+            </div>
             <a href="#spot__map">
               <div className="spot__address">{spot?.address}</div>
             </a>
           </div>
           <div className="spot-shbtns-container">
-            <button className="spot-shbtns">
+            <button
+              className="spot-shbtns"
+              onClick={() => dispatch(openComingSoon())}
+            >
               <i className="far fa-share-square"></i>Share
             </button>
-            <button className="spot-shbtns">
+            <button
+              className="spot-shbtns"
+              onClick={() => dispatch(openComingSoon())}
+            >
               <i className="far fa-heart"></i>Save
             </button>
           </div>
@@ -191,6 +195,12 @@ export default function SpotPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+        <div id="description__container">
+          <div id="spot__desc">{spot.description}</div>
+          <div id="contact__host" onClick={() => dispatch(openComingSoon())}>
+            Contact host
           </div>
         </div>
         <div id="reviews__container">
