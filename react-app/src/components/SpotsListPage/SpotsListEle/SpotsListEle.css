@@ -29,6 +29,9 @@
   top: 10px;
   right: 10px;
 }
+.spotslistele > .fa-heart:hover {
+  color: #63d471;
+}
 
 .spotslistele-info-container {
   margin-left: 1rem;
