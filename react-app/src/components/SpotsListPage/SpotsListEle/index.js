@@ -1,7 +1,9 @@
 import React from "react";
 import "./SpotsListEle.css";
 import { useHistory } from "react-router-dom";
-// import { openPictureSlider } from "../../../store/modal.js";
+import { useDispatch } from "react-redux";
+import { openComingSoon } from "../../../store/modal.js";
+
 import {
   CarouselProvider,
   Slider,
@@ -23,6 +25,8 @@ export default function SpotsListEle({
   price,
 }) {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const openCS = () => dispatch(openComingSoon());
   // const openSlider = () => dispatch(openPictureSlider());
 
   const handleSpotsPageRedirect = (spot_id) => {
@@ -39,7 +43,8 @@ export default function SpotsListEle({
           e.target.id === "slid_btn1" ||
           e.target.id === "slid_btn2" ||
           e.target.id === "dot__group" ||
-          e.target.tagName.toLowerCase() === "button"
+          e.target.tagName.toLowerCase() === "button" ||
+          e.target.id === "se__heart"
         )
           return;
         handleSpotsPageRedirect(id);
@@ -77,7 +82,7 @@ export default function SpotsListEle({
           </div>
         </div>
       </CarouselProvider>
-      <i className="far fa-heart fa-lg"></i>
+      <i id="se__heart" onClick={openCS} className="far fa-heart fa-lg"></i>
       <div className="spotslistele-info-container">
         <div className="spotslistele-info-top">
           <span>{location_desc}...</span>
