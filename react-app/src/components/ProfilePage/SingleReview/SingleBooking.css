@@ -1,42 +1,43 @@
-.singlebooking__container {
+.singlereview__container {
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 400px;
+  width: 700px;
 }
 
-.singlebooking-image__container:hover {
+.singlereview-image__container:hover {
   cursor: pointer;
 }
-.singlebooking-info__container:hover {
+.singlereview-info__container:hover {
   cursor: pointer;
 }
 
-.singlebooking-image__container {
+.singlereview-image__container {
   width: 100px;
   height: 75px;
 }
 
-.singlebooking-image__container > img {
+.singlereview-image__container > img {
   width: 100%;
   height: 85%;
   border-radius: 10px;
 }
 
-.singlebooking-info__container {
+.singlereview-info__container {
   position: relative;
   margin-left: 0.42rem;
+  max-width: 500px;
+  overflow: hidden;
 }
-.singlebooking-info__container > .singlebooking-title {
+.singlereview-info__container > .singlereview-title {
   margin-top: 1px;
 }
-.singlebooking-info__container > .singlebooking-daterange__container {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-top: 10px;
+.singlereview-info__container > .singlereview-daterange__container {
+  font-size: 0.8rem;
+  margin-top: 5px;
 }
 
-.singlebooking-cancel__container {
+/* .singlebooking-cancel__container {
   position: absolute;
   bottom: 15px;
   right: 10px;
@@ -50,4 +51,4 @@
 
 .cancel-button:hover {
   color: white;
-}
+} */

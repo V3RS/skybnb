@@ -59,6 +59,9 @@ export default function ProfilePage() {
   const handleToggleReviews = () => {
     setShowReviews(!showReviews);
   };
+  const handleToggleReviewsFalse = () => {
+    setShowReviews(false);
+  };
   return (
     <div className="profile_container">
       <div className="profile_container_left">
@@ -86,6 +89,14 @@ export default function ProfilePage() {
                 >
                   <i className="fas fa-star"> </i> {reviews.length} Reviews
                 </div>
+                <div className="spacer">·</div>
+                <div
+                  className="profile-bookings-link"
+                  onClick={handleToggleReviewsFalse}
+                >
+                  {bookings?.length} Bookings
+                </div>
+                <div className="spacer">·</div>
                 <a className="report_user" href="/report_user">
                   Report User
                 </a>
@@ -106,8 +117,11 @@ export default function ProfilePage() {
         )}
         {showReviews && (
           <div className="profile_bookings">
-            {reviews.map((review) => {
-              return <SingleReview booking={review} />;
+            {reviews[0] && (
+              <div className="profile_bookings_header">Reviews</div>
+            )}
+            {reviews?.map((review) => {
+              return <SingleReview review={review} />;
             })}
           </div>
         )}
