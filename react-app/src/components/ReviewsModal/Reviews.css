@@ -1,0 +1,144 @@
+.reviews__modal__container {
+  height: 45rem;
+  width: 65rem;
+  position: relative;
+}
+
+.close__modal__reviews {
+  /* color: #63d471; */
+  position: absolute;
+  top: -8%;
+  left: 1%;
+  font-size: 24px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+
+.close__modal__reviews:hover {
+  background-color: #dddddd;
+}
+
+#reviews__container__modal {
+  /* border: 1px solid black; */
+  /* border-bottom: 1px solid #dddddd; */
+  position: relative;
+  padding-bottom: 1.5rem;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  /* overflow: scroll; */
+  /* max-height: 650px; */
+}
+
+#rating__title__modal {
+  font-size: 36px;
+  display: flex;
+  width: 100%;
+  position: relative;
+  font-weight: bold;
+  padding-left: 1rem;
+}
+
+#star__spot_page__title__modal {
+  padding-right: 0.2rem;
+}
+
+#reviews_count__title__modal {
+  position: relative;
+  bottom: 74px;
+  color: gray;
+  padding-left: 3.3rem;
+}
+
+.rat_revs_container__modal {
+  position: relative;
+  bottom: 2px;
+  height: 28px;
+}
+
+.spot__reviews__modal {
+  /* border: 1px solid black; */
+  position: relative;
+  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  /* padding-left: 30rem; */
+}
+
+#review__user__pic__modal {
+  border-radius: 50%;
+  position: relative;
+  /* border: 1px solid black; */
+  height: 56px;
+  width: 56px;
+  /* display: inline-block; */
+  /* bottom: 25px; */
+  /* left: 3px; */
+  cursor: pointer;
+}
+
+#rev__author__modal {
+  position: absolute;
+  color: black;
+  top: 0.7rem;
+  left: 4rem;
+}
+
+#review__date__modal {
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+  color: gray;
+}
+
+.spot__reviews__comment__modal {
+  position: relative;
+  top: 1rem;
+  max-width: 33rem;
+  line-height: 1.75;
+}
+
+.all__rev__container__modal {
+  position: absolute;
+  left: 45%;
+  top: 100%;
+  max-height: 650px;
+  overflow: scroll;
+}
+
+#search__icon__rev {
+  position: absolute;
+  /* top: 35%; */
+  left: 3%;
+  font-size: 20px;
+  color: gray;
+}
+
+.rev__search__container {
+  position: absolute;
+  left: 45%;
+  top: 0%;
+  width: 500px;
+  height: 44px;
+  background-color: #dddddd;
+  border: 1px solid gray;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.rev__search {
+  /* width: 100%; */
+  /* height: 100%; */
+  position: relative;
+  /* top: 12px; */
+  left: 45px;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  z-index: 5;
+  outline: none;
+  width: 450px;
+}
