@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import DropZoneModal from "../DropZoneModal";
 import SingleBooking from "./SingleBooking";
+import SingleReview from "./SingleReview";
 import { fetchAllBookings } from "../../store/bookings.js";
 import "./profilePage.css";
 
@@ -11,12 +12,11 @@ export default function ProfilePage() {
   const dispatch = useDispatch();
   const bookings = useSelector((state) => state.bookings);
   const [user, setUser] = useState();
-  // const [bookings, setBookings] = useState([]);
   const [picture, setPicture] = useState(
     "https://53.cdn.ekm.net/ekmps/shops/stormtrooper/images/original-stormtrooper-stunt-helmet-109-p.jpg?v=1"
   );
   const [reviews, setReviews] = useState([]);
-
+  const [showReviews, setShowReviews] = useState(false);
   const session = useSelector((state) => state.session);
 
   useEffect(() => {
@@ -42,30 +42,23 @@ export default function ProfilePage() {
       if (img_url) setPicture(img_url.img_url);
     }
 
-    // async function fetchReviews(data) {
-    //   const reviews = await fetch(`/api/users/reviews/${data.id}`);
-    // }
+    async function fetchReviews(data) {
+      const res = await fetch(`/api/users/reviews/${data.id}`);
+      const reviews_obj = await res.json();
+      if (res.ok) setReviews(reviews_obj["user_reviews"]);
+    }
 
-    // async function fetchBookings(data) {
-    //   const res = await fetch(`/api/users/bookings/`, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-type": "application/json",
-    //     },
-    //     body: data.id,
-    //   });
-
-    //   const bookings_obj = await res.json();
-
-    //   if (res.ok) setBookings(bookings_obj.bookings);
-    // }
     if (user) {
       fetchImg(user);
+      fetchReviews(user);
     }
   }, [user]);
 
   const username = user?.username;
-  console.log(bookings);
+  console.log(reviews);
+  const handleToggleReviews = () => {
+    setShowReviews(!showReviews);
+  };
   return (
     <div className="profile_container">
       <div className="profile_container_left">
@@ -87,8 +80,11 @@ export default function ProfilePage() {
             <>
               <h1 className="user_greeting">Hi, I'm {username}</h1>
               <div className="report_user_container">
-                <div>
-                  <i className="fas fa-star"></i> Reviews
+                <div
+                  className="profile-reviews-link"
+                  onClick={handleToggleReviews}
+                >
+                  <i className="fas fa-star"> </i> {reviews.length} Reviews
                 </div>
                 <a className="report_user" href="/report_user">
                   Report User
@@ -97,13 +93,24 @@ export default function ProfilePage() {
             </>
           )}
         </div>
-        <div className="profile_bookings">
-          <div className="profile_bookings_header">Bookings</div>
-          {bookings &&
-            bookings?.map((booking) => {
-              return <SingleBooking booking={booking} user_id={id} />;
+        {!showReviews && (
+          <div className="profile_bookings">
+            {bookings[0] && (
+              <div className="profile_bookings_header">Bookings</div>
+            )}
+            {bookings &&
+              bookings?.map((booking) => {
+                return <SingleBooking booking={booking} user_id={id} />;
+              })}
+          </div>
+        )}
+        {showReviews && (
+          <div className="profile_bookings">
+            {reviews.map((review) => {
+              return <SingleReview booking={review} />;
             })}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
