@@ -5,6 +5,7 @@ import DropZoneModal from "../DropZoneModal";
 import SingleBooking from "./SingleBooking";
 import SingleReview from "./SingleReview";
 import { fetchAllBookings } from "../../store/bookings.js";
+import { openComingSoon } from "../../store/modal";
 import "./profilePage.css";
 
 export default function ProfilePage() {
@@ -18,6 +19,8 @@ export default function ProfilePage() {
   const [reviews, setReviews] = useState([]);
   const [showReviews, setShowReviews] = useState(false);
   const session = useSelector((state) => state.session);
+
+  const openCS = () => dispatch(openComingSoon());
 
   useEffect(() => {
     async function fetchBookings() {
@@ -55,7 +58,7 @@ export default function ProfilePage() {
   }, [user]);
 
   const username = user?.username;
-  console.log(reviews);
+  // console.log(reviews);
   const handleToggleReviews = () => {
     setShowReviews(!showReviews);
   };
@@ -97,9 +100,9 @@ export default function ProfilePage() {
                   {bookings?.length} Bookings
                 </div>
                 <div className="spacer">·</div>
-                <a className="report_user" href="/report_user">
+                <div className="report_user" onClick={openCS}>
                   Report User
-                </a>
+                </div>
               </div>
             </>
           )}
