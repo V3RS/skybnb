@@ -3,7 +3,13 @@ import { useParams } from "react-router";
 import { Link, useHistory } from "react-router-dom";
 import { getOneSpot } from "../../services/spot";
 import { useDispatch, useSelector } from "react-redux";
-import { openPictureSlider, openComingSoon } from "../../store/modal.js";
+import {
+  openPictureSlider,
+  openComingSoon,
+  openReviews,
+  openSignup,
+} from "../../store/modal.js";
+import ReviewsModal from "../ReviewsModal";
 
 import { DateRange } from "react-date-range";
 
@@ -36,6 +42,7 @@ export default function SpotPage() {
   }, [spotId]);
 
   const openSlider = () => dispatch(openPictureSlider());
+  const openRev = () => dispatch(openReviews());
 
   // console.log("SPOTT", spot);
 
@@ -59,6 +66,11 @@ export default function SpotPage() {
   const today = new Date();
   return (
     <div id="spc">
+      <ReviewsModal
+        reviews={spot?.reviews}
+        rating={spot?.rating}
+        reviews_count={spot?.reviews_count}
+      />
       <div className="spot-page-container">
         <div className="spot-page-title">
           <h3>{spot?.title}</h3>
@@ -66,7 +78,7 @@ export default function SpotPage() {
 
         <div className="spot-secondHeading">
           <div className="rating__address">
-            <div id="rating">
+            <div id="rating" onClick={openRev}>
               <i id="star__spot_page" className="fas fa-star"></i>
               {spot?.rating}
               <p id="reviews_count">
@@ -239,8 +251,24 @@ export default function SpotPage() {
               </div>
             </div>
           ))}
-          <div id="show__all__revs">
-            {/* modal for all reviews pass in the reviews array */}
+          <div id="revs__btns__container">
+            <div id="show__all__revs">
+              <button id="revs__btn" onClick={openRev}>
+                Show all reviews
+              </button>
+            </div>
+            <div id="add__revs">
+              <button
+                id="add__revs__btn"
+                onClick={
+                  session.id
+                    ? () => dispatch(openComingSoon())
+                    : () => dispatch(openSignup())
+                }
+              >
+                Add a review
+              </button>
+            </div>
           </div>
         </div>
         <div id="spot__map" className="spotmap__container">
