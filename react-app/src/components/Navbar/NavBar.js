@@ -21,8 +21,8 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const handleSubmit = (e) => {
     // console.log("test");
     e.preventDefault();
+    dispatch(spotslistActions.spotslistSearch(searchQuery));
     history.push("/spotslistpage");
-    return dispatch(spotslistActions.spotslistSearch(searchQuery));
   };
 
   const openCS = () => dispatch(openComingSoon());
