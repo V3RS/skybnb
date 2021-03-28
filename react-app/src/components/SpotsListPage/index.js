@@ -40,33 +40,35 @@ export default function SpotsListPage() {
             <button className="spotslistpage-filter-btn">More filters</button>
           </div>
         </div>
-        {
-          spotslist?.map((spot) => {
-            return (
-              <SpotsListEle
-                className="spotslistele"
-                id={spot.id}
-                imgs={spot.pictures}
-                location_desc={spot.description.slice(0, 35)}
-                title={spot.title}
-                description={spot.address}
-                price={spot.price}
-                rating={spot.rating}
-                reviews_count={spot.reviews_count}
-                key={spot.id}
-              />
-            );
-          })
-          // <SpotsListEle
-          //   img="https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          //   location_desc="Somewhere in a galaxy far far away"
-          //   title="Modernly decorated room"
-          //   description="4 guests · 1 bedroom · 2 beds · 1 bath"
-          //   star={4.5}
-          //   price={42}
-          //   total={126}
-          // />
-        }
+        <div className="spl__container ">
+          {
+            spotslist?.map((spot) => {
+              return (
+                <SpotsListEle
+                  className="spotslistele"
+                  id={spot.id}
+                  imgs={spot.pictures}
+                  location_desc={spot.description.slice(0, 35)}
+                  title={spot.title}
+                  description={spot.address}
+                  price={spot.price}
+                  rating={spot.rating}
+                  reviews_count={spot.reviews_count}
+                  key={spot.id}
+                />
+              );
+            })
+            // <SpotsListEle
+            //   img="https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            //   location_desc="Somewhere in a galaxy far far away"
+            //   title="Modernly decorated room"
+            //   description="4 guests · 1 bedroom · 2 beds · 1 bath"
+            //   star={4.5}
+            //   price={42}
+            //   total={126}
+            // />
+          }
+        </div>
       </div>
 
       <div className="spotslistpage-map-container">

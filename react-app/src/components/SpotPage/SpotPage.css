@@ -171,7 +171,7 @@
   border-bottom: 1px solid #dddddd;
   width: 600px;
   padding-bottom: 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 3rem;
 }
 
 #host__image {
@@ -218,7 +218,7 @@
 
 .bookingform__container {
   position: absolute;
-  top: -42px;
+  top: -105px;
   right: -520px;
   /* border: 1px solid #dddddd; */
   width: 375px;
