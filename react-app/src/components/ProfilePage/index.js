@@ -51,6 +51,8 @@ export default function ProfilePage() {
     if (user) {
       fetchImg(user);
       fetchReviews(user);
+    } else {
+      fetchReviews(user);
     }
   }, [user]);
 
