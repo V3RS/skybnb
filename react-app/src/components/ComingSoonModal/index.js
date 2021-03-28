@@ -6,7 +6,7 @@ import ComingSoon from "./ComingSoon";
 
 Modal.setAppElement(document.getElementById("root"));
 
-const ComingSoonModal = ({ authenticated, setAuthenticated }) => {
+const ComingSoonModal = () => {
   const dispatch = useDispatch();
   const comingSoonState = useSelector((state) => state.modal.comingSoonShow);
 

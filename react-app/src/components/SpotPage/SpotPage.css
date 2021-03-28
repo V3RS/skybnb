@@ -397,8 +397,9 @@
 
 .spot__reviews__comment {
   position: relative;
-  top: 0.75rem;
+  top: 1rem;
   max-width: 30rem;
+  line-height: 1.5;
 }
 
 #rev__author {
@@ -494,4 +495,33 @@
   position: relative;
   bottom: 2px;
   height: 28px;
+}
+
+#revs__btns__container {
+  display: flex;
+}
+
+#show__all__revs,
+#add__revs {
+  margin-top: 2.5rem;
+}
+
+#add__revs {
+  margin-left: 1rem;
+}
+
+#revs__btn,
+#add__revs__btn {
+  width: 200px;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid black;
+  color: black;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+#revs__btn:hover,
+#add__revs__btn:hover {
+  background-color: #dddddd;
 }
