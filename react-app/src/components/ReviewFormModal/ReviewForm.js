@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { closeReviewForm } from "../../store/modal.js";
 import { postReview } from "../../services/spot";
@@ -8,6 +9,7 @@ import "./ReviewForm.css";
 
 export default function ReviewForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const closeModal = () => dispatch(closeReviewForm());
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(5);
@@ -22,8 +24,8 @@ export default function ReviewForm() {
   };
 
   const onRev = async (e) => {
-    // e.preventDefault();
-    await postReview(comment, rating, spotId, session.id);
+    const newRev = await postReview(comment, rating, spotId, session.id);
+    if (newRev) return window.location.reload(false);
   };
 
   return (
