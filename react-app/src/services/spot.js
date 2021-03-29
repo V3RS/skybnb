@@ -32,3 +32,19 @@ export const getOneSpot = async (id) => {
 // };
 
 // might put these functions in SpotPage component
+
+export const postReview = async (comment, rating, spot_id, user_id) => {
+  const response = await fetch("/api/reviews/post", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      comment,
+      rating,
+      spot_id,
+      user_id,
+    }),
+  });
+  return await response.json();
+};

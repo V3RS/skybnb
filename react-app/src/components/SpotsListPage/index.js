@@ -72,7 +72,9 @@ export default function SpotsListPage() {
       </div>
 
       <div className="spotslistpage-map-container">
-        <h3>Googlemaps here</h3>
+        {/* <h3>Googlemaps here</h3> */}
+        <br></br>
+        <br></br>
         {locations && <MapContainer locations={locations} />}
         {!locations && (
           <MapContainer

@@ -34,6 +34,12 @@ div {
   flex-direction: row;
 }
 
+.report_user:hover {
+  cursor: pointer;
+  color: #63d471;
+  transition: 0.25s;
+}
+
 .profile_bookings_header {
   margin-bottom: 1rem;
 }
@@ -96,10 +102,14 @@ div {
 
 .profile-reviews-link:hover {
   cursor: pointer;
+  color: #63d471;
+  transition: 0.25s;
 }
 
 .profile-bookings-link:hover {
   cursor: pointer;
+  color: #63d471;
+  transition: 0.25s;
 }
 
 .spacer {
