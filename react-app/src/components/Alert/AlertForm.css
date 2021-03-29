@@ -1,0 +1,22 @@
+.bookingalert__container{
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 250px;
+    justify-content: center;
+}
+
+.bookingalert__container > button{
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    width: 200px;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #63d471;
+}
+
+.bookingalert__container > button:hover{
+    background-color: #217a2c;
+    transition: 0.2s;
+}

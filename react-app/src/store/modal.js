@@ -12,8 +12,13 @@ const MODAL_OPEN_COMINGSOON = "comingSoon/open";
 const MODAL_CLOSE_COMINGSOON = "comingSoon/close";
 const MODAL_OPEN_REVIEWS = "reviews/open";
 const MODAL_CLOSE_REVIEWS = "reviews/close";
+
+const MODAL_OPEN_BOOKING_ALERT = "bookings/open"
+const MODAL_CLOSE_BOOKING_ALERT = "bookings/close"
+
 const MODAL_OPEN_REVIEWFORM = "reviewForm/open";
 const MODAL_CLOSE_REVIEWFORM = "reviewForm/close";
+
 
 export const openLogin = () => {
   return {
@@ -98,6 +103,19 @@ export const closeReviews = () => {
   };
 };
 
+
+export const openBookingAlert = () => {
+  return {
+    type: MODAL_OPEN_BOOKING_ALERT
+  }
+}
+
+export const closeBookingAlert = () => {
+  return {
+    type: MODAL_CLOSE_BOOKING_ALERT
+  }
+}
+
 export const openReviewForm = () => {
   return {
     type: MODAL_OPEN_REVIEWFORM,
@@ -109,6 +127,7 @@ export const closeReviewForm = () => {
     type: MODAL_CLOSE_REVIEWFORM,
   };
 };
+
 
 const initialState = {
   loginShow: false,
@@ -165,12 +184,21 @@ const modalReducer = (state = initialState, action) => {
     case MODAL_CLOSE_REVIEWS:
       newState = Object.assign({}, state, { reviewsShow: false });
       return newState;
+
+    case MODAL_OPEN_BOOKING_ALERT:
+      newState = Object.assign({}, state, { bookingAlertShow: true })
+      return newState
+    case MODAL_CLOSE_BOOKING_ALERT:
+      newState = Object.assign({}, state, { bookingAlertShow: false })
+      return newState
+
     case MODAL_OPEN_REVIEWFORM:
       newState = Object.assign({}, state, { reviewFormShow: true });
       return newState;
     case MODAL_CLOSE_REVIEWFORM:
       newState = Object.assign({}, state, { reviewFormShow: false });
       return newState;
+
     default:
       return state;
   }

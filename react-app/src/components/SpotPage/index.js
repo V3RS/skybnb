@@ -8,10 +8,13 @@ import {
   openComingSoon,
   openReviews,
   openSignup,
+  openBookingAlert,
   openReviewForm,
 } from "../../store/modal.js";
 import ReviewsModal from "../ReviewsModal";
 import ReviewFormModal from "../ReviewFormModal";
+
+import AlertModal from "../Alert"
 
 import { DateRange } from "react-date-range";
 
@@ -56,18 +59,26 @@ export default function SpotPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      bookingActions.bookSpot(
-        spotId,
-        ranges[0].startDate,
-        ranges[0].endDate,
-        session.id
-      )
-    );
+    if(!session.id){
+      dispatch(openSignup())
+    } else if(ranges[0].startDate === null || ranges[0].endDate === null) {
+      alert("Please enter dates for your trip.")
+    } else {
+      dispatch(
+        bookingActions.bookSpot(
+          spotId,
+          ranges[0].startDate,
+          ranges[0].endDate,
+          session.id
+          )
+        )
+        dispatch(openBookingAlert()); 
+    }
   };
   const today = new Date();
   return (
     <div id="spc">
+      <AlertModal/>
       <ReviewsModal
         reviews={spot?.reviews}
         rating={spot?.rating}
