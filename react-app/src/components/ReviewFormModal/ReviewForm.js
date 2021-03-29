@@ -24,8 +24,7 @@ export default function ReviewForm() {
   };
 
   const onRev = async (e) => {
-    const newRev = await postReview(comment, rating, spotId, session.id);
-    if (newRev) return window.location.reload(false);
+    await postReview(comment, rating, spotId, session.id);
   };
 
   return (
