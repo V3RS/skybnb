@@ -163,7 +163,7 @@ Contributions are what make the open source community such an amazing place to b
 
 - John Beck
 - Brandon Forster
-- Tommy Chen
+- Tommy Chen - [LinkedIn](https://www.linkedin.com/in/tommynchen/) - [GitHub](https://github.com/btcblade)
 - Veer Singh - [LinkedIn](https://www.linkedin.com/in/veerkaran-singh-45b4a9190/) - [GitHub](https://github.com/V3RS)
 
 Project Link: [https://github.com/V3RS/skybnb/](https://github.com/V3RS/skybnb/)
