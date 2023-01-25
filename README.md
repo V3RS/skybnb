@@ -52,7 +52,7 @@
 
 ## About The Project
 
-[Click here to view Musicflix live on the web!](https://skybnb-app.herokuapp.com/)
+[Click here to view Skybnb live on the web!](https://skybnb-app.herokuapp.com/)
 <br>
 </br>
 <img src="https://live.staticflickr.com/65535/51119844308_178cd91ae2_h.jpg" alt="homepage ss" />
